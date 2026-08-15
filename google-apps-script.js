@@ -12,27 +12,25 @@ function doPost(e) {
     if (action === 'rsvp') {
       var sheetRSVP = ss.getSheetByName("Xác Nhận Tham Dự") || ss.insertSheet("Xác Nhận Tham Dự");
       if (sheetRSVP.getLastRow() === 0) {
-        sheetRSVP.appendRow(["Thời Gian", "Họ Và Tên", "Số Điện Thoại", "Số Người Tham Dự", "Khách Mời Của", "Xác Nhận"]);
+        sheetRSVP.appendRow(["Thời Gian", "Họ Và Tên", "Số Điện Thoại", "Khách Mời Của", "Xác Nhận Tham Dự"]);
         sheetRSVP.getRange("1:1").setFontWeight("bold").setBackground("#FFCDD2");
       }
       sheetRSVP.appendRow([
         params.time || new Date().toLocaleString("vi-VN"),
         params.name || "",
         params.phone || "",
-        params.guests || "",
         params.side || "",
         params.status || ""
       ]);
     } else {
       var sheetWish = ss.getSheetByName("Lời Chúc") || ss.insertSheet("Lời Chúc");
       if (sheetWish.getLastRow() === 0) {
-        sheetWish.appendRow(["Thời Gian", "Họ Và Tên", "Mối Quan Hệ", "Lời Chúc Mừng"]);
+        sheetWish.appendRow(["Thời Gian", "Họ Và Tên", "Lời Chúc Mừng"]);
         sheetWish.getRange("1:1").setFontWeight("bold").setBackground("#FFCDD2");
       }
       sheetWish.appendRow([
         params.time || new Date().toLocaleString("vi-VN"),
         params.name || "",
-        params.relation || "",
         params.message || ""
       ]);
     }

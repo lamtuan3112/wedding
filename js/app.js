@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Tự động ghi Lời chúc & RSVP tham dự vào Google Sheet & Hiển thị Thông Báo Cảm Ơn
+ * Tự động ghi Lời chúc & RSVP tham dự vào Google Sheet & LocalStorage
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -194,7 +194,7 @@ function initAudioPlayer(musicConfig) {
   });
 }
 
-/* 6. FORM RSVP - GỬI GOOGLE SHEET + MỞ POPUP CẢM ƠN */
+/* 6. FORM RSVP - RÚT GỌN CHÍNH XÁC THEO YÊU CẦU */
 function initRSVPForm(sheetConfig) {
   const form = document.getElementById("rsvp-form");
   if (!form) return;
@@ -204,7 +204,6 @@ function initRSVPForm(sheetConfig) {
 
     const name = document.getElementById("rsvp-name").value.trim();
     const phone = document.getElementById("rsvp-phone").value.trim();
-    const guests = document.getElementById("rsvp-guests").value;
     const side = document.getElementById("rsvp-side").value;
     const status = document.getElementById("rsvp-status").value;
 
@@ -212,7 +211,6 @@ function initRSVPForm(sheetConfig) {
       action: "rsvp",
       name,
       phone,
-      guests,
       side,
       status,
       time: new Date().toLocaleString("vi-VN")
@@ -233,14 +231,14 @@ function initRSVPForm(sheetConfig) {
     // Open Thank You Modal
     showThankYouModal(
       "XÁC NHẬN THAM DỰ THÀNH CÔNG!",
-      `Cảm ơn bạn <strong>${name}</strong> (${guests} người - Khách ${side}) đã gửi xác nhận <em>${status}</em>.<br><br>Sự hiện diện và tình cảm của bạn là niềm vinh hạnh lớn nhất của Lâm Tuấn & Như Huế!`
+      `Cảm ơn bạn <strong>${name}</strong> (${side}) đã gửi xác nhận <em>${status}</em>.<br><br>Sự hiện diện và tình cảm của bạn là niềm vinh hạnh lớn nhất của Lâm Tuấn & Như Huế!`
     );
 
     form.reset();
   });
 }
 
-/* 7. SỔ LƯU BÚT - GỬI GOOGLE SHEET + MỞ POPUP CẢM ƠN */
+/* 7. SỔ LƯU BÚT - BỎ MỐI QUAN HỆ */
 function initGuestbook(defaultWishes, sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
@@ -255,7 +253,7 @@ function initGuestbook(defaultWishes, sheetConfig) {
       item.className = "wish-item";
       item.innerHTML = `
         <div class="wish-header">
-          <span class="wish-author">${w.name} ${w.relation ? `(${w.relation})` : ''}</span>
+          <span class="wish-author">${w.name}</span>
           <span class="wish-time">${w.time || 'Mới gửi'}</span>
         </div>
         <p class="wish-text">${w.message}</p>
@@ -270,13 +268,11 @@ function initGuestbook(defaultWishes, sheetConfig) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const nameInput = document.getElementById("wish-name");
-      const relationInput = document.getElementById("wish-relation");
       const msgInput = document.getElementById("wish-message");
 
       const newWish = {
         action: "wish",
         name: nameInput.value.trim(),
-        relation: relationInput.value.trim(),
         message: msgInput.value.trim(),
         time: "Vừa xong"
       };
@@ -304,7 +300,7 @@ function initGuestbook(defaultWishes, sheetConfig) {
   }
 }
 
-/* 8. MODAL THÔNG BÁO CẢM ƠN SANG TRỌNG */
+/* 8. MODAL THÔNG BÁO CẢM ƠN */
 function initThankYouModal() {
   const modal = document.getElementById("thankyou-modal");
   const closeBtn = document.getElementById("thankyou-close-btn");
