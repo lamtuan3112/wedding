@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Load đúng 3 lời chúc mới nhất do người dùng ghi (Không dùng hardcode)
+ * Tự động đồng bộ Lời Chúc trực tiếp từ Google Sheet (Cập nhật realtime khi sửa/xóa trên Sheet)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -216,10 +216,6 @@ function initRSVPForm(sheetConfig) {
       time: new Date().toLocaleString("vi-VN")
     };
 
-    const existing = JSON.parse(localStorage.getItem("wedding_rsvp") || "[]");
-    existing.push(rsvpData);
-    localStorage.setItem("wedding_rsvp", JSON.stringify(existing));
-
     if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
       const formData = new FormData();
       Object.keys(rsvpData).forEach(key => formData.append(key, rsvpData[key]));
@@ -235,13 +231,11 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 7. SỔ LƯU BÚT - CHỈ DISPLAY TOP 3 LỜI CHÚC MỚI NHẤT CỦA KHÁCH THỰC TẾ */
+/* 7. SỔ LƯU BÚT - ĐỒNG BỘ NGUYÊN BẢN TỪ GOOGLE SHEET CHÍNH XÁC REALTIME */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
   if (!wishesListEl) return;
-
-  let localWishes = JSON.parse(localStorage.getItem("wedding_wishes")) || [];
 
   function renderWishes(wishesArray) {
     wishesListEl.innerHTML = "";
@@ -255,7 +249,7 @@ function initGuestbook(sheetConfig) {
       return;
     }
 
-    // Chỉ hiển thị tối đa 3 lời chúc gần đây nhất
+    // Hiển thị đúng 3 lời chúc mới nhất trong dữ liệu thực tế từ Sheet
     const recentWishes = wishesArray.slice(-3).reverse();
 
     recentWishes.forEach((w) => {
@@ -264,7 +258,7 @@ function initGuestbook(sheetConfig) {
       item.innerHTML = `
         <div class="wish-header">
           <span class="wish-author">${w.name}</span>
-          <span class="wish-time">${w.time || 'Mới gửi'}</span>
+          <span class="wish-time">${w.time || 'Vừa gửi'}</span>
         </div>
         <p class="wish-text">${w.message}</p>
       `;
@@ -272,12 +266,14 @@ function initGuestbook(sheetConfig) {
     });
   }
 
-  // Render initial wishes from LocalStorage
-  renderWishes(localWishes);
+  // Hàm load trực tiếp từ Google Sheet (Có tham số chống Cache trình duyệt)
+  function loadWishesFromSheet() {
+    if (!sheetConfig || !sheetConfig.sheetId) return;
 
-  // Load live wishes from Google Sheet if viewUrl is active
-  if (sheetConfig && sheetConfig.viewUrl) {
-    fetch(sheetConfig.viewUrl)
+    // Chống cache trình duyệt bằng _t=Date.now()
+    const sheetGvizUrl = `https://docs.google.com/spreadsheets/d/${sheetConfig.sheetId}/gviz/tq?sheet=L%E1%BB%9D%20Ch%C3%BAc&tqx=out:json&_t=${Date.now()}`;
+
+    fetch(sheetGvizUrl)
       .then(res => res.text())
       .then(data => {
         try {
@@ -286,26 +282,42 @@ function initGuestbook(sheetConfig) {
           const rows = parsed.table.rows;
 
           if (rows && rows.length > 0) {
-            const sheetWishes = rows.map(r => {
-              const name = r.c[1] ? r.c[1].v : (r.c[0] ? r.c[0].v : "Khách");
-              const message = r.c[2] ? r.c[2].v : "";
-              const time = r.c[0] ? r.c[0].v : "Mới đây";
-              return { name, message, time };
-            }).filter(w => w.message);
+            // Bỏ dòng tiêu đề (Header row) nếu có
+            const wishesList = [];
+            rows.forEach((r, idx) => {
+              const timeVal = r.c && r.c[0] ? (r.c[0].f || r.c[0].v || "") : "";
+              const nameVal = r.c && r.c[1] ? (r.c[1].v || "") : "";
+              const msgVal = r.c && r.c[2] ? (r.c[2].v || "") : "";
 
-            if (sheetWishes.length > 0) {
-              localWishes = sheetWishes;
-              renderWishes(localWishes);
-            }
+              // Kiểm tra xem dòng này có phải header không
+              if (nameVal && msgVal && nameVal !== "Họ Và Tên") {
+                wishesList.push({
+                  name: nameVal,
+                  message: msgVal,
+                  time: timeVal || "Mới đây"
+                });
+              }
+            });
+
+            renderWishes(wishesList);
+          } else {
+            renderWishes([]);
           }
         } catch (err) {
           console.log("Sheet parse error:", err);
+          renderWishes([]);
         }
-      }).catch(err => {
+      })
+      .catch(err => {
         console.log("Fetch sheet error:", err);
+        renderWishes([]);
       });
   }
 
+  // Tải dữ liệu từ Google Sheet ngay khi mở trang
+  loadWishesFromSheet();
+
+  // Xử lý gửi Form lời chúc mới
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -316,19 +328,22 @@ function initGuestbook(sheetConfig) {
         action: "wish",
         name: nameInput.value.trim(),
         message: msgInput.value.trim(),
-        time: "Vừa xong"
+        time: new Date().toLocaleTimeString("vi-VN", { hour: '2-digit', minute: '2-digit' }) + " Hôm nay"
       };
 
-      localWishes.push(newWish);
-      localStorage.setItem("wedding_wishes", JSON.stringify(localWishes));
-
+      // Gửi trực tiếp tới Google Sheet Apps Script
       if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
         const formData = new FormData();
         Object.keys(newWish).forEach(key => formData.append(key, newWish[key]));
-        fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {});
+        fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" })
+          .then(() => {
+            // Chờ 1.5 giây để Sheet ghi xong rồi load lại danh sách mới nhất từ Sheet
+            setTimeout(loadWishesFromSheet, 1500);
+          })
+          .catch(() => {
+            setTimeout(loadWishesFromSheet, 1500);
+          });
       }
-
-      renderWishes(localWishes);
 
       showThankYouModal(
         "GỬI LỜI CHÚC THÀNH CÔNG!",
@@ -340,7 +355,7 @@ function initGuestbook(sheetConfig) {
   }
 }
 
-/* 8. MODAL THÔNG BÁO CẢM ƠN SANG TRỌNG */
+/* 8. MODAL THÔNG BÁO CẢM ƠN */
 function initThankYouModal() {
   const modal = document.getElementById("thankyou-modal");
   const closeBtn = document.getElementById("thankyou-close-btn");
