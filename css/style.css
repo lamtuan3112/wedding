@@ -1,6 +1,6 @@
 /* ==========================================================================
    CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
-   Exact 1:1 Match to Cinelove 46 Mobile Mockup (Image Provided by User)
+   Luxurious Red Accents & Elegant Form Controls
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap');
@@ -69,7 +69,7 @@ body {
 
 .text-center { text-align: center; }
 
-/* FLOATING MUSIC BUTTON (TOP RIGHT AS IN USER IMAGE) */
+/* FLOATING MUSIC BUTTON */
 .music-player-btn {
   position: fixed;
   top: 18px;
@@ -77,15 +77,15 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(99, 23, 27, 0.85);
   backdrop-filter: blur(4px);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(243, 144, 161, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
   z-index: 1000;
   transition: var(--transition);
 }
@@ -105,7 +105,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* 1. CINELOVE COVER SECTION (EXACT MATCH TO USER IMAGE) */
+/* 1. CINELOVE COVER SECTION (RED ACCENT TITLES) */
 .cinelove-cover-section {
   width: 100%;
   background: #FFFFFF;
@@ -140,7 +140,7 @@ body {
 .cover-save-date {
   font-family: var(--font-script);
   font-size: clamp(2.8rem, 7vw, 4.2rem);
-  color: #1A1A1A;
+  color: var(--color-crimson); /* RED COLOR AS REQUESTED */
   text-shadow: 0 2px 8px rgba(255,255,255,0.9);
   line-height: 1;
 }
@@ -156,7 +156,7 @@ body {
 .script-name {
   font-family: var(--font-script);
   font-size: clamp(3rem, 8.5vw, 4.8rem);
-  color: #111111;
+  color: var(--color-crimson); /* RED COLOR AS REQUESTED */
   line-height: 1.1;
   text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95);
 }
@@ -164,7 +164,7 @@ body {
 .script-ampersand {
   font-family: var(--font-script);
   font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: #111111;
+  color: var(--color-crimson); /* RED COLOR AS REQUESTED */
   margin: -6px 0 -4px 30px;
   text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95);
 }
@@ -179,7 +179,7 @@ body {
   pointer-events: none;
 }
 
-/* CALENDAR SECTION BELOW PHOTO (EXACT MATCH TO USER IMAGE) */
+/* CALENDAR SECTION BELOW PHOTO */
 .cinelove-calendar-wrapper {
   max-width: 480px;
   margin: 25px auto 0;
@@ -195,16 +195,17 @@ body {
 
 .our-wedding-title {
   font-family: var(--font-script);
-  font-size: clamp(2.2rem, 5.5vw, 3.2rem);
-  color: #222222;
+  font-size: clamp(2.3rem, 5.8vw, 3.3rem);
+  color: var(--color-crimson);
   line-height: 1;
+  font-weight: 600;
 }
 
 .month-title {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 4.5vw, 2.5rem);
-  font-weight: 600;
-  color: #111111;
+  font-weight: 700;
+  color: var(--color-crimson);
 }
 
 .calendar-days-header {
@@ -212,9 +213,9 @@ body {
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #666666;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-crimson-light);
   margin-bottom: 12px;
 }
 
@@ -237,21 +238,27 @@ body {
   margin: 0 auto;
 }
 
+/* HIGH-QUALITY VECTOR SVG HEART HIGHLIGHT (NO MORE DISTORTION) */
 .calendar-days-grid span.wedding-day-highlight {
   background: var(--color-crimson);
   color: #FFFFFF;
   font-weight: 700;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(99, 23, 27, 0.35);
+  box-shadow: 0 4px 15px rgba(99, 23, 27, 0.35);
   position: relative;
 }
 
 .calendar-days-grid span.wedding-day-highlight::after {
-  content: '❤️';
+  content: '';
   position: absolute;
   top: -8px;
-  right: -6px;
-  font-size: 0.75rem;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23B8324A' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 /* 2. THÔNG TIN GIA ĐÌNH SONG SONG */
@@ -367,6 +374,26 @@ body {
   font-weight: 600;
 }
 
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--color-crimson);
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-rose);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
 .countdown-grid {
   display: flex;
   justify-content: center;
@@ -403,7 +430,7 @@ body {
   margin-top: 5px;
 }
 
-/* 4. WEDDING EVENTS (EXACT MATCH TO IMAGE 1) */
+/* 4. WEDDING EVENTS */
 .events-section {
   padding: 65px 0;
   background: var(--color-rose-bg);
@@ -522,23 +549,24 @@ body {
   gap: 6px;
   background: var(--color-crimson);
   color: var(--color-white);
-  padding: 8px 22px;
-  border-radius: 20px;
-  font-size: 0.82rem;
+  padding: 9px 24px;
+  border-radius: 22px;
+  font-size: 0.84rem;
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(99, 23, 27, 0.2);
+  box-shadow: 0 4px 14px rgba(99, 23, 27, 0.2);
 }
 
 .btn-map-pill:hover {
   background: var(--color-crimson-light);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(99, 23, 27, 0.3);
 }
 
-/* 5. RSVP SECTION */
+/* 5. ELEGANT COMBO BOX & LUXURY BUTTON STYLING */
 .rsvp-section {
   padding: 70px 0;
   background: linear-gradient(180deg, rgba(42, 24, 26, 0.88), rgba(99, 23, 27, 0.88)),
@@ -562,36 +590,80 @@ body {
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   text-align: left;
 }
 
 .form-label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* COMBO BOX & INPUT SOFT SENSE STYLING */
 .form-control {
   width: 100%;
-  padding: 11px 15px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--color-white);
-  font-size: 0.92rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 0.94rem;
   outline: none;
+  transition: var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.form-control:focus {
+  border-color: var(--color-rose);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 3px rgba(243, 144, 161, 0.3);
 }
 
 .form-control::placeholder {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 select.form-control option {
   background: var(--color-crimson);
-  color: var(--color-white);
+  color: #FFFFFF;
+}
+
+/* LUXURY BUTTON STYLING (XÁC NHẬN, MỞ QR, GỬI LỜI CHÚC) */
+.btn-primary {
+  background: linear-gradient(135deg, #8E2328 0%, #63171B 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(243, 144, 161, 0.4);
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(99, 23, 27, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #A82C32 0%, #7A1D22 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 23, 27, 0.45);
+  border-color: var(--color-rose);
 }
 
 /* 6. GIFT MODAL */

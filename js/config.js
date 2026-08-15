@@ -57,7 +57,7 @@ const WEDDING_CONFIG = {
     {
       id: "tiecmung",
       title: "TIỆC MỪNG THỨ 7",
-      dateHeader: "Thứ 7, 19/09/2026 (Nhằm ngày 09/08 Âm lịch)",
+      dateHeader: "Thứ 7, 19/09/2026 (09/08 Âm lịch)",
       isMerged: true,
       subEvents: [
         {
@@ -79,7 +79,7 @@ const WEDDING_CONFIG = {
     {
       id: "thanhhon",
       title: "LỄ THÀNH HÔN CHÍNH THỨC",
-      dateHeader: "Chủ Nhật, 20/09/2026 (Nhằm ngày 10/08 Âm lịch)",
+      dateHeader: "Chủ Nhật, 20/09/2026 (ngày 10/08 Âm lịch)",
       isMerged: false,
       time: "14:00 - Chủ Nhật, 20/09/2026",
       lunarTime: "(Ngày 10/08 âm lịch)",
