@@ -1,5 +1,6 @@
 /**
- * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ (Cập nhật Icon Sang Trọng)
+ * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
+ * Tự động ghi Lời chúc & RSVP tham dự vào Google Sheet & LocalStorage
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCountdown(config.weddingDate);
   initHeartCanvas();
   initRSVPForm(config.googleSheet);
-  initGuestbook(config.defaultWishes);
+  initGuestbook(config.defaultWishes, config.googleSheet);
   initBankModal(config.bankAccounts);
   initScrollAnimations();
 });
@@ -75,7 +76,7 @@ function renderLoveStory(stories) {
   });
 }
 
-/* 3. SỰ KIỆN CƯỚI VỚI ICON SANG TRỌNG (SVG VENUE, MAP, CALENDAR) */
+/* 3. SỰ KIỆN CƯỚI VỚI ICON SANG TRỌNG */
 function renderEvents(events) {
   const container = document.getElementById("events-grid");
   if (!container || !events) return;
@@ -192,7 +193,7 @@ function initAudioPlayer(musicConfig) {
   });
 }
 
-/* 6. FORM RSVP */
+/* 6. FORM RSVP - GỬI VÀO GOOGLE SHEET & LOCALSTORAGE */
 function initRSVPForm(sheetConfig) {
   const form = document.getElementById("rsvp-form");
   if (!form) return;
@@ -207,6 +208,7 @@ function initRSVPForm(sheetConfig) {
     const status = document.getElementById("rsvp-status").value;
 
     const rsvpData = {
+      action: "rsvp",
       name,
       phone,
       guests,
@@ -215,17 +217,25 @@ function initRSVPForm(sheetConfig) {
       time: new Date().toLocaleString("vi-VN")
     };
 
+    // Save LocalStorage
     const existing = JSON.parse(localStorage.getItem("wedding_rsvp") || "[]");
     existing.push(rsvpData);
     localStorage.setItem("wedding_rsvp", JSON.stringify(existing));
+
+    // Send to Google Sheets Script if configured
+    if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
+      const formData = new FormData();
+      Object.keys(rsvpData).forEach(key => formData.append(key, rsvpData[key]));
+      fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {});
+    }
 
     showToast("❤️ Cảm ơn " + name + " đã gửi xác nhận tham dự!");
     form.reset();
   });
 }
 
-/* 7. SỔ LƯU BÚT ONLINE */
-function initGuestbook(defaultWishes) {
+/* 7. SỔ LƯU BÚT - GỬI VÀO GOOGLE SHEET & LOCALSTORAGE */
+function initGuestbook(defaultWishes, sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
   if (!wishesListEl) return;
@@ -258,14 +268,22 @@ function initGuestbook(defaultWishes) {
       const msgInput = document.getElementById("wish-message");
 
       const newWish = {
+        action: "wish",
         name: nameInput.value.trim(),
         relation: relationInput.value.trim(),
         message: msgInput.value.trim(),
-        time: "Vừa xong"
+        time: new Date().toLocaleTimeString("vi-VN", { hour: '2-digit', minute: '2-digit' }) + " Hôm nay"
       };
 
       wishes.push(newWish);
       localStorage.setItem("wedding_wishes", JSON.stringify(wishes));
+
+      // Send to Google Sheets Script if configured
+      if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
+        const formData = new FormData();
+        Object.keys(newWish).forEach(key => formData.append(key, newWish[key]));
+        fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {});
+      }
 
       renderWishes();
       showToast("🌸 Cảm ơn " + newWish.name + " đã gửi lời chúc mừng!");
@@ -274,7 +292,7 @@ function initGuestbook(defaultWishes) {
   }
 }
 
-/* 8. MODAL HỘP MỪNG CƯỚI & STK */
+/* 8. MODAL HỘP MỪNG CƯỚI */
 function initBankModal(bankConfig) {
   const triggerBtn = document.getElementById("open-gift-modal-btn");
   const modal = document.getElementById("gift-modal");
