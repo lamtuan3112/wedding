@@ -1,6 +1,7 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Tự động đồng bộ Lời Chúc trực tiếp từ Google Sheet (Cập nhật realtime khi sửa/xóa trên Sheet)
+ * - Nhạc chỉ phát khi bấm vào Icon Nốt Nhạc (Không tự động phát)
+ * - Load Lời Chúc bằng JSONP Script Injection (Chạy 100% mượt cả ở Local file:// và GitHub)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -152,7 +153,7 @@ function initCountdown(targetDateStr) {
   setInterval(update, 1000);
 }
 
-/* 5. PHÁT NHẠC MỐI DUYÊN VÀNG */
+/* 5. PHÁT NHẠC MỐI DUYÊN VÀNG (CHỈ PHÁT KHI BẤM NỐT NHẠC) */
 function initAudioPlayer(musicConfig) {
   const btn = document.getElementById("music-toggle-btn");
   const audio = document.getElementById("bg-audio");
@@ -161,19 +162,7 @@ function initAudioPlayer(musicConfig) {
   audio.src = musicConfig.url;
   let isPlaying = false;
 
-  const handleFirstInteraction = () => {
-    if (!isPlaying) {
-      audio.play().then(() => {
-        isPlaying = true;
-        btn.classList.add("playing");
-        btn.innerHTML = `<span class="music-icon">🎶</span>`;
-        showToast("Đang phát: " + musicConfig.title);
-      }).catch(() => {});
-    }
-    document.removeEventListener("click", handleFirstInteraction);
-  };
-  document.addEventListener("click", handleFirstInteraction);
-
+  // CHỈ KHỞI CHẠY KHI NGƯỜI DÙNG BẤM TRỰC TIẾP VÀO NỐT NHẠC
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     if (isPlaying) {
@@ -231,7 +220,7 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 7. SỔ LƯU BÚT - ĐỒNG BỘ NGUYÊN BẢN TỪ GOOGLE SHEET CHÍNH XÁC REALTIME */
+/* 7. SỔ LƯU BÚT - ĐỒNG BỘ JSONP (CHẠY 100% CẢ FILE LOCAL VÀ GITHUB) */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
@@ -249,7 +238,7 @@ function initGuestbook(sheetConfig) {
       return;
     }
 
-    // Hiển thị đúng 3 lời chúc mới nhất trong dữ liệu thực tế từ Sheet
+    // Lấy tối đa 3 lời chúc mới nhất ở cuối danh sách
     const recentWishes = wishesArray.slice(-3).reverse();
 
     recentWishes.forEach((w) => {
@@ -266,58 +255,54 @@ function initGuestbook(sheetConfig) {
     });
   }
 
-  // Hàm load trực tiếp từ Google Sheet (Có tham số chống Cache trình duyệt)
+  // Khai báo Callback JSONP Toàn cục
+  window.handleGoogleSheetWishes = function(data) {
+    try {
+      if (data && data.table && data.table.rows) {
+        const rows = data.table.rows;
+        const wishesList = [];
+
+        rows.forEach((r) => {
+          const timeVal = r.c && r.c[0] ? (r.c[0].f || r.c[0].v || "") : "";
+          const nameVal = r.c && r.c[1] ? (r.c[1].v || "") : "";
+          const msgVal = r.c && r.c[2] ? (r.c[2].v || "") : "";
+
+          if (nameVal && msgVal && nameVal !== "Họ Và Tên") {
+            wishesList.push({
+              name: nameVal,
+              message: msgVal,
+              time: timeVal || "Mới đây"
+            });
+          }
+        });
+
+        renderWishes(wishesList);
+      } else {
+        renderWishes([]);
+      }
+    } catch (e) {
+      console.log("JSONP parse error:", e);
+      renderWishes([]);
+    }
+  };
+
+  // Hàm nhúng JSONP Script Tag (Vượt qua hoàn toàn chặn CORS của file:// local và github)
   function loadWishesFromSheet() {
     if (!sheetConfig || !sheetConfig.sheetId) return;
 
-    // Chống cache trình duyệt bằng _t=Date.now()
-    const sheetGvizUrl = `https://docs.google.com/spreadsheets/d/${sheetConfig.sheetId}/gviz/tq?sheet=L%E1%BB%9D%20Ch%C3%BAc&tqx=out:json&_t=${Date.now()}`;
+    const oldScript = document.getElementById("gviz-jsonp-script");
+    if (oldScript) oldScript.remove();
 
-    fetch(sheetGvizUrl)
-      .then(res => res.text())
-      .then(data => {
-        try {
-          const jsonString = data.substring(data.indexOf("{"), data.lastIndexOf("}") + 1);
-          const parsed = JSON.parse(jsonString);
-          const rows = parsed.table.rows;
-
-          if (rows && rows.length > 0) {
-            // Bỏ dòng tiêu đề (Header row) nếu có
-            const wishesList = [];
-            rows.forEach((r, idx) => {
-              const timeVal = r.c && r.c[0] ? (r.c[0].f || r.c[0].v || "") : "";
-              const nameVal = r.c && r.c[1] ? (r.c[1].v || "") : "";
-              const msgVal = r.c && r.c[2] ? (r.c[2].v || "") : "";
-
-              // Kiểm tra xem dòng này có phải header không
-              if (nameVal && msgVal && nameVal !== "Họ Và Tên") {
-                wishesList.push({
-                  name: nameVal,
-                  message: msgVal,
-                  time: timeVal || "Mới đây"
-                });
-              }
-            });
-
-            renderWishes(wishesList);
-          } else {
-            renderWishes([]);
-          }
-        } catch (err) {
-          console.log("Sheet parse error:", err);
-          renderWishes([]);
-        }
-      })
-      .catch(err => {
-        console.log("Fetch sheet error:", err);
-        renderWishes([]);
-      });
+    const script = document.createElement("script");
+    script.id = "gviz-jsonp-script";
+    script.src = `https://docs.google.com/spreadsheets/d/${sheetConfig.sheetId}/gviz/tq?sheet=L%E1%BB%9D%20Ch%C3%BAc&tqx=responseHandler:handleGoogleSheetWishes&_t=${Date.now()}`;
+    document.body.appendChild(script);
   }
 
-  // Tải dữ liệu từ Google Sheet ngay khi mở trang
+  // Tải dữ liệu ngay khi mở trang
   loadWishesFromSheet();
 
-  // Xử lý gửi Form lời chúc mới
+  // Xử lý gửi Lời chúc mới
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -331,13 +316,11 @@ function initGuestbook(sheetConfig) {
         time: new Date().toLocaleTimeString("vi-VN", { hour: '2-digit', minute: '2-digit' }) + " Hôm nay"
       };
 
-      // Gửi trực tiếp tới Google Sheet Apps Script
       if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
         const formData = new FormData();
         Object.keys(newWish).forEach(key => formData.append(key, newWish[key]));
         fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" })
           .then(() => {
-            // Chờ 1.5 giây để Sheet ghi xong rồi load lại danh sách mới nhất từ Sheet
             setTimeout(loadWishesFromSheet, 1500);
           })
           .catch(() => {
