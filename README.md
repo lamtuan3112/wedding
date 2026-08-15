@@ -1,95 +1,77 @@
-# 💍 Website Thiệp Cưới Online Cao Cấp (HTML, CSS, JS)
+# 💍 Website Thiệp Cưới Online | Lâm Tuấn & Như Huế
 
-Website thiệp cưới online giao diện sang trọng, tinh tế, tối ưu trải nghiệm trên cả điện thoại (Mobile) và máy tính (PC). Trang web sẵn sàng để tải và xuất bản miễn phí lên **GitHub Pages**.
+Website thiệp cưới online giao diện màu **Trắng – Đỏ** lãng mạn, sang trọng, tối ưu trải nghiệm súc tích trên cả điện thoại di động (Mobile 70%) và máy tính (PC 30%). Trang web đã được đẩy lên GitHub Repository: [https://github.com/lamtuan3112/wedding](https://github.com/lamtuan3112/wedding).
 
 ---
 
 ## 🌟 Các Tính Năng Nổi Bật
 
-- 🎨 **Giao diện Glassmorphism & Gold Luxury**: Tone màu hồng kem, đỏ vang & vàng kim sang trọng, chuẩn SEO & Responsive 100%.
-- ⚙️ **Tùy chỉnh thông tin 1-Click (`js/config.js`)**: Thay đổi tên Chú Rể, Cô Dâu, Ngày Cưới, Địa Điểm, STK Ngân Hàng, Album Ảnh chỉ trong 1 file cấu hình!
-- 🎵 **Floating Audio Player**: Trình phát nhạc nền lãng mạn kèm sóng nhạc và hiệu ứng cánh hoa anh đào rơi nhẹ nhàng.
-- ⏳ **Đồng Hồ Đếm Ngược (Countdown Timer)**: Tính thời gian thực tới giây phút cử hành hôn lễ.
-- 👩‍❤️‍👨 **Hành Trình Tình Yêu (Love Story Timeline)**: Dòng thời gian mốc kỉ niệm đôi lứa.
-- 📅 **Lịch Cưới & Bản Đồ**: Tích hợp trực tiếp nút *Xem Bản Đồ (Google Maps)* và *Thêm Vào Lịch (Google Calendar)*.
-- 📸 **Album Ảnh Cưới Lightbox**: Xem ảnh cưới phóng to toàn màn hình với hiệu ứng chuyển trang mượt mà.
-- ✉️ **Xác Nhận Tham Dự (RSVP)**: Form xác nhận dành cho khách mời (lưu tự động vào máy).
-- 💳 **Hộp Mừng Cưới (QR Bank Transfer Modal)**: Popup mã QR VietQR kèm nút bấm sao chép nhanh số tài khoản ngân hàng.
-- 📝 **Sổ Lưu Bút Online (Guestbook)**: Khách mời dễ dàng gửi lời chúc và xem lời chúc tức thì.
+- 🎨 **Giao diện Trắng – Đỏ Lãng Mạn & Luxury**: Nền ảnh cưới mờ lãng mạn, font chữ Tiếng Việt ngọt ngào (*Dancing Script*, *Pacifico*, *Be Vietnam Pro*, *Montserrat*).
+- 🖼️ **Căn Chỉnh Ảnh Cưới Chuẩn Nét**: Giữ nguyên khuôn mặt và góc ảnh không bị cắt xém.
+- 🎵 **Floating Audio Player**: Trình phát nhạc nền bài hát **Mối Duyên Vàng** (`asset/music/MoiDuyenVang.mp3`) với hiệu ứng sóng nhạc và trái tim/cánh hoa rơi bồng bềnh.
+- ⏳ **Đồng Hồ Đếm Ngược (Countdown Timer)**: Đếm ngược thời gian thực tới 14:00 Chủ Nhật, 20.09.2026.
+- 💒 **Lịch Trình Lễ Cưới Rõ Ràng**: 
+  - Tiệc Mừng Sáng Thứ 7 (09:00 - Sau trường THCS Liên Hà)
+  - Tiệc Mừng Chiều Thứ 7 (15:00 - Hồ sinh thái Thượng Thôn)
+  - Lễ Thành Hôn (14:00 Chủ Nhật - Số 17, xóm Quốc Trí)
+- 📸 **Album 10 Ảnh Cưới Chọn Lọc**: Tải nhanh trên mạng di động 4G kèm bộ xem ảnh toàn màn hình Lightbox.
+- ✉️ **Xác Nhận Tham Dự (RSVP) & Sổ Lưu Bút Online**: Khách mời gửi xác nhận & lời chúc mừng (bảo mật, hiển thị lời chúc gần nhất).
+- 💳 **Hộp Mừng Cưới (Bank QR Modal)**: Popup mã QR VietQR Chú Rể (MBBank) & Cô Dâu (Vietcombank) kèm nút sao chép STK.
 
 ---
 
-## 🚀 Hướng Dẫn Tùy Chỉnh Nội Dung Dễ Dàng
+## ⚙️ Hướng Dẫn Tùy Chỉnh Thông Tin 1-Click (`js/config.js`)
 
-Bạn không cần biết code HTML phức tạp! Chỉ cần mở file **`js/config.js`** bằng Notepad hoặc VS Code và sửa các thông tin sau:
+Mọi thông tin trên thiệp cưới đều có thể chỉnh sửa dễ dàng trong tệp **`js/config.js`**:
 
 ```javascript
 const WEDDING_CONFIG = {
   couple: {
     groom: {
-      name: "Tên Chú Rể Đầy Đủ",
-      shortName: "Nhật Minh",
-      father: "Tên Thân Phụ",
-      mother: "Tên Thân Mẫu",
-      avatar: "link_anh_chu_re.jpg"
+      name: "Lâm Tuấn",
+      job: "Kỹ sư CNTT tại HTI Group",
+      father: "Nguyễn Văn Trường",
+      mother: "Nguyễn Thị Nụ",
+      avatar: "asset/images/AnhThiep/NVT09543.jpg"
     },
     bride: {
-      name: "Tên Cô Dâu Đầy Đủ",
-      shortName: "Khánh Linh",
-      father: "Tên Thân Phụ",
-      mother: "Tên Thân Mẫu",
-      avatar: "link_anh_co_dau.jpg"
+      name: "Như Huế",
+      job: "Điều dưỡng tại Bệnh viện E",
+      father: "Nguyễn Bá Thiết",
+      mother: "Nguyễn Thị Ất",
+      avatar: "asset/images/AnhThiep/NVT09581.jpg"
     }
   },
 
-  // Ngày đám cưới chính (Năm - Tháng - Ngày T Giờ:Phút:Giây)
-  weddingDate: "2026-10-25T11:00:00",
-  
-  // Thông tin ngân hàng nhận mừng cưới
-  bankAccounts: {
-    groom: {
-      owner: "TÊN TÀI KHOẢN CHÚ RỂ",
-      bankName: "Tên Ngân Hàng (VCB, MB...)",
-      accountNumber: "STK_CHU_RE",
-      qrCodeUrl: "link_ma_qr_chu_re.png"
-    },
-    bride: { ... }
+  // Ngày cử hành hôn lễ (YYYY-MM-DDTHH:mm:ss)
+  weddingDate: "2026-09-20T14:00:00",
+
+  // Nhạc nền
+  music: {
+    title: "Mối Duyên Vàng",
+    url: "asset/music/MoiDuyenVang.mp3"
   }
 };
 ```
 
 ---
 
-## 🌐 Hướng Dẫn Đăng Website Lên GitHub Pages (Miễn Phí 100%)
+## 🚀 Cách Cập Nhật Thay Đổi Lên GitHub (Tự Động 1-Click)
 
-Để chia sẻ link thiệp cưới dạng `https://ten-cua-ban.github.io/thiep-cuoi` cho bạn bè, bạn làm theo 4 bước đơn giản sau:
+Mỗi khi bạn chỉnh sửa thông tin trong `js/config.js` hoặc thêm ảnh mới, bạn chỉ cần:
 
-### **Bước 1: Tạo Tài Khoản GitHub & Repository Mới**
-1. Truy cập [github.com](https://github.com) và Đăng nhập (hoặc Đăng ký tài khoản miễn phí).
-2. Bấm nút **"+"** góc trên bên phải ➔ Chọn **New repository**.
-3. Đặt tên **Repository name** (Ví dụ: `thiep-cuoi` hoặc `wedding-invitation`).
-4. Chọn **Public**.
-5. Bấm **Create repository**.
+1. Mở thư mục dự án `d:\CNTT\ThiepCuoi`.
+2. **Nhấp đúp chuột vào tệp `deploy.bat`**.
+3. Nhập ghi chú thay đổi (hoặc nhấn Enter) để chương trình tự động commit & push lên GitHub repository `lamtuan3112/wedding`!
 
-### **Bước 2: Upload Toàn Bộ Code Lên GitHub**
-1. Tại trang repository vừa tạo, bấm chọn **"uploading an existing file"**.
-2. Kéo thả toàn bộ các tệp và thư mục từ thư mục dự án này (`index.html`, `css/`, `js/`, `README.md`...) vào GitHub.
-3. Nhập ghi chú tại Commit changes (ví dụ: `Initial upload wedding template`).
-4. Bấm nút màu xanh **Commit changes**.
+---
 
-### **Bước 3: Bật GitHub Pages**
-1. Mở tab **Settings** của Repository trên GitHub.
-2. Tại menu bên trái, cuộn xuống chọn mục **Pages** (dưới phần Code and automation).
-3. Tại phần **Build and deployment** ➔ **Branch**:
-   - Chọn nhánh **`main`** (hoặc `master`).
-   - Chọn thư mục **`/ (root)`**.
-4. Bấm **Save**.
+## 🌐 Hướng Dẫn Bật GitHub Pages Trực Tuyến
 
-### **Bước 4: Nhận Link Thiệp Cưới Công Khai**
-Chờ khoảng 1-2 phút, reload lại trang **Pages**. Bạn sẽ thấy một thông báo màu xanh lá cây:
-> 🟢 **Your site is live at https://<username>.github.io/thiep-cuoi/**
-
-Bây giờ bạn có thể gửi đường link này cho bạn bè và người thân qua Zalo, Facebook, Messenger!
+1. Truy cập: [https://github.com/lamtuan3112/wedding/settings/pages](https://github.com/lamtuan3112/wedding/settings/pages)
+2. Tại mục **Build and deployment** ➔ **Branch**: Chọn **`main`** (Folder `/root`).
+3. Nhấn **Save**. Chờ 1-2 phút thiệp cưới sẽ chạy trực tuyến tại link:
+   👉 **`https://lamtuan3112.github.io/wedding/`**
 
 ---
 
@@ -97,15 +79,22 @@ Bây giờ bạn có thể gửi đường link này cho bạn bè và người 
 
 ```text
 d:/CNTT/ThiepCuoi/
-├── index.html          # Trang chính thiệp cưới
+├── index.html              # Trang chính thiệp cưới (SEO & OpenGraph ready)
+├── deploy.bat              # Công cụ 1-click đẩy code lên GitHub
 ├── css/
-│   ├── style.css       # Giao diện chính (Glassmorphism, color palette, animations)
-│   └── lightbox.css    # Styling cho bộ xem ảnh phóng to toàn màn hình
+│   ├── style.css           # Styling Trắng - Đỏ Lãng Mạn, 70% Mobile Optimization
+│   └── lightbox.css        # Styling cho bộ xem ảnh phóng to toàn màn hình
 ├── js/
-│   ├── config.js       # File cấu hình dữ liệu duy nhất cần chỉnh sửa
-│   ├── app.js          # Logic đếm ngược, audio player, RSVP, sổ lưu bút, hiệu ứng hoa rơi
-│   └── gallery.js      # Logic album xem ảnh Lightbox
-└── README.md           # Tệp hướng dẫn sử dụng và deploy
+│   ├── config.js           # File cấu hình dữ liệu thiệp cưới
+│   ├── app.js              # Logic đếm ngược, audio player, RSVP, sổ lưu bút, trái tim rơi
+│   └── gallery.js          # Logic xem ảnh Lightbox
+├── asset/
+│   ├── WeddingInfomation.txt # Tệp thông tin gốc
+│   ├── music/
+│   │   └── MoiDuyenVang.mp3  # Bài hát nền Mối Duyên Vàng
+│   └── images/
+│       └── AnhThiep/       # 10 bức ảnh cưới chất lượng cao
+└── README.md               # Tệp hướng dẫn sử dụng dự án
 ```
 
-Chúc hai bạn có một ngày trọng đại thật trọn vẹn và hạnh phúc! 💖💍
+Chúc hai bạn Lâm Tuấn & Như Huế trăm năm hạnh phúc! 💖💍
