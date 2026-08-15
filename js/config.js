@@ -61,14 +61,14 @@ const WEDDING_CONFIG = {
       isMerged: true,
       subEvents: [
         {
-          sideName: "TIỆC MỪNG NHÀ TRAI",
+          sideName: "TIỆC NHÀ TRAI",
           time: "09:00 Sáng - Thứ 7, 19/09/2026",
           location: "Sau Trường THCS Liên Hà",
           address: "Thôn Thượng Thôn, xã Ô Diên, TP. Hà Nội",
           mapUrl: "https://maps.app.goo.gl/ktZU2EUGUWWnTg8MA"
         },
         {
-          sideName: "TIỆC MỪNG NHÀ GÁI",
+          sideName: "TIỆC NHÀ GÁI",
           time: "16:00 Chiều - Thứ 7, 19/09/2026",
           location: "Hồ Sinh Thái Thượng Thôn",
           address: "Thôn Thượng Thôn, xã Ô Diên, TP. Hà Nội",
