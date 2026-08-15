@@ -1,4 +1,159 @@
-/* 1. CINELOVE 46 HERO COVER (EXACT MATCH TO IMAGE 2 WITH HERO IMAGE TAG) */
+/* ==========================================================================
+   CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
+   Style: Exact Match to Cinelove 46 Cover & Saturday Feast Card Mockups
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap');
+
+:root {
+  --color-crimson: #63171B;
+  --color-crimson-light: #8E2328;
+  --color-rose: #F390A1;
+  --color-rose-soft: #FFF5F6;
+  --color-rose-bg: #FAF3F4;
+  --color-gold: #D4AF37;
+  --color-text-main: #2A181A;
+  --color-text-sub: #635053;
+  --color-white: #FFFFFF;
+  --color-border: #F3D5DA;
+  --color-border-card: #FADEE3;
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-title: 'Playfair Display', serif;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-script: 'Great Vibes', 'Alex Brush', 'Sacramento', cursive;
+
+  --shadow-card: 0 10px 30px rgba(99, 23, 27, 0.06);
+  --shadow-hover: 0 15px 40px rgba(99, 23, 27, 0.12);
+  --radius-card: 20px;
+  --transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-rose-bg);
+  color: var(--color-text-main);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-rose-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-rose);
+  border-radius: 3px;
+}
+
+/* Floating Particles */
+#petal-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.text-center { text-align: center; }
+
+/* SECTION TITLES */
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: var(--color-crimson-light);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--color-crimson);
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-rose);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* MUSIC BUTTON (TOP RIGHT AS IN IMAGE 2) */
+.music-player-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.music-player-btn:hover {
+  transform: scale(1.08);
+}
+
+.music-player-btn.playing {
+  animation: rotateDisc 5s linear infinite;
+  background: var(--color-crimson);
+  border-color: var(--color-rose);
+}
+
+@keyframes rotateDisc {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 1. CINELOVE 46 HERO COVER (WITH ROMANTIC GRADIENT & OVERLAY) */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -6,35 +161,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  background: linear-gradient(
+                180deg,
+                rgba(42, 14, 18, 0.35) 0%,
+                rgba(99, 23, 27, 0.15) 45%,
+                rgba(35, 8, 10, 0.72) 100%
+              ),
+              url('asset/images/AnhThiep/AnhCong/NVT09675.jpg') center 25%/cover no-repeat;
   color: var(--color-white);
-  padding: 30px 24px 45px;
-}
-
-.hero-bg-img-wrapper {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  z-index: 1;
-}
-
-.hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-}
-
-.hero-section::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.6) 100%);
-  z-index: 2;
+  padding: 35px 24px 45px;
+  box-shadow: inset 0 -40px 60px rgba(0,0,0,0.4);
 }
 
 .hero-top-bar {
-  position: relative;
-  z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -43,47 +182,528 @@
 
 .hero-save-date-text {
   font-family: var(--font-script);
-  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-size: clamp(2.6rem, 6.5vw, 4rem);
   color: #FFFFFF;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  text-shadow: 0 3px 12px rgba(0,0,0,0.5);
   line-height: 1;
 }
 
 .hero-bottom-area {
-  position: relative;
-  z-index: 3;
   width: 100%;
   text-align: left;
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .hero-couple-names {
   font-family: var(--font-script);
-  font-size: clamp(3rem, 8vw, 4.8rem);
+  font-size: clamp(3.2rem, 8.5vw, 5rem);
   color: #FFFFFF;
-  line-height: 1.1;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  margin-bottom: 12px;
+  line-height: 1.15;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+  margin-bottom: 14px;
 }
 
 .hero-couple-names .hero-ampersand {
   font-family: var(--font-title);
   font-style: italic;
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
   margin: 0 6px;
   color: var(--color-rose);
 }
 
 .hero-bottom-badge {
   display: inline-block;
-  background: rgba(99, 23, 27, 0.85);
+  background: rgba(99, 23, 27, 0.88);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(243, 144, 161, 0.6);
-  padding: 8px 22px;
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(243, 144, 161, 0.7);
+  padding: 9px 24px;
   border-radius: 25px;
   font-family: var(--font-sans);
   font-size: clamp(0.78rem, 1.8vw, 0.9rem);
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* 2. THÔNG TIN GIA ĐÌNH SONG SONG */
+.family-section {
+  padding: 60px 0 50px;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.wedding-header-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--color-crimson);
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.family-card-container {
+  background: var(--color-rose-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 38px 20px 32px;
+  box-shadow: var(--shadow-card);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.family-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.family-col {
+  flex: 1;
+  text-align: center;
+}
+
+.family-side-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  font-weight: 700;
+  color: var(--color-crimson);
+  margin-bottom: 14px;
+}
+
+.parents-detail p {
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+  color: var(--color-text-main);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.parents-detail p span {
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.family-address {
+  font-size: clamp(0.78rem, 1.6vw, 0.86rem) !important;
+  color: var(--color-text-sub) !important;
+  margin-top: 8px;
+  margin-bottom: 16px !important;
+}
+
+.couple-script-name {
+  font-family: var(--font-script);
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  color: var(--color-crimson);
+  line-height: 1.2;
+  margin-top: 10px;
+}
+
+.family-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.family-divider-line {
+  width: 1px;
+  height: 60px;
+  background: var(--color-crimson-light);
+  opacity: 0.4;
+}
+
+.family-divider-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3. COUNTDOWN SECTION */
+.countdown-section {
+  padding: 50px 0;
+  background: var(--color-rose-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.countdown-box {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 16px 14px;
+  min-width: 82px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.countdown-value {
+  font-family: var(--font-title);
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 700;
+  color: var(--color-crimson);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-sub);
+  margin-top: 5px;
+}
+
+/* 4. WEDDING EVENTS */
+.events-section {
+  padding: 65px 0;
+  background: var(--color-rose-bg);
+}
+
+.events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  padding: 32px 20px 24px;
+  box-shadow: 0 10px 30px rgba(99, 23, 27, 0.05);
+  position: relative;
+  text-align: center;
+}
+
+.event-card-header-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FFF0F2;
+  border: 1px solid var(--color-border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -55px auto 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.event-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 3.2vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-crimson);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.event-header-date {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-crimson-light);
+  margin-bottom: 22px;
+}
+
+.sub-event-item {
+  background: var(--color-rose-soft);
+  border: 1px solid var(--color-border-card);
+  border-radius: 16px;
+  padding: 20px 16px 18px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.sub-event-item:last-child {
+  margin-bottom: 0;
+}
+
+.side-badge {
+  display: inline-block;
+  background: var(--color-crimson);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.side-badge.bride-side {
+  background: #B8324A;
+}
+
+.sub-event-time {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(0.92rem, 2.2vw, 1.02rem);
+  color: var(--color-crimson);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sub-event-location {
+  font-weight: 700;
+  font-size: clamp(0.92rem, 2.2vw, 1rem);
+  color: var(--color-text-main);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sub-event-address {
+  font-size: 0.85rem;
+  color: var(--color-text-sub);
+  margin-bottom: 14px;
+  padding-left: 21px;
+}
+
+.btn-map-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-crimson);
+  color: var(--color-white);
+  padding: 8px 22px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(99, 23, 27, 0.2);
+}
+
+.btn-map-pill:hover {
+  background: var(--color-crimson-light);
+  transform: translateY(-1px);
+}
+
+/* 5. RSVP SECTION */
+.rsvp-section {
+  padding: 70px 0;
+  background: linear-gradient(180deg, rgba(42, 24, 26, 0.88), rgba(99, 23, 27, 0.88)),
+              url('asset/images/AnhThiep/NVT09928.jpg') center/cover fixed;
+  color: var(--color-white);
+}
+
+.rsvp-section .section-title {
+  color: var(--color-rose);
+}
+
+.rsvp-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-card);
+  padding: 32px 22px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.form-control {
+  width: 100%;
+  padding: 11px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  font-size: 0.92rem;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+select.form-control option {
+  background: var(--color-crimson);
+  color: var(--color-white);
+}
+
+/* 6. GIFT MODAL */
+.gift-section {
+  padding: 70px 0;
+  background: var(--color-white);
+  text-align: center;
+}
+
+.gift-card-trigger {
+  background: var(--color-rose-bg);
+  border: 1px dashed var(--color-rose);
+  border-radius: var(--radius-card);
+  padding: 30px 20px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  width: 90%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px 18px;
+  position: relative;
+  border: 1px solid var(--color-rose);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.7rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-sub);
+}
+
+.bank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.bank-card {
+  background: var(--color-rose-bg);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.qr-img {
+  width: 145px;
+  height: 145px;
+  object-fit: contain;
+  margin: 8px 0;
+  border: 1px solid var(--color-rose);
+  border-radius: 6px;
+}
+
+.copy-btn {
+  background: var(--color-crimson);
+  color: var(--color-white);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* 7. GUESTBOOK SECTION */
+.guestbook-section {
+  padding: 70px 0;
+  background: var(--color-rose-bg);
+}
+
+/* 8. FOOTER */
+.footer {
+  background: #23080A;
+  color: var(--color-white);
+  padding: 45px 20px 25px;
+  text-align: center;
+}
+
+.footer-names {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5.5vw, 3.6rem);
+  color: var(--color-rose);
+  margin-bottom: 6px;
+}
+
+.footer-thankyou {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* TOAST */
+.toast-msg {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: var(--color-crimson);
+  color: var(--color-white);
+  padding: 10px 22px;
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border: 1px solid var(--color-rose);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 3000;
+  font-weight: 600;
+}
+
+.toast-msg.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+  .family-grid { flex-direction: column; gap: 20px; }
+  .family-divider { flex-direction: row; width: 100%; margin: 10px 0; }
+  .family-divider-line { width: 60px; height: 1px; }
+  .countdown-box { min-width: 70px; padding: 12px 10px; }
 }
