@@ -81,7 +81,7 @@ const WEDDING_CONFIG = {
       lunarTime: "(Ngày 10/08 âm lịch)",
       location: "Tư Gia Nhà Trai",
       address: "Số 17, xóm Quốc Trí, thôn Thượng Thôn, xã Ô Diên, TP. Hà Nội",
-      mapUrl: "https://maps.google.com/?q=Số+17+xóm+Quốc+Trí+Thượng+Thôn+Ô+Diên+Hà+Nội",
+      mapUrl: "https://maps.app.goo.gl/f9Us3Uy2mioir9zv5",
       calendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=L%E1%BB%85+Th%C3%A0nh+H%C3%B4n+-+L%C3%A2m+Tu%E1%BA%A5n+%26+Nh%C6%B0+Hu%E1%BA%BF&dates=20260920T070000Z/20260920T100000Z&location=S%E1%BB%91+17+x%C3%B3m+Qu%E1%BB%91c+Tr%C3%AD+Th%C6%B0%E1%BB%A3ng+Th%C3%B4n"
     }
   ],
@@ -146,7 +146,7 @@ const WEDDING_CONFIG = {
     }
   },
 
-  // Không dùng lời chúc hardcode mẫu nữa
+  // Không dùng lời chúc hardcode
   defaultWishes: []
 };
 
