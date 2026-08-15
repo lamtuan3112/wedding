@@ -1,6 +1,6 @@
 /**
  * CONFIG.JS - Dữ liệu thiệp cưới LÂM TUẤN & NHƯ HUẾ
- * Mẫu Cinelove 46 - Gộp Tiệc Mừng Thứ 7 Rõ Ràng Tránh Nhầm Lẫn
+ * Mẫu Cinelove 46 Tối Giản & Sang Trọng
  */
 
 const WEDDING_CONFIG = {
@@ -61,14 +61,14 @@ const WEDDING_CONFIG = {
       isMerged: true,
       subEvents: [
         {
-          sideName: "NHÀ TRAI (Khách Mời Chú Rể)",
+          sideName: "TIỆC MỪNG NHÀ TRAI",
           time: "09:00 Sáng - Thứ 7, 19/09/2026",
           location: "Sau Trường THCS Liên Hà",
           address: "Thôn Thượng Thôn, xã Ô Diên, TP. Hà Nội",
           mapUrl: "https://maps.app.goo.gl/ktZU2EUGUWWnTg8MA"
         },
         {
-          sideName: "NHÀ GÁI (Khách Mời Cô Dâu)",
+          sideName: "TIỆC MỪNG NHÀ GÁI",
           time: "16:00 Chiều - Thứ 7, 19/09/2026",
           location: "Hồ Sinh Thái Thượng Thôn",
           address: "Thôn Thượng Thôn, xã Ô Diên, TP. Hà Nội",

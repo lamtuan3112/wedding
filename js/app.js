@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Mẫu Cinelove 46 Tối Giản (Gia đình gộp song song theo ảnh mẫu)
+ * Mẫu Cinelove 46 Luxe (Icons Vector SVG Sang Trọng - Không Dùng Cartoon Emoji)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -48,7 +48,7 @@ function setImg(id, src) {
   if (el) el.src = src || "";
 }
 
-/* 2. SỰ KIỆN CƯỚI (GỘP TIỆC MỪNG THỨ 7 RÕ RÀNG NHÀ TRAI / NHÀ GÁI) */
+/* 2. SỰ KIỆN CƯỚI (ICONS VECTOR SVG SANG TRỌNG) */
 function renderEvents(events) {
   const container = document.getElementById("events-grid");
   if (!container || !events) return;
@@ -66,12 +66,28 @@ function renderEvents(events) {
         subItemsHtml += `
           <div class="sub-event-item">
             <span class="${badgeClass}">${sub.sideName}</span>
-            <div class="sub-event-time">⏰ ${sub.time}</div>
-            <div class="sub-event-location">📍 ${sub.location}</div>
+            <div class="sub-event-time">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              ${sub.time}
+            </div>
+            <div class="sub-event-location">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              ${sub.location}
+            </div>
             <div class="sub-event-address">${sub.address}</div>
-            <div>
-              <a href="${sub.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.8rem;">
-                📍 Bản Đồ Chỉ Đường
+            <div style="margin-top: 10px;">
+              <a href="${sub.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                Bản Đồ Chỉ Đường
               </a>
             </div>
           </div>
@@ -96,21 +112,36 @@ function renderEvents(events) {
       card.innerHTML = `
         <div class="event-icon" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
-            <path d="M9 21V12h6v9"></path>
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
           </svg>
         </div>
         <h3 class="event-title">${ev.title}</h3>
         <div class="event-header-date">${ev.dateHeader}</div>
         
         <div class="sub-event-item" style="text-align: center;">
-          <div class="sub-event-time">⏰ ${ev.time}</div>
+          <div class="sub-event-time">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            ${ev.time}
+          </div>
           <div style="font-size: 0.82rem; color: var(--color-text-sub); margin-bottom: 8px;">${ev.lunarTime}</div>
-          <div class="sub-event-location">📍 ${ev.location}</div>
+          <div class="sub-event-location">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            ${ev.location}
+          </div>
           <div class="sub-event-address">${ev.address}</div>
           <div style="margin-top: 15px;">
-            <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 9px 22px;">
-              📍 Bản Đồ Chỉ Đường
+            <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 9px 24px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Bản Đồ Chỉ Đường
             </a>
           </div>
         </div>
@@ -166,12 +197,12 @@ function initAudioPlayer(musicConfig) {
     if (isPlaying) {
       audio.pause();
       btn.classList.remove("playing");
-      btn.innerHTML = `<span class="music-icon">🎵</span>`;
+      btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`;
       showToast("Đã tắt nhạc nền");
     } else {
       audio.play().then(() => {
         btn.classList.add("playing");
-        btn.innerHTML = `<span class="music-icon">🎶</span>`;
+        btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
         showToast("Đang phát: " + musicConfig.title);
       }).catch(err => {
         console.log("Audio error:", err);
