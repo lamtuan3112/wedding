@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Tự động ghi Lời chúc & RSVP tham dự vào Google Sheet & LocalStorage
+ * Load đúng 3 lời chúc mới nhất do người dùng ghi (Không dùng hardcode)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCountdown(config.weddingDate);
   initHeartCanvas();
   initRSVPForm(config.googleSheet);
-  initGuestbook(config.defaultWishes, config.googleSheet);
+  initGuestbook(config.googleSheet);
   initBankModal(config.bankAccounts);
   initThankYouModal();
   initScrollAnimations();
@@ -194,7 +194,7 @@ function initAudioPlayer(musicConfig) {
   });
 }
 
-/* 6. FORM RSVP - RÚT GỌN CHÍNH XÁC THEO YÊU CẦU */
+/* 6. FORM RSVP */
 function initRSVPForm(sheetConfig) {
   const form = document.getElementById("rsvp-form");
   if (!form) return;
@@ -216,19 +216,16 @@ function initRSVPForm(sheetConfig) {
       time: new Date().toLocaleString("vi-VN")
     };
 
-    // Save to LocalStorage
     const existing = JSON.parse(localStorage.getItem("wedding_rsvp") || "[]");
     existing.push(rsvpData);
     localStorage.setItem("wedding_rsvp", JSON.stringify(existing));
 
-    // Send to Google Sheets Apps Script
     if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
       const formData = new FormData();
       Object.keys(rsvpData).forEach(key => formData.append(key, rsvpData[key]));
       fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {});
     }
 
-    // Open Thank You Modal
     showThankYouModal(
       "XÁC NHẬN THAM DỰ THÀNH CÔNG!",
       `Cảm ơn bạn <strong>${name}</strong> (${side}) đã gửi xác nhận <em>${status}</em>.<br><br>Sự hiện diện và tình cảm của bạn là niềm vinh hạnh lớn nhất của Lâm Tuấn & Như Huế!`
@@ -238,17 +235,30 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 7. SỔ LƯU BÚT - BỎ MỐI QUAN HỆ */
-function initGuestbook(defaultWishes, sheetConfig) {
+/* 7. SỔ LƯU BÚT - CHỈ DISPLAY TOP 3 LỜI CHÚC MỚI NHẤT CỦA KHÁCH THỰC TẾ */
+function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
   if (!wishesListEl) return;
 
-  let wishes = JSON.parse(localStorage.getItem("wedding_wishes")) || defaultWishes || [];
+  let localWishes = JSON.parse(localStorage.getItem("wedding_wishes")) || [];
 
-  function renderWishes() {
+  function renderWishes(wishesArray) {
     wishesListEl.innerHTML = "";
-    wishes.slice(-5).reverse().forEach((w) => {
+
+    if (!wishesArray || wishesArray.length === 0) {
+      wishesListEl.innerHTML = `
+        <div style="background: #fff; border-radius: var(--radius-md); padding: 25px; text-align: center; color: var(--text-muted); border: 1.5px dashed var(--red-rose);">
+          🌸 Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc mừng đến Lâm Tuấn & Như Huế nhé! ❤️
+        </div>
+      `;
+      return;
+    }
+
+    // Chỉ hiển thị tối đa 3 lời chúc gần đây nhất
+    const recentWishes = wishesArray.slice(-3).reverse();
+
+    recentWishes.forEach((w) => {
       const item = document.createElement("div");
       item.className = "wish-item";
       item.innerHTML = `
@@ -262,7 +272,39 @@ function initGuestbook(defaultWishes, sheetConfig) {
     });
   }
 
-  renderWishes();
+  // Render initial wishes from LocalStorage
+  renderWishes(localWishes);
+
+  // Load live wishes from Google Sheet if viewUrl is active
+  if (sheetConfig && sheetConfig.viewUrl) {
+    fetch(sheetConfig.viewUrl)
+      .then(res => res.text())
+      .then(data => {
+        try {
+          const jsonString = data.substring(data.indexOf("{"), data.lastIndexOf("}") + 1);
+          const parsed = JSON.parse(jsonString);
+          const rows = parsed.table.rows;
+
+          if (rows && rows.length > 0) {
+            const sheetWishes = rows.map(r => {
+              const name = r.c[1] ? r.c[1].v : (r.c[0] ? r.c[0].v : "Khách");
+              const message = r.c[2] ? r.c[2].v : "";
+              const time = r.c[0] ? r.c[0].v : "Mới đây";
+              return { name, message, time };
+            }).filter(w => w.message);
+
+            if (sheetWishes.length > 0) {
+              localWishes = sheetWishes;
+              renderWishes(localWishes);
+            }
+          }
+        } catch (err) {
+          console.log("Sheet parse error:", err);
+        }
+      }).catch(err => {
+        console.log("Fetch sheet error:", err);
+      });
+  }
 
   if (form) {
     form.addEventListener("submit", (e) => {
@@ -277,19 +319,17 @@ function initGuestbook(defaultWishes, sheetConfig) {
         time: "Vừa xong"
       };
 
-      wishes.push(newWish);
-      localStorage.setItem("wedding_wishes", JSON.stringify(wishes));
+      localWishes.push(newWish);
+      localStorage.setItem("wedding_wishes", JSON.stringify(localWishes));
 
-      // Send to Google Sheets Apps Script
       if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
         const formData = new FormData();
         Object.keys(newWish).forEach(key => formData.append(key, newWish[key]));
         fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {});
       }
 
-      renderWishes();
+      renderWishes(localWishes);
 
-      // Open Thank You Modal
       showThankYouModal(
         "GỬI LỜI CHÚC THÀNH CÔNG!",
         `Cảm ơn <strong>${newWish.name}</strong> đã gửi lời chúc mừng vô cùng ngọt ngào và ý nghĩa dành cho Lâm Tuấn & Như Huế! 💖`
@@ -300,7 +340,7 @@ function initGuestbook(defaultWishes, sheetConfig) {
   }
 }
 
-/* 8. MODAL THÔNG BÁO CẢM ƠN */
+/* 8. MODAL THÔNG BÁO CẢM ƠN SANG TRỌNG */
 function initThankYouModal() {
   const modal = document.getElementById("thankyou-modal");
   const closeBtn = document.getElementById("thankyou-close-btn");

@@ -49,7 +49,6 @@ const WEDDING_CONFIG = {
   googleSheet: {
     sheetId: "1ex8B6XNs8N_So2C7hqlMlRy-O_rjX70j7BW41Erk79g",
     viewUrl: "https://docs.google.com/spreadsheets/d/1ex8B6XNs8N_So2C7hqlMlRy-O_rjX70j7BW41Erk79g/gviz/tq?tqx=out:json",
-    // Link Google Apps Script Web App của bạn
     scriptUrl: "https://script.google.com/macros/s/AKfycbxwXqNNAVOMAkCy9Kfsj3BPAJ8CGrRgXOxqepsQqZOyKfH4SABOMFIUNinEJpmysawW/exec"
   },
 
@@ -147,21 +146,8 @@ const WEDDING_CONFIG = {
     }
   },
 
-  // Lời chúc mẫu gần nhất
-  defaultWishes: [
-    {
-      name: "Tập thể Bạn Cùng Lớp 1",
-      relation: "Bạn thơ ấu",
-      message: "Chúc mừng hai bạn! Từ cặp bạn ngồi cùng bàn lớp 1 nay đã chính thức về chung một nhà!",
-      time: "Vừa xong"
-    },
-    {
-      name: "Team HTI Group & Bệnh viện E",
-      relation: "Đồng nghiệp",
-      message: "Chúc Lâm Tuấn & Như Huế luôn tràn ngập niềm vui, viên mãn và mãi mãi hạnh phúc!",
-      time: "1 giờ trước"
-    }
-  ]
+  // Không dùng lời chúc hardcode mẫu nữa
+  defaultWishes: []
 };
 
 if (typeof window !== "undefined") {
