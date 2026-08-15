@@ -1,6 +1,6 @@
 /* ==========================================================================
    CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
-   Luxurious Red Accents & Elegant Form Controls
+   Bright Bright-Red Accents for Save The Date & Names
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap');
@@ -8,6 +8,7 @@
 :root {
   --color-crimson: #63171B;
   --color-crimson-light: #8E2328;
+  --color-bright-red: #D32F2F; /* Bright Vibrant Red */
   --color-rose: #F390A1;
   --color-rose-soft: #FFF5F6;
   --color-rose-bg: #FAF3F4;
@@ -105,7 +106,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* 1. CINELOVE COVER SECTION (RED ACCENT TITLES) */
+/* 1. CINELOVE COVER SECTION (BRIGHT VIBRANT RED TITLES) */
 .cinelove-cover-section {
   width: 100%;
   background: #FFFFFF;
@@ -140,8 +141,8 @@ body {
 .cover-save-date {
   font-family: var(--font-script);
   font-size: clamp(2.8rem, 7vw, 4.2rem);
-  color: var(--color-crimson); /* RED COLOR AS REQUESTED */
-  text-shadow: 0 2px 8px rgba(255,255,255,0.9);
+  color: #D32F2F; /* BRIGHT VIBRANT RED AS REQUESTED */
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95), 0 0 2px rgba(255, 255, 255, 0.8);
   line-height: 1;
 }
 
@@ -156,17 +157,17 @@ body {
 .script-name {
   font-family: var(--font-script);
   font-size: clamp(3rem, 8.5vw, 4.8rem);
-  color: var(--color-crimson); /* RED COLOR AS REQUESTED */
+  color: #D32F2F; /* BRIGHT VIBRANT RED AS REQUESTED */
   line-height: 1.1;
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.98), 0 0 3px rgba(255, 255, 255, 0.9);
 }
 
 .script-ampersand {
   font-family: var(--font-script);
   font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: var(--color-crimson); /* RED COLOR AS REQUESTED */
+  color: #D32F2F; /* BRIGHT VIBRANT RED AS REQUESTED */
   margin: -6px 0 -4px 30px;
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.98), 0 0 3px rgba(255, 255, 255, 0.9);
 }
 
 .cover-photo-fade {
@@ -238,7 +239,7 @@ body {
   margin: 0 auto;
 }
 
-/* HIGH-QUALITY VECTOR SVG HEART HIGHLIGHT (NO MORE DISTORTION) */
+/* HIGH-QUALITY VECTOR SVG HEART HIGHLIGHT */
 .calendar-days-grid span.wedding-day-highlight {
   background: var(--color-crimson);
   color: #FFFFFF;
@@ -255,7 +256,7 @@ body {
   right: -8px;
   width: 18px;
   height: 18px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23B8324A' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D32F2F' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
@@ -602,7 +603,7 @@ body {
   color: rgba(255, 255, 255, 0.95);
 }
 
-/* COMBO BOX & INPUT SOFT SENSE STYLING */
+/* COMBO BOX & INPUT STYLING */
 .form-control {
   width: 100%;
   padding: 12px 16px;
@@ -640,7 +641,7 @@ select.form-control option {
   color: #FFFFFF;
 }
 
-/* LUXURY BUTTON STYLING (XÁC NHẬN, MỞ QR, GỬI LỜI CHÚC) */
+/* LUXURY BUTTON STYLING */
 .btn-primary {
   background: linear-gradient(135deg, #8E2328 0%, #63171B 100%);
   color: #FFFFFF;
