@@ -49,8 +49,8 @@ const WEDDING_CONFIG = {
   googleSheet: {
     sheetId: "1ex8B6XNs8N_So2C7hqlMlRy-O_rjX70j7BW41Erk79g",
     viewUrl: "https://docs.google.com/spreadsheets/d/1ex8B6XNs8N_So2C7hqlMlRy-O_rjX70j7BW41Erk79g/gviz/tq?tqx=out:json",
-    // ⬇️ DÁN LINK APPS SCRIPT WEB APP CỦA BẠN (https://script.google.com/macros/s/.../exec) VÀO DƯỚI ĐÂY:
-    scriptUrl: "DÁN_LINK_WEB_APP_CỦA_BẠN_VÀO_ĐÂY"
+    // Link Google Apps Script Web App của bạn
+    scriptUrl: "https://script.google.com/macros/s/AKfycbxwXqNNAVOMAkCy9Kfsj3BPAJ8CGrRgXOxqepsQqZOyKfH4SABOMFIUNinEJpmysawW/exec"
   },
 
   // 3 Sự kiện tổ chức
