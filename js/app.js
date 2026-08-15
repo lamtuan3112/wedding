@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Mẫu Cinelove 46 Tối Giản
+ * Mẫu Cinelove 46 Tối Giản (Ghi nhận lời chúc riêng tư về Google Sheet)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,7 +54,7 @@ function setImg(id, src) {
   if (el) el.src = src || "";
 }
 
-/* 2. SỰ KIỆN CƯỚI (CHỈ GIỮ NÚT XEM BẢN ĐỒ) */
+/* 2. SỰ KIỆN CƯỚI (NÚT XEM BẢN ĐỒ) */
 function renderEvents(events) {
   const container = document.getElementById("events-grid");
   if (!container || !events) return;
@@ -77,7 +77,7 @@ function renderEvents(events) {
       <p class="event-address">${ev.address}</p>
       <div class="btn-group">
         <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 10px 24px;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
@@ -186,117 +186,36 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 6. SỔ LƯU BÚT - JSONP SCRIPT INJECTION (REALTIME CHÍNH XÁC) */
+/* 6. SỔ LƯU BÚT (GỬI TRỰC TIẾP VỀ GOOGLE SHEET CHÍNH THỨC) */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
-  const wishesListEl = document.getElementById("wishes-list");
-  if (!wishesListEl) return;
+  if (!form) return;
 
-  function renderWishes(wishesArray) {
-    wishesListEl.innerHTML = "";
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nameInput = document.getElementById("wish-name");
+    const msgInput = document.getElementById("wish-message");
 
-    if (!wishesArray || wishesArray.length === 0) {
-      wishesListEl.innerHTML = `
-        <div style="background: #fff; border-radius: var(--radius-card); padding: 22px; text-align: center; color: var(--color-text-sub); border: 1px dashed var(--color-rose);">
-          🌸 Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc mừng đến Lâm Tuấn & Như Huế nhé! ❤️
-        </div>
-      `;
-      return;
+    const newWish = {
+      action: "wish",
+      name: nameInput.value.trim(),
+      message: msgInput.value.trim(),
+      time: new Date().toLocaleString("vi-VN")
+    };
+
+    if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
+      const formData = new FormData();
+      Object.keys(newWish).forEach(key => formData.append(key, newWish[key]));
+      fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {});
     }
 
-    const recentWishes = wishesArray.slice(-3).reverse();
+    showThankYouModal(
+      "GỬI LỜI CHÚC THÀNH CÔNG!",
+      `Cảm ơn <strong>${newWish.name}</strong> đã gửi lời chúc mừng vô cùng ngọt ngào và ý nghĩa dành cho Lâm Tuấn & Như Huế! 💖`
+    );
 
-    recentWishes.forEach((w) => {
-      const item = document.createElement("div");
-      item.className = "wish-item";
-      item.innerHTML = `
-        <div class="wish-header">
-          <span class="wish-author">${w.name}</span>
-          <span class="wish-time">${w.time || 'Vừa gửi'}</span>
-        </div>
-        <p class="wish-text">${w.message}</p>
-      `;
-      wishesListEl.appendChild(item);
-    });
-  }
-
-  window.handleGoogleSheetWishes = function(data) {
-    try {
-      if (data && data.table && data.table.rows) {
-        const rows = data.table.rows;
-        const wishesList = [];
-
-        rows.forEach((r) => {
-          const timeVal = r.c && r.c[0] ? (r.c[0].f || r.c[0].v || "") : "";
-          const nameVal = r.c && r.c[1] ? (r.c[1].v || "") : "";
-          const msgVal = r.c && r.c[2] ? (r.c[2].v || "") : "";
-
-          if (nameVal && msgVal && nameVal !== "Họ Và Tên") {
-            wishesList.push({
-              name: nameVal,
-              message: msgVal,
-              time: timeVal || "Mới đây"
-            });
-          }
-        });
-
-        renderWishes(wishesList);
-      } else {
-        renderWishes([]);
-      }
-    } catch (e) {
-      console.log("JSONP parse error:", e);
-      renderWishes([]);
-    }
-  };
-
-  function loadWishesFromSheet() {
-    if (!sheetConfig || !sheetConfig.sheetId) return;
-
-    const oldScript = document.getElementById("gviz-jsonp-script");
-    if (oldScript) oldScript.remove();
-
-    const script = document.createElement("script");
-    script.id = "gviz-jsonp-script";
-    script.src = `https://docs.google.com/spreadsheets/d/${sheetConfig.sheetId}/gviz/tq?sheet=L%E1%BB%9D%20Ch%C3%BAc&tqx=responseHandler:handleGoogleSheetWishes&_t=${Date.now()}`;
-    document.body.appendChild(script);
-  }
-
-  loadWishesFromSheet();
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nameInput = document.getElementById("wish-name");
-      const msgInput = document.getElementById("wish-message");
-
-      const newWish = {
-        action: "wish",
-        name: nameInput.value.trim(),
-        message: msgInput.value.trim(),
-        time: new Date().toLocaleTimeString("vi-VN", { hour: '2-digit', minute: '2-digit' }) + " Hôm nay"
-      };
-
-      if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
-        const formData = new FormData();
-        Object.keys(newWish).forEach(key => formData.append(key, newWish[key]));
-        fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" })
-          .then(() => {
-            setTimeout(loadWishesFromSheet, 1500);
-          })
-          .catch(() => {
-            setTimeout(loadWishesFromSheet, 1500);
-          });
-      }
-
-      showThankYouModal(
-        "GỬI LỜI CHÚC THÀNH CÔNG!",
-        `Cảm ơn <strong>${newWish.name}</strong> đã gửi lời chúc mừng vô cùng ngọt ngào và ý nghĩa dành cho Lâm Tuấn & Như Huế! 💖`
-      );
-
-      form.reset();
-    });
-  }
+    form.reset();
+  });
 }
 
 /* 7. MODAL THÔNG BÁO CẢM ƠN */
