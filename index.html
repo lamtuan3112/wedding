@@ -25,7 +25,7 @@
   <!-- Audio Element -->
   <audio id="bg-audio" loop></audio>
 
-  <!-- Floating Music Button (Top Right as in Image 2) -->
+  <!-- Floating Music Button (Top Right as in Cinelove 46) -->
   <button id="music-toggle-btn" class="music-player-btn" aria-label="Bật / Tắt Nhạc Nền" title="Bật / Tắt Nhạc Nền">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 18V5l12-2v13"></path>
@@ -34,24 +34,83 @@
     </svg>
   </button>
 
-  <!-- 1. CINELOVE 46 HERO COVER (WITH EXPLICIT IMG TAG FOR AnhCong/NVT09675.jpg) -->
-  <header class="hero-section" id="hero">
-    <div class="hero-bg-img-wrapper">
-      <img src="asset/images/AnhThiep/AnhCong/NVT09675.jpg" alt="Lâm Tuấn &amp; Như Huế" class="hero-bg-img">
-    </div>
-
-    <div class="hero-top-bar">
-      <div class="hero-save-date-text">Save The Date</div>
-    </div>
-
-    <div class="hero-bottom-area">
-      <div class="hero-couple-names">
-        <span id="hero-groom">Lâm Tuấn</span>
-        <span class="hero-ampersand">&amp;</span>
-        <span id="hero-bride">Như Huế</span>
+  <!-- 1. CINELOVE 46 EXACT MOBILE COVER SECTION -->
+  <header class="cinelove-cover-section" id="hero">
+    <!-- Photo Container -->
+    <div class="cinelove-photo-wrapper">
+      <img src="asset/images/AnhThiep/AnhCong/NVT09675.jpg" alt="Lâm Tuấn &amp; Như Huế" class="cinelove-cover-photo">
+      
+      <div class="cover-top-bar">
+        <div class="cover-save-date">Save The Date</div>
       </div>
-      <div class="hero-bottom-badge">
-        LỄ THÀNH HÔN • 20.09.2026
+
+      <div class="cover-names-overlay">
+        <div class="script-name" id="hero-bride">Như Huế</div>
+        <div class="script-ampersand">&amp;</div>
+        <div class="script-name" id="hero-groom">Lâm Tuấn</div>
+      </div>
+
+      <div class="cover-photo-fade"></div>
+    </div>
+
+    <!-- Calendar Section Below Photo (Matches User Image Exactly) -->
+    <div class="cinelove-calendar-wrapper">
+      <div class="calendar-header-row">
+        <div class="our-wedding-title">Our wedding day</div>
+        <div class="month-title">Tháng 09</div>
+      </div>
+
+      <div class="calendar-days-header">
+        <div>T2</div>
+        <div>T3</div>
+        <div>T4</div>
+        <div>T5</div>
+        <div>T6</div>
+        <div>T7</div>
+        <div>CN</div>
+      </div>
+
+      <!-- September 2026 Grid -->
+      <div class="calendar-days-grid">
+        <span></span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+        <span>11</span>
+        <span>12</span>
+        <span>13</span>
+        
+        <span>14</span>
+        <span>15</span>
+        <span>16</span>
+        <span>17</span>
+        <span>18</span>
+        <span>19</span>
+        <span class="wedding-day-highlight" title="Lễ Thành Hôn 20/09/2026">20</span>
+        
+        <span>21</span>
+        <span>22</span>
+        <span>23</span>
+        <span>24</span>
+        <span>25</span>
+        <span>26</span>
+        <span>27</span>
+        
+        <span>28</span>
+        <span>29</span>
+        <span>30</span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   </header>

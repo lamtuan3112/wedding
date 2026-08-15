@@ -1,6 +1,6 @@
 /* ==========================================================================
    CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
-   Style: Exact Match to Cinelove 46 Cover & Saturday Feast Card Mockups
+   Exact 1:1 Match to Cinelove 46 Mobile Mockup (Image Provided by User)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap');
@@ -51,18 +51,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-rose-bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-rose);
-  border-radius: 3px;
-}
-
 /* Floating Particles */
 #petal-canvas {
   position: fixed;
@@ -74,60 +62,24 @@ body {
 
 .container {
   width: 100%;
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
 .text-center { text-align: center; }
 
-/* SECTION TITLES */
-.section-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.section-subtitle {
-  font-family: var(--font-sans);
-  font-size: 0.76rem;
-  color: var(--color-crimson-light);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.section-title {
-  font-family: var(--font-title);
-  font-size: clamp(1.55rem, 4vw, 2rem);
-  font-weight: 700;
-  color: var(--color-crimson);
-  letter-spacing: 1px;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--color-rose);
-  margin: 8px auto 0;
-  border-radius: 2px;
-}
-
-/* MUSIC BUTTON (TOP RIGHT AS IN IMAGE 2) */
+/* FLOATING MUSIC BUTTON (TOP RIGHT AS IN USER IMAGE) */
 .music-player-btn {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
-  color: var(--color-white);
+  color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
@@ -153,78 +105,153 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* 1. CINELOVE 46 HERO COVER (WITH ROMANTIC GRADIENT & OVERLAY) */
-.hero-section {
+/* 1. CINELOVE COVER SECTION (EXACT MATCH TO USER IMAGE) */
+.cinelove-cover-section {
+  width: 100%;
+  background: #FFFFFF;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cinelove-photo-wrapper {
   position: relative;
-  min-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(
-                180deg,
-                rgba(42, 14, 18, 0.35) 0%,
-                rgba(99, 23, 27, 0.15) 45%,
-                rgba(35, 8, 10, 0.72) 100%
-              ),
-              url('asset/images/AnhThiep/AnhCong/NVT09675.jpg') center 25%/cover no-repeat;
-  color: var(--color-white);
-  padding: 35px 24px 45px;
-  box-shadow: inset 0 -40px 60px rgba(0,0,0,0.4);
+  height: 72vh;
+  min-height: 520px;
+  max-height: 700px;
+  overflow: hidden;
 }
 
-.hero-top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.cinelove-cover-photo {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  display: block;
 }
 
-.hero-save-date-text {
+.cover-top-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.cover-save-date {
   font-family: var(--font-script);
-  font-size: clamp(2.6rem, 6.5vw, 4rem);
-  color: #FFFFFF;
-  text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+  font-size: clamp(2.8rem, 7vw, 4.2rem);
+  color: #1A1A1A;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.9);
   line-height: 1;
 }
 
-.hero-bottom-area {
-  width: 100%;
+.cover-names-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 24px;
+  z-index: 10;
   text-align: left;
-  max-width: 550px;
 }
 
-.hero-couple-names {
+.script-name {
   font-family: var(--font-script);
-  font-size: clamp(3.2rem, 8.5vw, 5rem);
-  color: #FFFFFF;
-  line-height: 1.15;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.6);
-  margin-bottom: 14px;
+  font-size: clamp(3rem, 8.5vw, 4.8rem);
+  color: #111111;
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95);
 }
 
-.hero-couple-names .hero-ampersand {
-  font-family: var(--font-title);
-  font-style: italic;
-  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
-  margin: 0 6px;
-  color: var(--color-rose);
+.script-ampersand {
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: #111111;
+  margin: -6px 0 -4px 30px;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95);
 }
 
-.hero-bottom-badge {
-  display: inline-block;
-  background: rgba(99, 23, 27, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(243, 144, 161, 0.7);
-  padding: 9px 24px;
-  border-radius: 25px;
-  font-family: var(--font-sans);
-  font-size: clamp(0.78rem, 1.8vw, 0.9rem);
+.cover-photo-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+  pointer-events: none;
+}
+
+/* CALENDAR SECTION BELOW PHOTO (EXACT MATCH TO USER IMAGE) */
+.cinelove-calendar-wrapper {
+  max-width: 480px;
+  margin: 25px auto 0;
+  padding: 0 24px;
+}
+
+.calendar-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.our-wedding-title {
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 5.5vw, 3.2rem);
+  color: #222222;
+  line-height: 1;
+}
+
+.month-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.5vw, 2.5rem);
   font-weight: 600;
-  letter-spacing: 2.5px;
+  color: #111111;
+}
+
+.calendar-days-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666666;
+  margin-bottom: 12px;
+}
+
+.calendar-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  color: #222222;
+  row-gap: 14px;
+}
+
+.calendar-days-grid span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  width: 38px;
+  margin: 0 auto;
+}
+
+.calendar-days-grid span.wedding-day-highlight {
+  background: var(--color-crimson);
   color: #FFFFFF;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  font-weight: 700;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(99, 23, 27, 0.35);
+  position: relative;
+}
+
+.calendar-days-grid span.wedding-day-highlight::after {
+  content: '❤️';
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  font-size: 0.75rem;
 }
 
 /* 2. THÔNG TIN GIA ĐÌNH SONG SONG */
@@ -330,6 +357,16 @@ body {
   border-bottom: 1px solid var(--color-border);
 }
 
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: var(--color-crimson-light);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
 .countdown-grid {
   display: flex;
   justify-content: center;
@@ -366,7 +403,7 @@ body {
   margin-top: 5px;
 }
 
-/* 4. WEDDING EVENTS */
+/* 4. WEDDING EVENTS (EXACT MATCH TO IMAGE 1) */
 .events-section {
   padding: 65px 0;
   background: var(--color-rose-bg);
