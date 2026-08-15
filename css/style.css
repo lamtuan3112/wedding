@@ -1,44 +1,49 @@
 /* ==========================================================================
-   WEDDING INVITATION - RED & WHITE THEME (OPTIMIZED FOR 70% MOBILE / 30% PC)
-   Clean, Romantic, Youthful, Clear Event Cards, Perfect Face-Preserving Images
+   WEDDING INVITATION - ULTRA-LUXURY MODERN EDITORIAL THEME (LÂM TUẤN & NHƯ HUẾ)
+   Palette: Deep Burgundy (#7B1113), Warm Champagne Gold (#D4AF37), Ivory Off-White (#FFFDFB)
+   Fonts: Cormorant Garamond, Playfair Display, Be Vietnam Pro, Montserrat
+   Optimized: 70% Mobile & 30% PC
    ========================================================================== */
 
-/* 1. GOOGLE FONTS IMPORT */
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@600;700&family=Montserrat:wght@500;600;700&family=Pacifico&display=swap');
+/* 1. GOOGLE FONTS IMPORT (High-End Luxury Serif + Modern Sans) */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap');
 
-/* 2. THEME COLOR VARIABLES */
+/* 2. LUXURY COLOR PALETTE VARIABLES */
 :root {
-  --red-primary: #D32F2F;
-  --red-dark: #8E0000;
-  --red-crimson: #C62828;
-  --red-bright: #FF1744;
-  --red-light: #FFF0F2;
-  --red-rose: #FFCDD2;
+  --burgundy-deep: #7B1113;
+  --burgundy-main: #9E1B1E;
+  --burgundy-soft: #C4383B;
+  --burgundy-light: #FDF5F5;
+  --burgundy-rose: #F4DCDD;
+  
+  --gold-primary: #C5A059;
+  --gold-accent: #D4AF37;
+  --gold-light: #F9F3E6;
   
   --white-pure: #FFFFFF;
-  --white-bg: #FAFAFA;
-  --white-card: rgba(255, 255, 255, 0.96);
+  --white-bg: #FFFDFB;
+  --white-card: rgba(255, 255, 255, 0.98);
   
-  --gold-accent: #FFD700;
-  --text-dark: #2A1015;
-  --text-muted: #665559;
+  --text-dark: #2C1A1D;
+  --text-muted: #6B5558;
+  --text-gold: #B88E39;
 
-  --font-title: 'Dancing Script', cursive;
-  --font-fancy: 'Pacifico', cursive;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-title: 'Playfair Display', serif;
   --font-body: 'Be Vietnam Pro', sans-serif;
   --font-heading: 'Montserrat', sans-serif;
 
-  --shadow-soft: 0 8px 25px rgba(198, 40, 40, 0.08);
-  --shadow-hover: 0 12px 30px rgba(211, 47, 47, 0.2);
-  --shadow-glow: 0 0 20px rgba(255, 23, 68, 0.35);
+  --shadow-luxury: 0 10px 35px rgba(123, 17, 19, 0.07);
+  --shadow-hover: 0 15px 40px rgba(123, 17, 19, 0.15);
+  --shadow-gold: 0 8px 25px rgba(197, 160, 89, 0.25);
   
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
-  --transition: all 0.3s ease;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 3. RESET & RESPONSIVE BASE */
+/* 3. BASE & RESET */
 * {
   margin: 0;
   padding: 0;
@@ -54,25 +59,25 @@ body {
   font-family: var(--font-body);
   background-color: var(--white-bg);
   color: var(--text-dark);
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
+/* Custom Luxury Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--red-light);
+  background: var(--white-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--red-primary);
+  background: var(--gold-primary);
   border-radius: 4px;
 }
 
-/* Canvas Particle Overlay */
+/* Canvas Floating Particles */
 #petal-canvas {
   position: fixed;
   top: 0; left: 0;
@@ -81,36 +86,37 @@ body {
   z-index: 99;
 }
 
-/* 4. UTILITY CONTAINER */
+/* 4. UTILITIES & SECTIONS */
 .container {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 18px;
+  padding: 0 20px;
 }
 
 .text-center { text-align: center; }
 
 .section-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
   position: relative;
 }
 
 .section-subtitle {
-  font-family: var(--font-title);
-  font-size: clamp(1.8rem, 4vw, 2.3rem);
-  color: var(--red-primary);
-  margin-bottom: 4px;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  color: var(--gold-primary);
+  font-style: italic;
+  margin-bottom: 2px;
+  letter-spacing: 1.5px;
 }
 
 .section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  font-weight: 700;
-  color: var(--red-dark);
-  letter-spacing: 1px;
+  font-family: var(--font-title);
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  letter-spacing: 2px;
   text-transform: uppercase;
   position: relative;
   display: inline-block;
@@ -119,39 +125,40 @@ body {
 .section-title::after {
   content: '';
   display: block;
-  width: 50px;
-  height: 3px;
-  background: var(--red-primary);
-  margin: 8px auto 0;
-  border-radius: 2px;
+  width: 45px;
+  height: 1.5px;
+  background: var(--gold-primary);
+  margin: 10px auto 0;
 }
 
 /* 5. FLOATING MUSIC PLAYER BUTTON */
 .music-player-btn {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
+  bottom: 22px;
+  right: 22px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--red-bright), var(--red-dark));
-  color: var(--white-pure);
-  border: 2px solid var(--white-pure);
+  background: var(--burgundy-deep);
+  color: var(--gold-accent);
+  border: 1.5px solid var(--gold-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   z-index: 1000;
   transition: var(--transition);
 }
 
 .music-player-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+  background: var(--burgundy-main);
 }
 
 .music-player-btn.playing {
-  animation: rotateDisc 4s linear infinite;
+  animation: rotateDisc 5s linear infinite;
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
 }
 
 @keyframes rotateDisc {
@@ -160,182 +167,190 @@ body {
 }
 
 .music-icon {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
 }
 
-/* 6. HERO / BANNER SECTION (SUBTLE WEDDING PHOTO BACKGROUND) */
+/* 6. HERO / BANNER SECTION (LUXURY EDITORIAL STYLE) */
 .hero-section {
   position: relative;
-  min-height: 92vh;
+  min-height: 94vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(142, 0, 0, 0.45) 0%, rgba(42, 16, 21, 0.65) 100%),
-              url('asset/images/AnhThiep/AnhCong/NVT09675.jpg') center 20%/cover no-repeat;
+  background: linear-gradient(180deg, rgba(44, 26, 29, 0.45) 0%, rgba(123, 17, 19, 0.65) 100%),
+              url('asset/images/AnhThiep/AnhCong/NVT09675.jpg') center 18%/cover no-repeat;
   color: var(--white-pure);
   text-align: center;
-  padding: 60px 15px;
+  padding: 60px 20px;
 }
 
 .hero-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-lg);
-  padding: 40px 25px;
-  max-width: 720px;
+  padding: 48px 30px;
+  max-width: 680px;
   width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
 }
 
 .hero-badge {
-  font-family: var(--font-fancy);
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-family: var(--font-heading);
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
   color: var(--gold-accent);
-  margin-bottom: 10px;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .hero-names {
-  font-family: var(--font-title);
-  font-size: clamp(3.2rem, 7vw, 4.5rem);
-  line-height: 1.15;
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 7vw, 4.8rem);
+  font-weight: 500;
+  line-height: 1.1;
   color: #ffffff;
-  margin: 10px 0;
-  text-shadow: 2px 2px 10px rgba(142, 0, 0, 0.7);
+  margin: 12px 0;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .hero-names span.heart-divider {
   display: inline-block;
-  color: var(--red-bright);
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--gold-accent);
+  font-family: var(--font-title);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   margin: 0 10px;
+  font-style: italic;
 }
 
 .hero-subtitle {
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
-  font-weight: 500;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  color: #FFEBEE;
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  font-weight: 400;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
 }
 
 .hero-date {
   font-family: var(--font-heading);
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
-  font-weight: 600;
-  padding: 10px 25px;
-  background: rgba(211, 47, 47, 0.65);
-  border: 1px solid var(--white-pure);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 10px 28px;
+  background: rgba(123, 17, 19, 0.65);
+  border: 1px solid var(--gold-primary);
   border-radius: 30px;
   display: inline-block;
-  margin-bottom: 25px;
-  color: var(--white-pure);
+  margin-bottom: 30px;
+  color: var(--gold-light);
 }
 
 .scroll-down-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: var(--white-pure);
-  color: var(--red-primary);
+  background: transparent;
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-accent);
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  font-size: 1.1rem;
   transition: var(--transition);
 }
 
 .scroll-down-btn:hover {
-  background: var(--red-bright);
-  color: var(--white-pure);
+  background: var(--gold-primary);
+  color: var(--burgundy-deep);
 }
 
 /* 7. COUNTDOWN SECTION */
 .countdown-section {
-  padding: 55px 0;
-  background: linear-gradient(180deg, var(--white-pure) 0%, var(--red-light) 100%);
+  padding: 60px 0;
+  background: var(--white-bg);
+  border-bottom: 1px solid var(--gold-light);
 }
 
 .countdown-grid {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 22px;
+  margin-top: 25px;
 }
 
 .countdown-box {
   background: var(--white-pure);
-  border: 1.5px solid var(--red-rose);
+  border: 1px solid rgba(197, 160, 89, 0.3);
   border-radius: var(--radius-md);
-  padding: 16px 14px;
-  min-width: 90px;
+  padding: 18px 16px;
+  min-width: 85px;
   text-align: center;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-luxury);
 }
 
 .countdown-value {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  font-weight: 700;
-  color: var(--red-primary);
+  font-family: var(--font-title);
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--burgundy-deep);
   line-height: 1;
 }
 
 .countdown-label {
-  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--text-muted);
   margin-top: 6px;
 }
 
-/* 8. COUPLE SECTION (PRESERVING FACE CROPPING) */
+/* 8. COUPLE SECTION (ELEGANT PORTRAITS) */
 .couple-section {
-  padding: 70px 0;
+  padding: 80px 0;
   background: var(--white-pure);
 }
 
 .couple-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
 }
 
 .couple-card {
   background: var(--white-bg);
   border-radius: var(--radius-lg);
-  padding: 30px 22px;
+  padding: 35px 25px;
   text-align: center;
-  box-shadow: var(--shadow-soft);
-  border: 1.5px solid var(--red-light);
+  box-shadow: var(--shadow-luxury);
+  border: 1px solid rgba(197, 160, 89, 0.25);
   transition: var(--transition);
   position: relative;
 }
 
 .couple-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
+  border-color: var(--gold-primary);
 }
 
 .couple-img-wrapper {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 20px;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 22px;
   border-radius: 50%;
-  padding: 6px;
-  border: 2.5px solid var(--red-primary);
-  box-shadow: 0 5px 15px rgba(211, 47, 47, 0.2);
+  padding: 5px;
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.2);
 }
 
-/* Object Position 50% 15% ensures face/head is 100% visible */
 .couple-img {
   width: 100%;
   height: 100%;
@@ -346,48 +361,51 @@ body {
 
 .couple-role {
   font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--red-primary);
-  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold-primary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .couple-name {
-  font-family: var(--font-title);
-  font-size: clamp(2.2rem, 4vw, 2.6rem);
-  color: var(--red-dark);
-  margin: 4px 0 8px;
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 2.7rem);
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  margin: 2px 0 6px;
 }
 
 .couple-badge-job {
   display: inline-block;
-  background: var(--red-light);
-  color: var(--red-dark);
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 5px 14px;
+  background: var(--gold-light);
+  color: var(--burgundy-deep);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 4px 14px;
   border-radius: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(197, 160, 89, 0.3);
 }
 
 .parents-info {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-dark);
-  line-height: 1.6;
-  padding: 10px 0;
-  border-top: 1px dashed var(--red-rose);
-  border-bottom: 1px dashed var(--red-rose);
+  line-height: 1.65;
+  padding: 12px 0;
+  border-top: 1px dashed rgba(197, 160, 89, 0.3);
+  border-bottom: 1px dashed rgba(197, 160, 89, 0.3);
 }
 
 /* 9. LOVE STORY TIMELINE */
 .story-section {
-  padding: 70px 0;
-  background: var(--red-light);
+  padding: 80px 0;
+  background: var(--gold-light);
 }
 
 .timeline {
   position: relative;
-  max-width: 850px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -395,15 +413,15 @@ body {
   content: '';
   position: absolute;
   top: 0; bottom: 0; left: 50%;
-  width: 3px;
-  background: var(--red-rose);
+  width: 1px;
+  background: var(--gold-primary);
   transform: translateX(-50%);
 }
 
 .timeline-item {
   display: flex;
   justify-content: flex-end;
-  padding-right: 35px;
+  padding-right: 32px;
   position: relative;
   margin-bottom: 35px;
   width: 50%;
@@ -413,58 +431,59 @@ body {
   align-self: flex-end;
   justify-content: flex-start;
   padding-right: 0;
-  padding-left: 35px;
+  padding-left: 32px;
   margin-left: 50%;
 }
 
 .timeline-dot {
   position: absolute;
-  right: -11px;
-  top: 15px;
-  width: 22px;
-  height: 22px;
+  right: -9px;
+  top: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: var(--red-primary);
-  border: 3px solid var(--white-pure);
+  background: var(--burgundy-deep);
+  border: 2px solid var(--white-pure);
   z-index: 2;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--gold-accent);
 }
 
 .timeline-item:nth-child(even) .timeline-dot {
-  left: -11px;
+  left: -9px;
   right: auto;
 }
 
 .timeline-content {
   background: var(--white-pure);
   border-radius: var(--radius-md);
-  padding: 20px;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid var(--red-rose);
+  padding: 22px;
+  box-shadow: var(--shadow-luxury);
+  border: 1px solid rgba(197, 160, 89, 0.25);
   width: 100%;
 }
 
 .timeline-date {
   font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--red-primary);
-  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 
 .timeline-title {
-  font-family: var(--font-title);
-  font-size: 1.8rem;
-  color: var(--red-dark);
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  color: var(--burgundy-deep);
   margin: 4px 0 8px;
 }
 
 .timeline-img {
   width: 100%;
-  height: 180px;
+  height: 170px;
   object-fit: cover;
   object-position: 50% 25%;
   border-radius: var(--radius-sm);
@@ -476,73 +495,74 @@ body {
   color: var(--text-muted);
 }
 
-/* 10. WEDDING EVENTS SECTION (RÕ RÀNG, DỄ NHÌN) */
+/* 10. WEDDING EVENTS SECTION (LUXURY CARDS) */
 .events-section {
-  padding: 70px 0;
+  padding: 80px 0;
   background: var(--white-pure);
 }
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
 }
 
 .event-card {
   background: var(--white-bg);
   border-radius: var(--radius-lg);
-  padding: 30px 22px;
+  padding: 35px 22px;
   text-align: center;
-  border: 2px solid var(--red-rose);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  box-shadow: var(--shadow-luxury);
   transition: var(--transition);
 }
 
 .event-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--red-primary);
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
   box-shadow: var(--shadow-hover);
 }
 
 .event-icon {
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  background: var(--red-light);
-  color: var(--red-primary);
+  background: var(--gold-light);
+  color: var(--burgundy-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
-  margin: 0 auto 15px;
-  border: 1.5px solid var(--red-rose);
+  margin: 0 auto 16px;
+  border: 1px solid var(--gold-primary);
 }
 
 .event-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--red-dark);
-  margin-bottom: 10px;
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
 }
 
 .event-time {
   font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--red-primary);
-  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold-primary);
+  font-size: 1rem;
   margin-bottom: 4px;
 }
 
 .event-lunar {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   margin-bottom: 12px;
+  font-style: italic;
 }
 
 .event-location {
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-weight: 600;
+  font-size: 1rem;
   color: var(--text-dark);
   margin-bottom: 6px;
 }
@@ -550,7 +570,7 @@ body {
 .event-address {
   font-size: 0.88rem;
   color: var(--text-muted);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   min-height: 42px;
 }
 
@@ -565,10 +585,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 25px;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   transition: var(--transition);
@@ -576,34 +596,36 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--red-bright), var(--red-dark));
-  color: var(--white-pure);
+  background: var(--burgundy-deep);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-primary);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--red-dark), var(--red-primary));
+  background: var(--burgundy-main);
+  box-shadow: 0 5px 15px rgba(123, 17, 19, 0.3);
 }
 
 .btn-outline {
   background: var(--white-pure);
-  color: var(--red-primary);
-  border: 1.5px solid var(--red-primary);
+  color: var(--burgundy-deep);
+  border: 1px solid var(--burgundy-deep);
 }
 
 .btn-outline:hover {
-  background: var(--red-primary);
+  background: var(--burgundy-deep);
   color: var(--white-pure);
 }
 
-/* 11. GALLERY SECTION (10 CĂN CHỈNH ĐẸP) */
+/* 11. GALLERY SECTION (10 CURATED LUXURY PHOTOS) */
 .gallery-section {
-  padding: 70px 0;
-  background: var(--red-light);
+  padding: 80px 0;
+  background: var(--white-bg);
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 16px;
 }
 
@@ -611,10 +633,10 @@ body {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  height: 280px;
+  height: 270px;
   cursor: pointer;
-  box-shadow: var(--shadow-soft);
-  border: 2px solid var(--white-pure);
+  box-shadow: var(--shadow-luxury);
+  border: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .gallery-img {
@@ -622,20 +644,20 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: 50% 20%;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
 .gallery-item:hover .gallery-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .gallery-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to top, rgba(142, 0, 0, 0.8), transparent);
+  background: linear-gradient(to top, rgba(44, 26, 29, 0.85), transparent);
   display: flex;
   align-items: flex-end;
-  padding: 15px;
+  padding: 16px;
   opacity: 0;
   transition: var(--transition);
 }
@@ -645,45 +667,45 @@ body {
 }
 
 .gallery-caption {
-  color: var(--white-pure);
-  font-family: var(--font-title);
-  font-size: 1.4rem;
+  color: var(--gold-accent);
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
 }
 
 /* 12. RSVP SECTION */
 .rsvp-section {
-  padding: 70px 0;
-  background: linear-gradient(135deg, rgba(142, 0, 0, 0.9), rgba(211, 47, 47, 0.9)),
+  padding: 80px 0;
+  background: linear-gradient(180deg, rgba(44, 26, 29, 0.88), rgba(123, 17, 19, 0.88)),
               url('asset/images/AnhThiep/NVT09928.jpg') center/cover fixed;
   color: var(--white-pure);
 }
 
 .rsvp-section .section-title {
-  color: var(--white-pure);
+  color: var(--gold-accent);
 }
 
 .rsvp-card {
-  max-width: 600px;
+  max-width: 550px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-lg);
   padding: 35px 25px;
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   text-align: left;
 }
 
 .form-label {
   display: block;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 6px;
-  color: #FFCDD2;
+  color: var(--gold-light);
 }
 
 .form-control {
@@ -691,41 +713,47 @@ body {
   padding: 12px 16px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   color: var(--white-pure);
   font-size: 0.95rem;
   outline: none;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--gold-accent);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .form-control::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 select.form-control option {
-  background: var(--red-dark);
+  background: var(--burgundy-deep);
   color: var(--white-pure);
 }
 
 /* 13. GIFT BOX MODAL */
 .gift-section {
-  padding: 70px 0;
+  padding: 80px 0;
   background: var(--white-pure);
   text-align: center;
 }
 
 .gift-card-trigger {
-  background: var(--red-light);
-  border: 2px dashed var(--red-primary);
+  background: var(--gold-light);
+  border: 1px dashed var(--gold-primary);
   border-radius: var(--radius-lg);
-  padding: 35px 20px;
-  max-width: 600px;
+  padding: 35px 22px;
+  max-width: 580px;
   margin: 0 auto;
 }
 
 .modal-backdrop {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.72);
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
@@ -745,12 +773,12 @@ select.form-control option {
   background: var(--white-pure);
   border-radius: var(--radius-lg);
   width: 92%;
-  max-width: 620px;
+  max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
-  padding: 30px 20px;
+  padding: 32px 20px;
   position: relative;
-  border: 2px solid var(--red-rose);
+  border: 1px solid var(--gold-primary);
 }
 
 .modal-close-btn {
@@ -765,8 +793,8 @@ select.form-control option {
 
 .bank-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
   margin-top: 20px;
 }
 
@@ -774,45 +802,49 @@ select.form-control option {
   background: var(--white-bg);
   border-radius: var(--radius-md);
   padding: 18px;
-  border: 1.5px solid var(--red-rose);
+  border: 1px solid rgba(197, 160, 89, 0.3);
   text-align: center;
 }
 
 .qr-img {
-  width: 160px;
-  height: 160px;
+  width: 155px;
+  height: 155px;
   object-fit: contain;
   margin: 10px 0;
-  border: 1.5px solid var(--red-rose);
-  border-radius: 10px;
+  border: 1px solid var(--gold-primary);
+  border-radius: 8px;
 }
 
 .copy-btn {
-  background: var(--red-primary);
-  color: var(--white-pure);
-  border: none;
-  padding: 8px 16px;
+  background: var(--burgundy-deep);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-primary);
+  padding: 7px 16px;
   border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 500;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
-/* 14. GUESTBOOK (FEED LỜI CHÚC GẦN NHẤT) */
+.copy-btn:hover {
+  background: var(--burgundy-main);
+}
+
+/* 14. GUESTBOOK SECTION */
 .guestbook-section {
-  padding: 70px 0;
-  background: var(--red-light);
+  padding: 80px 0;
+  background: var(--gold-light);
 }
 
 .guestbook-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 28px;
 }
 
 .wishes-list {
-  max-height: 420px;
+  max-height: 400px;
   overflow-y: auto;
 }
 
@@ -821,8 +853,8 @@ select.form-control option {
   border-radius: var(--radius-md);
   padding: 16px;
   margin-bottom: 12px;
-  box-shadow: var(--shadow-soft);
-  border-left: 4px solid var(--red-primary);
+  box-shadow: var(--shadow-luxury);
+  border-left: 3.5px solid var(--burgundy-deep);
 }
 
 .wish-header {
@@ -833,8 +865,8 @@ select.form-control option {
 }
 
 .wish-author {
-  font-weight: 700;
-  color: var(--red-dark);
+  font-weight: 600;
+  color: var(--burgundy-deep);
 }
 
 .wish-time {
@@ -849,23 +881,23 @@ select.form-control option {
 
 /* 15. FOOTER */
 .footer {
-  background: linear-gradient(180deg, var(--red-dark), #5C0000);
+  background: linear-gradient(180deg, var(--burgundy-deep), #3D080A);
   color: var(--white-pure);
-  padding: 45px 15px 30px;
+  padding: 50px 20px 30px;
   text-align: center;
 }
 
 .footer-names {
-  font-family: var(--font-title);
-  font-size: clamp(2.8rem, 5vw, 3.5rem);
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5vw, 3.8rem);
   color: var(--gold-accent);
   margin-bottom: 8px;
 }
 
 .footer-thankyou {
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin-bottom: 18px;
-  color: #FFCDD2;
+  color: var(--gold-light);
 }
 
 /* 16. TOAST NOTIFICATION */
@@ -874,16 +906,16 @@ select.form-control option {
   bottom: 85px;
   left: 50%;
   transform: translateX(-50%) translateY(50px);
-  background: var(--red-dark);
-  color: var(--white-pure);
+  background: var(--burgundy-deep);
+  color: var(--gold-light);
   padding: 12px 24px;
   border-radius: 30px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  border: 1.5px solid var(--gold-accent);
+  border: 1px solid var(--gold-primary);
   opacity: 0;
   transition: all 0.4s ease;
   z-index: 3000;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .toast-msg.show {
@@ -891,13 +923,13 @@ select.form-control option {
   transform: translateX(-50%) translateY(0);
 }
 
-/* 17. RESPONSIVE BREAKPOINTS (70% MOBILE FOCUS) */
+/* 17. RESPONSIVE BREAKPOINTS (MOBILE FIRST) */
 @media (max-width: 768px) {
-  .timeline::before { left: 18px; }
+  .timeline::before { left: 16px; }
 
   .timeline-item, .timeline-item:nth-child(even) {
     width: 100%;
-    padding-left: 45px;
+    padding-left: 40px;
     padding-right: 0;
     margin-left: 0;
   }

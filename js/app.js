@@ -1,7 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * - Nhạc chỉ phát khi bấm vào Icon Nốt Nhạc (Không tự động phát)
- * - Load Lời Chúc bằng JSONP Script Injection (Chạy 100% mượt cả ở Local file:// và GitHub)
+ * Tải mượt 100%, style Hiện đại - Sang trọng (Ultra-Luxury Theme)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -66,7 +65,7 @@ function renderLoveStory(stories) {
     const itemEl = document.createElement("div");
     itemEl.className = "timeline-item";
     itemEl.innerHTML = `
-      <div class="timeline-dot">❤️</div>
+      <div class="timeline-dot">✨</div>
       <div class="timeline-content">
         <div class="timeline-date">${item.date}</div>
         <h3 class="timeline-title">${item.title}</h3>
@@ -78,7 +77,7 @@ function renderLoveStory(stories) {
   });
 }
 
-/* 3. SỰ KIỆN CƯỚI VỚI ICON SANG TRỌNG */
+/* 3. SỰ KIỆN CƯỚI VỚI ICON LUXURY VECTOR */
 function renderEvents(events) {
   const container = document.getElementById("events-grid");
   if (!container || !events) return;
@@ -89,7 +88,7 @@ function renderEvents(events) {
     card.className = "event-card";
     card.innerHTML = `
       <div class="event-icon" aria-hidden="true">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
           <path d="M9 21V12h6v9"></path>
         </svg>
@@ -101,14 +100,14 @@ function renderEvents(events) {
       <p class="event-address">${ev.address}</p>
       <div class="btn-group">
         <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
           Xem Bản Đồ
         </a>
         <a href="${ev.calendarUrl}" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
             <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -162,7 +161,6 @@ function initAudioPlayer(musicConfig) {
   audio.src = musicConfig.url;
   let isPlaying = false;
 
-  // CHỈ KHỞI CHẠY KHI NGƯỜI DÙNG BẤM TRỰC TIẾP VÀO NỐT NHẠC
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     if (isPlaying) {
@@ -220,7 +218,7 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 7. SỔ LƯU BÚT - ĐỒNG BỘ JSONP (CHẠY 100% CẢ FILE LOCAL VÀ GITHUB) */
+/* 7. SỔ LƯU BÚT - JSONP SCRIPT TAG (TẢI MƯỢT 100% CẢ LOCAL VÀ GITHUB) */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
@@ -231,14 +229,14 @@ function initGuestbook(sheetConfig) {
 
     if (!wishesArray || wishesArray.length === 0) {
       wishesListEl.innerHTML = `
-        <div style="background: #fff; border-radius: var(--radius-md); padding: 25px; text-align: center; color: var(--text-muted); border: 1.5px dashed var(--red-rose);">
+        <div style="background: #fff; border-radius: var(--radius-md); padding: 25px; text-align: center; color: var(--text-muted); border: 1px dashed var(--gold-primary);">
           🌸 Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc mừng đến Lâm Tuấn & Như Huế nhé! ❤️
         </div>
       `;
       return;
     }
 
-    // Lấy tối đa 3 lời chúc mới nhất ở cuối danh sách
+    // Hiển thị tối đa 3 lời chúc mới nhất từ Sheet
     const recentWishes = wishesArray.slice(-3).reverse();
 
     recentWishes.forEach((w) => {
@@ -255,7 +253,7 @@ function initGuestbook(sheetConfig) {
     });
   }
 
-  // Khai báo Callback JSONP Toàn cục
+  // Callback JSONP Toàn Cục
   window.handleGoogleSheetWishes = function(data) {
     try {
       if (data && data.table && data.table.rows) {
@@ -286,7 +284,7 @@ function initGuestbook(sheetConfig) {
     }
   };
 
-  // Hàm nhúng JSONP Script Tag (Vượt qua hoàn toàn chặn CORS của file:// local và github)
+  // Hàm load JSONP không bị CORS
   function loadWishesFromSheet() {
     if (!sheetConfig || !sheetConfig.sheetId) return;
 
@@ -299,10 +297,8 @@ function initGuestbook(sheetConfig) {
     document.body.appendChild(script);
   }
 
-  // Tải dữ liệu ngay khi mở trang
   loadWishesFromSheet();
 
-  // Xử lý gửi Lời chúc mới
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -415,7 +411,7 @@ function initBankModal(bankConfig) {
   });
 }
 
-/* 10. CANVAS TRÁI TIM */
+/* 10. CANVAS CÁNH HOA & TRÁI TIM VÀNG KIM BÔNG BỀNH */
 function initHeartCanvas() {
   const canvas = document.getElementById("petal-canvas");
   if (!canvas) return;
@@ -430,7 +426,7 @@ function initHeartCanvas() {
   });
 
   const particles = [];
-  const particleCount = width < 600 ? 15 : 25;
+  const particleCount = width < 600 ? 14 : 22;
 
   class HeartParticle {
     constructor() {
@@ -439,15 +435,15 @@ function initHeartCanvas() {
     reset() {
       this.x = Math.random() * width;
       this.y = Math.random() * -height;
-      this.size = Math.random() * 10 + 6;
-      this.speedY = Math.random() * 1.1 + 0.5;
-      this.speedX = Math.random() * 0.8 - 0.4;
-      this.opacity = Math.random() * 0.5 + 0.3;
-      this.isHeart = Math.random() > 0.4;
+      this.size = Math.random() * 8 + 5;
+      this.speedY = Math.random() * 0.9 + 0.4;
+      this.speedX = Math.random() * 0.6 - 0.3;
+      this.opacity = Math.random() * 0.45 + 0.25;
+      this.isHeart = Math.random() > 0.5;
     }
     update() {
       this.y += this.speedY;
-      this.x += Math.sin(this.y * 0.015) * 0.6 + this.speedX;
+      this.x += Math.sin(this.y * 0.015) * 0.5 + this.speedX;
       if (this.y > height) {
         this.reset();
       }
@@ -458,7 +454,7 @@ function initHeartCanvas() {
       ctx.globalAlpha = this.opacity;
 
       if (this.isHeart) {
-        ctx.fillStyle = "#FF1744";
+        ctx.fillStyle = "#D4AF37"; // Champagne Gold
         ctx.beginPath();
         const topCurveHeight = this.size * 0.3;
         ctx.moveTo(0, topCurveHeight);
@@ -468,7 +464,7 @@ function initHeartCanvas() {
         ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
         ctx.fill();
       } else {
-        ctx.fillStyle = "#FFCDD2";
+        ctx.fillStyle = "#F4DCDD"; // Soft Rose
         ctx.beginPath();
         ctx.ellipse(0, 0, this.size * 0.6, this.size, Math.PI / 4, 0, 2 * Math.PI);
         ctx.fill();
@@ -510,7 +506,7 @@ function initScrollAnimations() {
 
   document.querySelectorAll(".couple-card, .event-card, .timeline-content, .gallery-item").forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateY(25px)";
+    el.style.transform = "translateY(22px)";
     el.style.transition = "opacity 0.7s ease, transform 0.7s ease";
     observer.observe(el);
   });
