@@ -1,6 +1,6 @@
 /* ==========================================================================
    CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
-   Bright Bright-Red Accents for Save The Date & Names
+   White Map Button with Crimson Red Border
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap');
@@ -106,7 +106,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* 1. CINELOVE COVER SECTION (BRIGHT VIBRANT RED TITLES) */
+/* 1. CINELOVE COVER SECTION */
 .cinelove-cover-section {
   width: 100%;
   background: #FFFFFF;
@@ -141,7 +141,7 @@ body {
 .cover-save-date {
   font-family: var(--font-script);
   font-size: clamp(2.8rem, 7vw, 4.2rem);
-  color: #D32F2F; /* BRIGHT VIBRANT RED AS REQUESTED */
+  color: #D32F2F;
   text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95), 0 0 2px rgba(255, 255, 255, 0.8);
   line-height: 1;
 }
@@ -157,7 +157,7 @@ body {
 .script-name {
   font-family: var(--font-script);
   font-size: clamp(3rem, 8.5vw, 4.8rem);
-  color: #D32F2F; /* BRIGHT VIBRANT RED AS REQUESTED */
+  color: #D32F2F;
   line-height: 1.1;
   text-shadow: 0 2px 12px rgba(255, 255, 255, 0.98), 0 0 3px rgba(255, 255, 255, 0.9);
 }
@@ -165,7 +165,7 @@ body {
 .script-ampersand {
   font-family: var(--font-script);
   font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: #D32F2F; /* BRIGHT VIBRANT RED AS REQUESTED */
+  color: #D32F2F;
   margin: -6px 0 -4px 30px;
   text-shadow: 0 2px 12px rgba(255, 255, 255, 0.98), 0 0 3px rgba(255, 255, 255, 0.9);
 }
@@ -544,27 +544,29 @@ body {
   padding-left: 21px;
 }
 
+/* WHITE BACKGROUND WITH CRIMSON BORDER MAP BUTTON AS REQUESTED */
 .btn-map-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--color-crimson);
-  color: var(--color-white);
-  padding: 9px 24px;
+  background: #FFFFFF;
+  color: var(--color-crimson);
+  border: 1.5px solid var(--color-crimson);
+  padding: 8px 24px;
   border-radius: 22px;
   font-size: 0.84rem;
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
-  border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(99, 23, 27, 0.2);
+  box-shadow: 0 3px 10px rgba(99, 23, 27, 0.08);
 }
 
 .btn-map-pill:hover {
-  background: var(--color-crimson-light);
+  background: var(--color-crimson);
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(99, 23, 27, 0.3);
+  box-shadow: 0 6px 16px rgba(99, 23, 27, 0.2);
 }
 
 /* 5. ELEGANT COMBO BOX & LUXURY BUTTON STYLING */
