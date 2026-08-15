@@ -1,8 +1,6 @@
 /* ==========================================================================
    CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
    Style: Cinelove 46 Luxe Romantic Red & Rose Gold
-   Palette: Crimson Maroon (#63171B), Soft Rose (#F390A1), Cream White (#FFFDFD)
-   Fonts: Playfair Display, Cormorant Garamond, Montserrat, Be Vietnam Pro
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
@@ -74,7 +72,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 860px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -403,7 +401,7 @@ body {
   border-bottom: 1px dashed var(--color-border);
 }
 
-/* 5. LỊCH TIỆC & LỄ THÀNH HÔN */
+/* 5. WEDDING EVENTS SECTION (GỘP TIỆC MỪNG RÕ RÀNG) */
 .events-section {
   padding: 70px 0;
   background: var(--color-white);
@@ -411,15 +409,14 @@ body {
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 
 .event-card {
   background: var(--color-rose-bg);
   border-radius: var(--radius-card);
-  padding: 30px 20px;
-  text-align: center;
+  padding: 28px 22px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-card);
   transition: var(--transition);
@@ -432,60 +429,87 @@ body {
 }
 
 .event-icon {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: var(--color-white);
   color: var(--color-crimson);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 14px;
+  margin: 0 auto 12px;
   border: 1px solid var(--color-rose);
 }
 
 .event-title {
   font-family: var(--font-title);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-crimson);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+  text-align: center;
 }
 
-.event-time {
+.event-header-date {
   font-family: var(--font-sans);
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-crimson-light);
-  font-size: 0.95rem;
-  margin-bottom: 3px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.event-lunar {
-  font-size: 0.8rem;
-  color: var(--color-text-sub);
-  margin-bottom: 10px;
-  font-style: italic;
+.sub-event-item {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
-.event-location {
-  font-weight: 600;
+.sub-event-item:last-child {
+  margin-bottom: 0;
+}
+
+.side-badge {
+  display: inline-block;
+  background: var(--color-crimson);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+}
+
+.side-badge.bride-side {
+  background: #B8324A;
+}
+
+.sub-event-time {
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 0.95rem;
-  color: var(--color-text-main);
+  color: var(--color-crimson);
   margin-bottom: 4px;
 }
 
-.event-address {
-  font-size: 0.85rem;
-  color: var(--color-text-sub);
-  margin-bottom: 20px;
-  min-height: 40px;
+.sub-event-location {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-text-main);
+  margin-bottom: 2px;
 }
 
-.btn-group {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
+.sub-event-address {
+  font-size: 0.85rem;
+  color: var(--color-text-sub);
+  margin-bottom: 12px;
 }
 
 .btn {
@@ -513,73 +537,7 @@ body {
   box-shadow: 0 5px 15px rgba(99, 23, 27, 0.3);
 }
 
-.btn-outline {
-  background: var(--color-white);
-  color: var(--color-crimson);
-  border: 1px solid var(--color-crimson);
-}
-
-.btn-outline:hover {
-  background: var(--color-crimson);
-  color: var(--color-white);
-}
-
-/* 6. ALBUM ẢNH CƯỚI CHỌN LỌC (6 ẢNH) */
-.gallery-section {
-  padding: 70px 0;
-  background: var(--color-rose-bg);
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 14px;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  height: 260px;
-  cursor: pointer;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-border);
-}
-
-.gallery-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 20%;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item:hover .gallery-img {
-  transform: scale(1.05);
-}
-
-.gallery-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to top, rgba(42, 24, 26, 0.85), transparent);
-  display: flex;
-  align-items: flex-end;
-  padding: 14px;
-  opacity: 0;
-  transition: var(--transition);
-}
-
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
-}
-
-.gallery-caption {
-  color: var(--color-rose);
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-}
-
-/* 7. RSVP SECTION */
+/* 6. RSVP SECTION */
 .rsvp-section {
   padding: 70px 0;
   background: linear-gradient(180deg, rgba(42, 24, 26, 0.88), rgba(99, 23, 27, 0.88)),
@@ -635,7 +593,7 @@ select.form-control option {
   color: var(--color-white);
 }
 
-/* 8. GIFT MODAL */
+/* 7. GIFT MODAL */
 .gift-section {
   padding: 70px 0;
   background: var(--color-white);
@@ -728,55 +686,13 @@ select.form-control option {
   margin-top: 5px;
 }
 
-/* 9. GUESTBOOK SECTION */
+/* 8. GUESTBOOK SECTION */
 .guestbook-section {
   padding: 70px 0;
   background: var(--color-rose-bg);
 }
 
-.guestbook-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 24px;
-}
-
-.wishes-list {
-  max-height: 380px;
-  overflow-y: auto;
-}
-
-.wish-item {
-  background: var(--color-white);
-  border-radius: var(--radius-card);
-  padding: 15px;
-  margin-bottom: 10px;
-  box-shadow: var(--shadow-card);
-  border-left: 3.5px solid var(--color-crimson);
-}
-
-.wish-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4px;
-}
-
-.wish-author {
-  font-weight: 700;
-  color: var(--color-crimson);
-}
-
-.wish-time {
-  font-size: 0.75rem;
-  color: var(--color-text-sub);
-}
-
-.wish-text {
-  font-size: 0.88rem;
-  color: var(--color-text-main);
-}
-
-/* 10. FOOTER */
+/* 9. FOOTER */
 .footer {
   background: #23080A;
   color: var(--color-white);

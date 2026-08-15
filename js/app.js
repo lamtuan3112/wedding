@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Mẫu Cinelove 46 Tối Giản (Ghi nhận lời chúc riêng tư về Google Sheet)
+ * Mẫu Cinelove 46 Tối Giản (Gộp Tiệc Mừng Thứ 7 Rõ Ràng)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,7 +54,7 @@ function setImg(id, src) {
   if (el) el.src = src || "";
 }
 
-/* 2. SỰ KIỆN CƯỚI (NÚT XEM BẢN ĐỒ) */
+/* 2. SỰ KIỆN CƯỚI (GỘP TIỆC MỪNG THỨ 7 RÕ RÀNG NHÀ TRAI / NHÀ GÁI) */
 function renderEvents(events) {
   const container = document.getElementById("events-grid");
   if (!container || !events) return;
@@ -63,28 +63,66 @@ function renderEvents(events) {
   events.forEach((ev) => {
     const card = document.createElement("div");
     card.className = "event-card";
-    card.innerHTML = `
-      <div class="event-icon" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
-          <path d="M9 21V12h6v9"></path>
-        </svg>
-      </div>
-      <h3 class="event-title">${ev.title}</h3>
-      <div class="event-time">${ev.time}</div>
-      ${ev.lunarTime ? `<div class="event-lunar">${ev.lunarTime}</div>` : ''}
-      <div class="event-location">${ev.location}</div>
-      <p class="event-address">${ev.address}</p>
-      <div class="btn-group">
-        <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 10px 24px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
+
+    if (ev.isMerged) {
+      // Thẻ gộp Tiệc Mừng Thứ 7
+      let subItemsHtml = "";
+      ev.subEvents.forEach((sub, idx) => {
+        const badgeClass = idx === 1 ? "side-badge bride-side" : "side-badge";
+        subItemsHtml += `
+          <div class="sub-event-item">
+            <span class="${badgeClass}">${sub.sideName}</span>
+            <div class="sub-event-time">⏰ ${sub.time}</div>
+            <div class="sub-event-location">📍 ${sub.location}</div>
+            <div class="sub-event-address">${sub.address}</div>
+            <div>
+              <a href="${sub.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.8rem;">
+                📍 Bản Đồ Chỉ Đường
+              </a>
+            </div>
+          </div>
+        `;
+      });
+
+      card.innerHTML = `
+        <div class="event-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
+            <path d="M9 21V12h6v9"></path>
           </svg>
-          Xem Bản Đồ
-        </a>
-      </div>
-    `;
+        </div>
+        <h3 class="event-title">${ev.title}</h3>
+        <div class="event-header-date">${ev.dateHeader}</div>
+        <div>
+          ${subItemsHtml}
+        </div>
+      `;
+    } else {
+      // Thẻ Lễ Thành Hôn Chính Thức
+      card.innerHTML = `
+        <div class="event-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
+            <path d="M9 21V12h6v9"></path>
+          </svg>
+        </div>
+        <h3 class="event-title">${ev.title}</h3>
+        <div class="event-header-date">${ev.dateHeader}</div>
+        
+        <div class="sub-event-item" style="text-align: center;">
+          <div class="sub-event-time">⏰ ${ev.time}</div>
+          <div style="font-size: 0.82rem; color: var(--color-text-sub); margin-bottom: 8px;">${ev.lunarTime}</div>
+          <div class="sub-event-location">📍 ${ev.location}</div>
+          <div class="sub-event-address">${ev.address}</div>
+          <div style="margin-top: 15px;">
+            <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 9px 22px;">
+              📍 Bản Đồ Chỉ Đường
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
     container.appendChild(card);
   });
 }
@@ -186,7 +224,7 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 6. SỔ LƯU BÚT (GỬI TRỰC TIẾP VỀ GOOGLE SHEET CHÍNH THỨC) */
+/* 6. SỔ LƯU BÚT (GỬI VỀ GOOGLE SHEET CHÍNH THỨC) */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   if (!form) return;
