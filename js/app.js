@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Style Tối giản - Sang trọng - Tải mượt 100%
+ * Chuẩn mẫu Cinelove 46 - Tải mượt 100%
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -65,7 +65,7 @@ function renderEvents(events) {
     card.className = "event-card";
     card.innerHTML = `
       <div class="event-icon" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
           <path d="M9 21V12h6v9"></path>
         </svg>
@@ -195,7 +195,7 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 6. SỔ LƯU BÚT - JSONP SCRIPT INJECTION (TẢI MƯỢT 100%) */
+/* 6. SỔ LƯU BÚT - JSONP SCRIPT INJECTION (REALTIME CHÍNH XÁC) */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
@@ -206,7 +206,7 @@ function initGuestbook(sheetConfig) {
 
     if (!wishesArray || wishesArray.length === 0) {
       wishesListEl.innerHTML = `
-        <div style="background: #fff; border-radius: var(--radius-card); padding: 22px; text-align: center; color: var(--color-text-muted); border: 1px dashed var(--color-gold);">
+        <div style="background: #fff; border-radius: var(--radius-card); padding: 22px; text-align: center; color: var(--color-text-sub); border: 1px dashed var(--color-rose);">
           🌸 Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc mừng đến Lâm Tuấn & Như Huế nhé! ❤️
         </div>
       `;
@@ -385,7 +385,7 @@ function initBankModal(bankConfig) {
   });
 }
 
-/* 9. CANVAS CÁNH HOA & TRÁI TIM */
+/* 9. CANVAS CÁNH HOA HỒNG & TRÁI TIM CINELOVE 46 */
 function initHeartCanvas() {
   const canvas = document.getElementById("petal-canvas");
   if (!canvas) return;
@@ -400,7 +400,7 @@ function initHeartCanvas() {
   });
 
   const particles = [];
-  const particleCount = width < 600 ? 12 : 18;
+  const particleCount = width < 600 ? 14 : 20;
 
   class HeartParticle {
     constructor() {
@@ -409,15 +409,15 @@ function initHeartCanvas() {
     reset() {
       this.x = Math.random() * width;
       this.y = Math.random() * -height;
-      this.size = Math.random() * 7 + 4;
-      this.speedY = Math.random() * 0.8 + 0.3;
+      this.size = Math.random() * 8 + 5;
+      this.speedY = Math.random() * 0.9 + 0.35;
       this.speedX = Math.random() * 0.5 - 0.25;
-      this.opacity = Math.random() * 0.4 + 0.2;
-      this.isHeart = Math.random() > 0.5;
+      this.opacity = Math.random() * 0.45 + 0.25;
+      this.isHeart = Math.random() > 0.4;
     }
     update() {
       this.y += this.speedY;
-      this.x += Math.sin(this.y * 0.015) * 0.4 + this.speedX;
+      this.x += Math.sin(this.y * 0.015) * 0.45 + this.speedX;
       if (this.y > height) {
         this.reset();
       }
@@ -428,7 +428,7 @@ function initHeartCanvas() {
       ctx.globalAlpha = this.opacity;
 
       if (this.isHeart) {
-        ctx.fillStyle = "#C8A968";
+        ctx.fillStyle = "#F390A1"; // Rose Pink
         ctx.beginPath();
         const topCurveHeight = this.size * 0.3;
         ctx.moveTo(0, topCurveHeight);
@@ -438,7 +438,7 @@ function initHeartCanvas() {
         ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
         ctx.fill();
       } else {
-        ctx.fillStyle = "#EBE0E1";
+        ctx.fillStyle = "#63171B"; // Deep Crimson
         ctx.beginPath();
         ctx.ellipse(0, 0, this.size * 0.6, this.size, Math.PI / 4, 0, 2 * Math.PI);
         ctx.fill();

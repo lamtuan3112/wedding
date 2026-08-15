@@ -1,31 +1,33 @@
 /* ==========================================================================
-   WEDDING INVITATION - MINIMALIST LUXURY THEME (LÂM TUẤN & NHƯ HUẾ)
-   Style: Đơn giản, Sang trọng, Hiện đại, Ngắn gọn, Thoáng mắt
-   Palette: Warm Cream (#FAF9F6), Burgundy Rose (#8C252C), Soft Gold (#C8A968), Charcoal (#222222)
-   Fonts: Cormorant Garamond, Playfair Display, Be Vietnam Pro, Montserrat
+   CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
+   Style: Cinelove 46 Luxe Romantic Red & Rose Gold
+   Palette: Crimson Maroon (#63171B), Soft Rose (#F390A1), Cream White (#FFFDFD)
+   Fonts: Playfair Display, Cormorant Garamond, Montserrat, Be Vietnam Pro
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
 
 :root {
-  --color-bg: #FAF9F6;
-  --color-card-bg: #FFFFFF;
-  --color-text-dark: #222222;
-  --color-text-muted: #666666;
-  --color-accent: #8C252C;
-  --color-accent-soft: #F7EBEB;
-  --color-gold: #C8A968;
-  --color-border: #EBE6DC;
+  --color-crimson: #63171B;
+  --color-crimson-light: #8E2328;
+  --color-rose: #F390A1;
+  --color-rose-soft: #FDF0F2;
+  --color-rose-bg: #FFF7F8;
+  --color-gold: #D4AF37;
+  --color-text-main: #2A181A;
+  --color-text-sub: #635053;
+  --color-white: #FFFFFF;
+  --color-border: #F3D5DA;
 
   --font-serif: 'Cormorant Garamond', serif;
   --font-title: 'Playfair Display', serif;
   --font-body: 'Be Vietnam Pro', sans-serif;
   --font-sans: 'Montserrat', sans-serif;
 
-  --shadow-subtle: 0 6px 20px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 10px 30px rgba(140, 37, 44, 0.1);
-  --radius-card: 14px;
-  --transition: all 0.3s ease;
+  --shadow-card: 0 10px 30px rgba(99, 23, 27, 0.08);
+  --shadow-hover: 0 15px 40px rgba(99, 23, 27, 0.16);
+  --radius-card: 16px;
+  --transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 * {
@@ -41,27 +43,27 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-bg);
-  color: var(--color-text-dark);
-  line-height: 1.6;
+  background-color: var(--color-rose-bg);
+  color: var(--color-text-main);
+  line-height: 1.65;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: var(--color-rose-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gold);
+  background: var(--color-rose);
   border-radius: 3px;
 }
 
-/* Canvas Floating Particles */
+/* Floating Particles */
 #petal-canvas {
   position: fixed;
   top: 0; left: 0;
@@ -72,14 +74,14 @@ body {
 
 .container {
   width: 100%;
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .text-center { text-align: center; }
 
-/* SECTION HEADERS */
+/* SECTION TITLES */
 .section-header {
   text-align: center;
   margin-bottom: 35px;
@@ -87,19 +89,19 @@ body {
 
 .section-subtitle {
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: var(--color-gold);
+  font-size: 0.76rem;
+  color: var(--color-crimson-light);
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 6px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .section-title {
   font-family: var(--font-title);
-  font-size: clamp(1.5rem, 3.8vw, 1.9rem);
-  font-weight: 600;
-  color: var(--color-accent);
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--color-crimson);
   letter-spacing: 1px;
   position: relative;
   display: inline-block;
@@ -108,13 +110,14 @@ body {
 .section-title::after {
   content: '';
   display: block;
-  width: 35px;
-  height: 1px;
-  background: var(--color-gold);
+  width: 40px;
+  height: 2px;
+  background: var(--color-rose);
   margin: 8px auto 0;
+  border-radius: 2px;
 }
 
-/* FLOATING MUSIC BUTTON */
+/* MUSIC BUTTON */
 .music-player-btn {
   position: fixed;
   bottom: 22px;
@@ -122,14 +125,14 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--color-accent);
-  color: var(--color-gold);
-  border: 1px solid var(--color-gold);
+  background: var(--color-crimson);
+  color: var(--color-white);
+  border: 1.5px solid var(--color-rose);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 25px rgba(99, 23, 27, 0.3);
   z-index: 1000;
   transition: var(--transition);
 }
@@ -151,123 +154,133 @@ body {
   font-size: 1.15rem;
 }
 
-/* 1. HERO COVER SECTION (MINIMALIST ELEGANCE) */
+/* 1. CINELOVE 46 HERO COVER */
 .hero-section {
   position: relative;
-  min-height: 90vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(34, 34, 34, 0.4) 0%, rgba(140, 37, 44, 0.6) 100%),
+  background: linear-gradient(180deg, rgba(42, 24, 26, 0.45) 0%, rgba(99, 23, 27, 0.72) 100%),
               url('asset/images/AnhThiep/AnhCong/NVT09675.jpg') center 18%/cover no-repeat;
-  color: #ffffff;
+  color: var(--color-white);
   text-align: center;
   padding: 50px 20px;
 }
 
 .hero-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-card);
-  padding: 42px 25px;
-  max-width: 620px;
+  padding: 45px 25px;
+  max-width: 600px;
   width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
 }
 
 .hero-badge {
   font-family: var(--font-sans);
   font-size: clamp(0.72rem, 1.6vw, 0.85rem);
-  color: var(--color-gold);
+  color: var(--color-rose);
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .hero-names {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6.5vw, 4.4rem);
-  font-weight: 500;
+  font-size: clamp(3.2rem, 7vw, 4.6rem);
+  font-weight: 600;
   line-height: 1.1;
-  color: #ffffff;
+  color: var(--color-white);
   margin: 10px 0;
-  text-shadow: 0 3px 12px rgba(0,0,0,0.35);
+  text-shadow: 0 4px 15px rgba(0,0,0,0.35);
 }
 
 .hero-names span.heart-divider {
   display: inline-block;
-  color: var(--color-gold);
+  color: var(--color-rose);
   font-family: var(--font-title);
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   margin: 0 8px;
   font-style: italic;
 }
 
 .hero-subtitle {
-  font-size: clamp(0.82rem, 1.8vw, 0.95rem);
-  font-weight: 400;
+  font-size: clamp(0.85rem, 1.9vw, 1rem);
+  font-weight: 500;
   margin-bottom: 22px;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   text-transform: uppercase;
 }
 
 .hero-date {
   font-family: var(--font-sans);
-  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
-  font-weight: 500;
+  font-size: clamp(0.88rem, 2vw, 1.1rem);
+  font-weight: 600;
   letter-spacing: 2px;
-  padding: 8px 24px;
-  background: rgba(140, 37, 44, 0.65);
-  border: 1px solid var(--color-gold);
+  padding: 9px 26px;
+  background: rgba(99, 23, 27, 0.75);
+  border: 1px solid var(--color-rose);
   border-radius: 30px;
   display: inline-block;
   margin-bottom: 25px;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .scroll-down-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: transparent;
-  border: 1px solid var(--color-gold);
-  color: var(--color-gold);
+  border: 1px solid var(--color-rose);
+  color: var(--color-rose);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: var(--transition);
 }
 
 .scroll-down-btn:hover {
-  background: var(--color-gold);
-  color: var(--color-accent);
+  background: var(--color-rose);
+  color: var(--color-crimson);
 }
 
-/* 2. THƯ MỜI CHÂN THÀNH */
-.intro-section {
+/* 2. CINELOVE QUOTE CARD */
+.quote-section {
   padding: 60px 0;
-  background: var(--color-bg);
+  background: var(--color-rose-soft);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.intro-text {
+.quote-card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  padding: 35px 25px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+.quote-text {
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 2.8vw, 1.35rem);
-  color: var(--color-text-dark);
+  font-size: clamp(1.2rem, 3vw, 1.45rem);
+  color: var(--color-crimson);
   line-height: 1.8;
   font-style: italic;
+  font-weight: 500;
 }
 
 /* 3. COUNTDOWN SECTION */
 .countdown-section {
-  padding: 45px 0;
-  background: var(--color-card-bg);
-  border-top: 1px solid var(--color-border);
+  padding: 50px 0;
+  background: var(--color-white);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -280,36 +293,36 @@ body {
 }
 
 .countdown-box {
-  background: var(--color-bg);
+  background: var(--color-rose-soft);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   padding: 16px 14px;
-  min-width: 80px;
+  min-width: 82px;
   text-align: center;
 }
 
 .countdown-value {
   font-family: var(--font-title);
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: 600;
-  color: var(--color-accent);
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 700;
+  color: var(--color-crimson);
   line-height: 1;
 }
 
 .countdown-label {
   font-family: var(--font-sans);
   font-size: 0.68rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-text-muted);
+  letter-spacing: 1.5px;
+  color: var(--color-text-sub);
   margin-top: 5px;
 }
 
-/* 4. CHÚ RỂ & CÔ DÂU SECTION */
+/* 4. COUPLE CARDS */
 .couple-section {
   padding: 70px 0;
-  background: var(--color-bg);
+  background: var(--color-rose-bg);
 }
 
 .couple-grid {
@@ -319,19 +332,19 @@ body {
 }
 
 .couple-card {
-  background: var(--color-card-bg);
+  background: var(--color-white);
   border-radius: var(--radius-card);
-  padding: 30px 20px;
+  padding: 32px 22px;
   text-align: center;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: var(--shadow-card);
   border: 1px solid var(--color-border);
   transition: var(--transition);
 }
 
 .couple-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--color-gold);
+  border-color: var(--color-rose);
 }
 
 .couple-img-wrapper {
@@ -340,7 +353,8 @@ body {
   margin: 0 auto 18px;
   border-radius: 50%;
   padding: 4px;
-  border: 1px solid var(--color-gold);
+  border: 2px solid var(--color-rose);
+  box-shadow: 0 6px 18px rgba(243, 144, 161, 0.25);
 }
 
 .couple-img {
@@ -354,44 +368,45 @@ body {
 .couple-role {
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-gold);
+  font-weight: 700;
+  color: var(--color-crimson-light);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .couple-name {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.5vw, 2.4rem);
-  font-weight: 600;
-  color: var(--color-accent);
+  font-size: clamp(2rem, 3.8vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-crimson);
   margin: 2px 0 4px;
 }
 
 .couple-badge-job {
   display: inline-block;
-  background: var(--color-accent-soft);
-  color: var(--color-accent);
+  background: var(--color-rose-soft);
+  color: var(--color-crimson);
   font-size: 0.82rem;
-  font-weight: 500;
-  padding: 3px 12px;
-  border-radius: 15px;
-  margin-bottom: 12px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  border: 1px solid var(--color-border);
 }
 
 .parents-info {
-  font-size: 0.85rem;
-  color: var(--color-text-dark);
+  font-size: 0.88rem;
+  color: var(--color-text-main);
   line-height: 1.6;
   padding: 10px 0;
   border-top: 1px dashed var(--color-border);
   border-bottom: 1px dashed var(--color-border);
 }
 
-/* 5. LỊCH TRÌNH TIỆC MỪNG & LỄ THÀNH HÔN (RÕ RÀNG NHÀ TRAI / NHÀ GÁI) */
+/* 5. LỊCH TIỆC & LỄ THÀNH HÔN */
 .events-section {
   padding: 70px 0;
-  background: var(--color-card-bg);
+  background: var(--color-white);
 }
 
 .events-grid {
@@ -401,18 +416,18 @@ body {
 }
 
 .event-card {
-  background: var(--color-bg);
+  background: var(--color-rose-bg);
   border-radius: var(--radius-card);
   padding: 30px 20px;
   text-align: center;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-subtle);
+  box-shadow: var(--shadow-card);
   transition: var(--transition);
 }
 
 .event-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-gold);
+  transform: translateY(-4px);
+  border-color: var(--color-rose);
   box-shadow: var(--shadow-hover);
 }
 
@@ -420,35 +435,34 @@ body {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: var(--color-card-bg);
-  color: var(--color-accent);
+  background: var(--color-white);
+  color: var(--color-crimson);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 14px;
-  border: 1px solid var(--color-gold);
+  border: 1px solid var(--color-rose);
 }
 
 .event-title {
   font-family: var(--font-title);
   font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--color-accent);
+  font-weight: 700;
+  color: var(--color-crimson);
   margin-bottom: 6px;
-  letter-spacing: 0.5px;
 }
 
 .event-time {
   font-family: var(--font-sans);
   font-weight: 600;
-  color: var(--color-gold);
+  color: var(--color-crimson-light);
   font-size: 0.95rem;
   margin-bottom: 3px;
 }
 
 .event-lunar {
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-sub);
   margin-bottom: 10px;
   font-style: italic;
 }
@@ -456,13 +470,13 @@ body {
 .event-location {
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--color-text-dark);
+  color: var(--color-text-main);
   margin-bottom: 4px;
 }
 
 .event-address {
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-sub);
   margin-bottom: 20px;
   min-height: 40px;
 }
@@ -477,11 +491,11 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 9px 18px;
-  border-radius: 20px;
+  gap: 6px;
+  padding: 9px 20px;
+  border-radius: 25px;
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: var(--transition);
@@ -489,30 +503,31 @@ body {
 }
 
 .btn-primary {
-  background: var(--color-accent);
-  color: #ffffff;
-  border: 1px solid var(--color-accent);
+  background: var(--color-crimson);
+  color: var(--color-white);
+  border: 1px solid var(--color-crimson);
 }
 
 .btn-primary:hover {
-  background: #731E24;
+  background: var(--color-crimson-light);
+  box-shadow: 0 5px 15px rgba(99, 23, 27, 0.3);
 }
 
 .btn-outline {
-  background: var(--color-card-bg);
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
+  background: var(--color-white);
+  color: var(--color-crimson);
+  border: 1px solid var(--color-crimson);
 }
 
 .btn-outline:hover {
-  background: var(--color-accent);
-  color: #ffffff;
+  background: var(--color-crimson);
+  color: var(--color-white);
 }
 
-/* 6. ALBUM ẢNH CƯỚI (6 ẢNH CHỌN LỌC) */
+/* 6. ALBUM ẢNH CƯỚI CHỌN LỌC (6 ẢNH) */
 .gallery-section {
   padding: 70px 0;
-  background: var(--color-bg);
+  background: var(--color-rose-bg);
 }
 
 .gallery-grid {
@@ -527,7 +542,7 @@ body {
   overflow: hidden;
   height: 260px;
   cursor: pointer;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: var(--shadow-card);
   border: 1px solid var(--color-border);
 }
 
@@ -546,7 +561,7 @@ body {
 .gallery-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to top, rgba(34, 34, 34, 0.8), transparent);
+  background: linear-gradient(to top, rgba(42, 24, 26, 0.85), transparent);
   display: flex;
   align-items: flex-end;
   padding: 14px;
@@ -559,7 +574,7 @@ body {
 }
 
 .gallery-caption {
-  color: var(--color-gold);
+  color: var(--color-rose);
   font-family: var(--font-serif);
   font-size: 1.25rem;
 }
@@ -567,22 +582,22 @@ body {
 /* 7. RSVP SECTION */
 .rsvp-section {
   padding: 70px 0;
-  background: linear-gradient(180deg, rgba(34, 34, 34, 0.86), rgba(140, 37, 44, 0.86)),
+  background: linear-gradient(180deg, rgba(42, 24, 26, 0.88), rgba(99, 23, 27, 0.88)),
               url('asset/images/AnhThiep/NVT09928.jpg') center/cover fixed;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .rsvp-section .section-title {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .rsvp-card {
   max-width: 520px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-card);
   padding: 32px 22px;
 }
@@ -597,16 +612,16 @@ body {
   font-size: 0.85rem;
   font-weight: 500;
   margin-bottom: 5px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .form-control {
   width: 100%;
   padding: 11px 15px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 0.92rem;
   outline: none;
 }
@@ -616,20 +631,20 @@ body {
 }
 
 select.form-control option {
-  background: #333;
-  color: #fff;
+  background: var(--color-crimson);
+  color: var(--color-white);
 }
 
-/* 8. GIFT BOX MODAL */
+/* 8. GIFT MODAL */
 .gift-section {
   padding: 70px 0;
-  background: var(--color-card-bg);
+  background: var(--color-white);
   text-align: center;
 }
 
 .gift-card-trigger {
-  background: var(--color-bg);
-  border: 1px dashed var(--color-gold);
+  background: var(--color-rose-bg);
+  border: 1px dashed var(--color-rose);
   border-radius: var(--radius-card);
   padding: 30px 20px;
   max-width: 540px;
@@ -639,7 +654,7 @@ select.form-control option {
 .modal-backdrop {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.72);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -656,7 +671,7 @@ select.form-control option {
 }
 
 .modal-content {
-  background: var(--color-card-bg);
+  background: var(--color-white);
   border-radius: var(--radius-card);
   width: 90%;
   max-width: 560px;
@@ -664,7 +679,7 @@ select.form-control option {
   overflow-y: auto;
   padding: 28px 18px;
   position: relative;
-  border: 1px solid var(--color-gold);
+  border: 1px solid var(--color-rose);
 }
 
 .modal-close-btn {
@@ -674,7 +689,7 @@ select.form-control option {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--color-text-muted);
+  color: var(--color-text-sub);
 }
 
 .bank-grid {
@@ -685,7 +700,7 @@ select.form-control option {
 }
 
 .bank-card {
-  background: var(--color-bg);
+  background: var(--color-rose-bg);
   border-radius: var(--radius-card);
   padding: 16px;
   border: 1px solid var(--color-border);
@@ -697,18 +712,18 @@ select.form-control option {
   height: 145px;
   object-fit: contain;
   margin: 8px 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-rose);
   border-radius: 6px;
 }
 
 .copy-btn {
-  background: var(--color-accent);
-  color: #ffffff;
+  background: var(--color-crimson);
+  color: var(--color-white);
   border: none;
   padding: 6px 14px;
-  border-radius: 15px;
+  border-radius: 18px;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 5px;
 }
@@ -716,7 +731,7 @@ select.form-control option {
 /* 9. GUESTBOOK SECTION */
 .guestbook-section {
   padding: 70px 0;
-  background: var(--color-bg);
+  background: var(--color-rose-bg);
 }
 
 .guestbook-grid {
@@ -731,12 +746,12 @@ select.form-control option {
 }
 
 .wish-item {
-  background: var(--color-card-bg);
+  background: var(--color-white);
   border-radius: var(--radius-card);
   padding: 15px;
   margin-bottom: 10px;
-  box-shadow: var(--shadow-subtle);
-  border-left: 3px solid var(--color-accent);
+  box-shadow: var(--shadow-card);
+  border-left: 3.5px solid var(--color-crimson);
 }
 
 .wish-header {
@@ -747,39 +762,39 @@ select.form-control option {
 }
 
 .wish-author {
-  font-weight: 600;
-  color: var(--color-accent);
+  font-weight: 700;
+  color: var(--color-crimson);
 }
 
 .wish-time {
   font-size: 0.75rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-sub);
 }
 
 .wish-text {
   font-size: 0.88rem;
-  color: var(--color-text-dark);
+  color: var(--color-text-main);
 }
 
 /* 10. FOOTER */
 .footer {
-  background: #1C0507;
-  color: #ffffff;
+  background: #23080A;
+  color: var(--color-white);
   padding: 45px 20px 25px;
   text-align: center;
 }
 
 .footer-names {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: var(--color-gold);
+  font-size: clamp(2.6rem, 5.5vw, 3.6rem);
+  color: var(--color-rose);
   margin-bottom: 6px;
 }
 
 .footer-thankyou {
   font-size: 0.95rem;
   margin-bottom: 15px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* TOAST */
@@ -788,16 +803,16 @@ select.form-control option {
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%) translateY(50px);
-  background: var(--color-accent);
-  color: #ffffff;
+  background: var(--color-crimson);
+  color: var(--color-white);
   padding: 10px 22px;
   border-radius: 25px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  border: 1px solid var(--color-gold);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border: 1px solid var(--color-rose);
   opacity: 0;
   transition: all 0.4s ease;
   z-index: 3000;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .toast-msg.show {
