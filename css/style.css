@@ -1,31 +1,32 @@
 /* ==========================================================================
    CINELOVE TEMPLATE 46 - LÂM TUẤN & NHƯ HUẾ
-   Style: Cinelove 46 Luxe Romantic Red & Rose Gold
+   Style: Exact Match to Cinelove 46 Cover & Saturday Feast Card Mockups
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap');
 
 :root {
   --color-crimson: #63171B;
   --color-crimson-light: #8E2328;
   --color-rose: #F390A1;
-  --color-rose-soft: #FDF0F2;
-  --color-rose-bg: #FFF7F8;
+  --color-rose-soft: #FFF5F6;
+  --color-rose-bg: #FAF3F4;
   --color-gold: #D4AF37;
   --color-text-main: #2A181A;
   --color-text-sub: #635053;
   --color-white: #FFFFFF;
   --color-border: #F3D5DA;
+  --color-border-card: #FADEE3;
 
   --font-serif: 'Cormorant Garamond', serif;
   --font-title: 'Playfair Display', serif;
   --font-body: 'Be Vietnam Pro', sans-serif;
   --font-sans: 'Montserrat', sans-serif;
-  --font-script: 'Great Vibes', 'Alex Brush', cursive;
+  --font-script: 'Great Vibes', 'Alex Brush', 'Sacramento', cursive;
 
-  --shadow-card: 0 10px 30px rgba(99, 23, 27, 0.08);
-  --shadow-hover: 0 15px 40px rgba(99, 23, 27, 0.16);
-  --radius-card: 16px;
+  --shadow-card: 0 10px 30px rgba(99, 23, 27, 0.06);
+  --shadow-hover: 0 15px 40px rgba(99, 23, 27, 0.12);
+  --radius-card: 20px;
   --transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -73,9 +74,9 @@ body {
 
 .container {
   width: 100%;
-  max-width: 880px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 .text-center { text-align: center; }
@@ -83,7 +84,7 @@ body {
 /* SECTION TITLES */
 .section-header {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .section-subtitle {
@@ -116,22 +117,23 @@ body {
   border-radius: 2px;
 }
 
-/* MUSIC BUTTON */
+/* MUSIC BUTTON (TOP RIGHT AS IN IMAGE 2) */
 .music-player-btn {
   position: fixed;
-  bottom: 22px;
-  right: 22px;
-  width: 48px;
-  height: 48px;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--color-crimson);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
   color: var(--color-white);
-  border: 1.5px solid var(--color-rose);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(99, 23, 27, 0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   z-index: 1000;
   transition: var(--transition);
 }
@@ -142,6 +144,8 @@ body {
 
 .music-player-btn.playing {
   animation: rotateDisc 5s linear infinite;
+  background: var(--color-crimson);
+  border-color: var(--color-rose);
 }
 
 @keyframes rotateDisc {
@@ -149,110 +153,73 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.music-icon {
-  font-size: 1.15rem;
-}
-
-/* 1. CINELOVE 46 HERO COVER */
+/* 1. CINELOVE 46 HERO COVER (EXACT MATCH TO IMAGE 2) */
 .hero-section {
   position: relative;
-  min-height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, rgba(42, 24, 26, 0.45) 0%, rgba(99, 23, 27, 0.72) 100%),
-              url('asset/images/AnhThiep/AnhCong/NVT09675.jpg') center 18%/cover no-repeat;
-  color: var(--color-white);
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.hero-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-card);
-  padding: 45px 25px;
-  max-width: 600px;
+  min-height: 100vh;
   width: 100%;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.55) 100%),
+              url('asset/images/AnhThiep/AnhCong/NVT09675.jpg') center 20%/cover no-repeat;
+  color: var(--color-white);
+  padding: 30px 24px 45px;
 }
 
-.hero-badge {
-  font-family: var(--font-sans);
-  font-size: clamp(0.72rem, 1.6vw, 0.85rem);
-  color: var(--color-rose);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  font-weight: 600;
+.hero-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
 
-.hero-names {
-  font-family: var(--font-serif);
-  font-size: clamp(3.2rem, 7vw, 4.6rem);
-  font-weight: 600;
+.hero-save-date-text {
+  font-family: var(--font-script);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  line-height: 1;
+}
+
+.hero-bottom-area {
+  width: 100%;
+  text-align: left;
+  max-width: 500px;
+}
+
+.hero-couple-names {
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 8vw, 4.8rem);
+  color: #FFFFFF;
   line-height: 1.1;
-  color: var(--color-white);
-  margin: 10px 0;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.35);
+  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  margin-bottom: 12px;
 }
 
-.hero-names span.heart-divider {
-  display: inline-block;
-  color: var(--color-rose);
+.hero-couple-names .hero-ampersand {
   font-family: var(--font-title);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin: 0 8px;
   font-style: italic;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 0 6px;
+  color: var(--color-rose);
 }
 
-.hero-subtitle {
-  font-size: clamp(0.85rem, 1.9vw, 1rem);
-  font-weight: 500;
-  margin-bottom: 22px;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.95);
-  text-transform: uppercase;
-}
-
-.hero-date {
+.hero-bottom-badge {
+  display: inline-block;
+  background: rgba(99, 23, 27, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(243, 144, 161, 0.6);
+  padding: 8px 22px;
+  border-radius: 25px;
   font-family: var(--font-sans);
-  font-size: clamp(0.88rem, 2vw, 1.1rem);
+  font-size: clamp(0.78rem, 1.8vw, 0.9rem);
   font-weight: 600;
   letter-spacing: 2px;
-  padding: 9px 26px;
-  background: rgba(99, 23, 27, 0.75);
-  border: 1px solid var(--color-rose);
-  border-radius: 30px;
-  display: inline-block;
-  margin-bottom: 25px;
-  color: var(--color-white);
+  color: #FFFFFF;
 }
 
-.scroll-down-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid var(--color-rose);
-  color: var(--color-rose);
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: var(--transition);
-}
-
-.scroll-down-btn:hover {
-  background: var(--color-rose);
-  color: var(--color-crimson);
-}
-
-/* 2. THÔNG TIN GIA ĐÌNH SONG SONG (THEO MẪU ẢNH UPLOAD) */
+/* 2. THÔNG TIN GIA ĐÌNH SONG SONG (THEO MẪU MỚI) */
 .family-section {
   padding: 60px 0 50px;
   background: var(--color-white);
@@ -275,7 +242,7 @@ body {
   border-radius: var(--radius-card);
   padding: 38px 20px 32px;
   box-shadow: var(--shadow-card);
-  max-width: 780px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
@@ -343,38 +310,15 @@ body {
 }
 
 .family-divider-icon {
-  font-size: 1.4rem;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 3. CINELOVE QUOTE CARD */
-.quote-section {
-  padding: 55px 0;
-  background: var(--color-rose-soft);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.quote-card {
-  background: var(--color-white);
-  border-radius: var(--radius-card);
-  padding: 35px 25px;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-border);
-}
-
-.quote-text {
-  font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 3vw, 1.45rem);
-  color: var(--color-crimson);
-  line-height: 1.8;
-  font-style: italic;
-  font-weight: 500;
-}
-
-/* 4. COUNTDOWN SECTION */
+/* 3. COUNTDOWN SECTION */
 .countdown-section {
   padding: 50px 0;
-  background: var(--color-white);
+  background: var(--color-rose-bg);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -387,12 +331,13 @@ body {
 }
 
 .countdown-box {
-  background: var(--color-rose-soft);
+  background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
+  border-radius: 14px;
   padding: 16px 14px;
   min-width: 82px;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
 .countdown-value {
@@ -413,73 +358,69 @@ body {
   margin-top: 5px;
 }
 
-/* 5. WEDDING EVENTS SECTION */
+/* 4. WEDDING EVENTS (EXACT MATCH TO IMAGE 1) */
 .events-section {
-  padding: 70px 0;
+  padding: 65px 0;
   background: var(--color-rose-bg);
 }
 
 .events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 580px;
+  margin: 0 auto;
 }
 
+/* MAIN EVENT CARD (WHITE OUTER CONTAINER AS IN IMAGE 1) */
 .event-card {
   background: var(--color-white);
-  border-radius: var(--radius-card);
-  padding: 28px 22px;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-card);
-  transition: var(--transition);
+  border-radius: 22px;
+  padding: 32px 20px 24px;
+  box-shadow: 0 10px 30px rgba(99, 23, 27, 0.05);
+  position: relative;
+  text-align: center;
 }
 
-.event-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-rose);
-  box-shadow: var(--shadow-hover);
-}
-
-.event-icon {
+.event-card-header-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--color-rose-soft);
-  color: var(--color-crimson);
+  background: #FFF0F2;
+  border: 1px solid var(--color-border-card);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 12px;
-  border: 1px solid var(--color-rose);
+  margin: -55px auto 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .event-title {
   font-family: var(--font-title);
-  font-size: 1.25rem;
+  font-size: clamp(1.3rem, 3.2vw, 1.5rem);
   font-weight: 700;
   color: var(--color-crimson);
   margin-bottom: 4px;
-  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .event-header-date {
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-crimson-light);
-  text-align: center;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 22px;
 }
 
+/* INNER SUB-CARDS (PINK BOXES AS IN IMAGE 1) */
 .sub-event-item {
-  background: var(--color-rose-bg);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 14px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  background: var(--color-rose-soft);
+  border: 1px solid var(--color-border-card);
+  border-radius: 16px;
+  padding: 20px 16px 18px;
+  margin-bottom: 16px;
+  text-align: left;
 }
 
 .sub-event-item:last-child {
@@ -491,12 +432,13 @@ body {
   background: var(--color-crimson);
   color: var(--color-white);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 4px 12px;
-  border-radius: 15px;
-  margin-bottom: 8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
 .side-badge.bride-side {
@@ -506,50 +448,54 @@ body {
 .sub-event-time {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: clamp(0.92rem, 2.2vw, 1.02rem);
   color: var(--color-crimson);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .sub-event-location {
-  font-weight: 600;
-  font-size: 0.92rem;
+  font-weight: 700;
+  font-size: clamp(0.92rem, 2.2vw, 1rem);
   color: var(--color-text-main);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .sub-event-address {
   font-size: 0.85rem;
   color: var(--color-text-sub);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  padding-left: 21px;
 }
 
-.btn {
+.btn-map-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 9px 20px;
-  border-radius: 25px;
+  background: var(--color-crimson);
+  color: var(--color-white);
+  padding: 8px 22px;
+  border-radius: 20px;
   font-size: 0.82rem;
   font-weight: 600;
   text-decoration: none;
-  cursor: pointer;
   transition: var(--transition);
   border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(99, 23, 27, 0.2);
 }
 
-.btn-primary {
-  background: var(--color-crimson);
-  color: var(--color-white);
-  border: 1px solid var(--color-crimson);
-}
-
-.btn-primary:hover {
+.btn-map-pill:hover {
   background: var(--color-crimson-light);
-  box-shadow: 0 5px 15px rgba(99, 23, 27, 0.3);
+  transform: translateY(-1px);
 }
 
-/* 6. RSVP SECTION */
+/* 5. RSVP SECTION */
 .rsvp-section {
   padding: 70px 0;
   background: linear-gradient(180deg, rgba(42, 24, 26, 0.88), rgba(99, 23, 27, 0.88)),
@@ -605,7 +551,7 @@ select.form-control option {
   color: var(--color-white);
 }
 
-/* 7. GIFT MODAL */
+/* 6. GIFT MODAL */
 .gift-section {
   padding: 70px 0;
   background: var(--color-white);
@@ -698,13 +644,13 @@ select.form-control option {
   margin-top: 5px;
 }
 
-/* 8. GUESTBOOK SECTION */
+/* 7. GUESTBOOK SECTION */
 .guestbook-section {
   padding: 70px 0;
   background: var(--color-rose-bg);
 }
 
-/* 9. FOOTER */
+/* 8. FOOTER */
 .footer {
   background: #23080A;
   color: var(--color-white);
@@ -750,7 +696,6 @@ select.form-control option {
 
 /* RESPONSIVE */
 @media (max-width: 576px) {
-  .hero-card { padding: 35px 18px; }
   .family-grid { flex-direction: column; gap: 20px; }
   .family-divider { flex-direction: row; width: 100%; margin: 10px 0; }
   .family-divider-line { width: 60px; height: 1px; }

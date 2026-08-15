@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Mẫu Cinelove 46 Luxe (Icons Vector SVG Sang Trọng - Không Dùng Cartoon Emoji)
+ * Mẫu Cinelove 46 Luxe (Khớp 100% Ảnh 1 & Ảnh 2)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -33,7 +33,6 @@ function renderConfigData(config) {
 
   setText("hero-groom", groom.shortName);
   setText("hero-bride", bride.shortName);
-  setText("hero-date", `${config.weddingDayOfWeek}, ${config.weddingDateDisplay} (${config.lunarDateDisplay})`);
 
   renderEvents(config.events);
 }
@@ -48,7 +47,7 @@ function setImg(id, src) {
   if (el) el.src = src || "";
 }
 
-/* 2. SỰ KIỆN CƯỚI (ICONS VECTOR SVG SANG TRỌNG) */
+/* 2. SỰ KIỆN CƯỚI (KHỚP 100% VỚI ẢNH MẪU 1) */
 function renderEvents(events) {
   const container = document.getElementById("events-grid");
   if (!container || !events) return;
@@ -59,30 +58,32 @@ function renderEvents(events) {
     card.className = "event-card";
 
     if (ev.isMerged) {
-      // Thẻ gộp Tiệc Mừng Thứ 7
+      // Thẻ gộp Tiệc Mừng Thứ 7 (Chuẩn Ảnh Mẫu 1)
       let subItemsHtml = "";
       ev.subEvents.forEach((sub, idx) => {
         const badgeClass = idx === 1 ? "side-badge bride-side" : "side-badge";
         subItemsHtml += `
           <div class="sub-event-item">
-            <span class="${badgeClass}">${sub.sideName}</span>
+            <div>
+              <span class="${badgeClass}">${sub.sideName}</span>
+            </div>
             <div class="sub-event-time">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-              ${sub.time}
+              <span>${sub.time}</span>
             </div>
             <div class="sub-event-location">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              ${sub.location}
+              <span>${sub.location}</span>
             </div>
             <div class="sub-event-address">${sub.address}</div>
-            <div style="margin-top: 10px;">
-              <a href="${sub.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">
+            <div>
+              <a href="${sub.mapUrl}" target="_blank" rel="noopener" class="btn-map-pill">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
@@ -95,10 +96,10 @@ function renderEvents(events) {
       });
 
       card.innerHTML = `
-        <div class="event-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
-            <path d="M9 21V12h6v9"></path>
+        <div class="event-card-header-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#63171B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
         </div>
         <h3 class="event-title">${ev.title}</h3>
@@ -110,33 +111,33 @@ function renderEvents(events) {
     } else {
       // Thẻ Lễ Thành Hôn Chính Thức
       card.innerHTML = `
-        <div class="event-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+        <div class="event-card-header-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#63171B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
         </div>
         <h3 class="event-title">${ev.title}</h3>
         <div class="event-header-date">${ev.dateHeader}</div>
         
         <div class="sub-event-item" style="text-align: center;">
-          <div class="sub-event-time">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+          <div class="sub-event-time" style="justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            ${ev.time}
+            <span>${ev.time}</span>
           </div>
           <div style="font-size: 0.82rem; color: var(--color-text-sub); margin-bottom: 8px;">${ev.lunarTime}</div>
-          <div class="sub-event-location">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;">
+          <div class="sub-event-location" style="justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            ${ev.location}
+            <span>${ev.location}</span>
           </div>
-          <div class="sub-event-address">${ev.address}</div>
-          <div style="margin-top: 15px;">
-            <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 9px 24px;">
+          <div class="sub-event-address" style="padding-left: 0;">${ev.address}</div>
+          <div style="margin-top: 14px;">
+            <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn-map-pill">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
@@ -183,7 +184,7 @@ function initCountdown(targetDateStr) {
   setInterval(update, 1000);
 }
 
-/* 4. PHÁT NHẠC MỐI DUYÊN VÀNG (CHỈ BẤM MỚI BẬT) */
+/* 4. PHÁT NHẠC (BẤM NÚT TRÊN CÙNG BÊN PHẢI) */
 function initAudioPlayer(musicConfig) {
   const btn = document.getElementById("music-toggle-btn");
   const audio = document.getElementById("bg-audio");
@@ -249,7 +250,7 @@ function initRSVPForm(sheetConfig) {
   });
 }
 
-/* 6. SỔ LƯU BÚT (GỬI VỀ GOOGLE SHEET CHÍNH THỨC) */
+/* 6. SỔ LƯU BÚT */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   if (!form) return;
