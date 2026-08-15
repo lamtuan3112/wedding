@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Tải mượt 100%, style Hiện đại - Sang trọng (Ultra-Luxury Theme)
+ * Style Tối giản - Sang trọng - Tải mượt 100%
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -41,7 +41,6 @@ function renderConfigData(config) {
   setText("hero-bride", bride.shortName);
   setText("hero-date", `${config.weddingDayOfWeek}, ${config.weddingDateDisplay} (${config.lunarDateDisplay})`);
 
-  renderLoveStory(config.story);
   renderEvents(config.events);
 }
 
@@ -55,29 +54,7 @@ function setImg(id, src) {
   if (el) el.src = src || "";
 }
 
-/* 2. DÒNG THỜI GIAN TÌNH YÊU */
-function renderLoveStory(stories) {
-  const container = document.getElementById("story-timeline");
-  if (!container || !stories) return;
-
-  container.innerHTML = "";
-  stories.forEach((item) => {
-    const itemEl = document.createElement("div");
-    itemEl.className = "timeline-item";
-    itemEl.innerHTML = `
-      <div class="timeline-dot">✨</div>
-      <div class="timeline-content">
-        <div class="timeline-date">${item.date}</div>
-        <h3 class="timeline-title">${item.title}</h3>
-        ${item.image ? `<img src="${item.image}" alt="${item.title}" class="timeline-img" loading="lazy">` : ''}
-        <p class="timeline-desc">${item.description}</p>
-      </div>
-    `;
-    container.appendChild(itemEl);
-  });
-}
-
-/* 3. SỰ KIỆN CƯỚI VỚI ICON LUXURY VECTOR */
+/* 2. SỰ KIỆN CƯỚI (PHÂN CHIA TIỆC NHÀ TRAI - NHÀ GÁI - LỄ THÀNH HÔN) */
 function renderEvents(events) {
   const container = document.getElementById("events-grid");
   if (!container || !events) return;
@@ -88,7 +65,7 @@ function renderEvents(events) {
     card.className = "event-card";
     card.innerHTML = `
       <div class="event-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"></path>
           <path d="M9 21V12h6v9"></path>
         </svg>
@@ -100,14 +77,14 @@ function renderEvents(events) {
       <p class="event-address">${ev.address}</p>
       <div class="btn-group">
         <a href="${ev.mapUrl}" target="_blank" rel="noopener" class="btn btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
           Xem Bản Đồ
         </a>
         <a href="${ev.calendarUrl}" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
             <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -121,7 +98,7 @@ function renderEvents(events) {
   });
 }
 
-/* 4. ĐỒNG HỒ ĐẾM NGƯỢC */
+/* 3. ĐỒNG HỒ ĐẾM NGƯỢC */
 function initCountdown(targetDateStr) {
   const targetDate = new Date(targetDateStr).getTime();
 
@@ -152,7 +129,7 @@ function initCountdown(targetDateStr) {
   setInterval(update, 1000);
 }
 
-/* 5. PHÁT NHẠC MỐI DUYÊN VÀNG (CHỈ PHÁT KHI BẤM NỐT NHẠC) */
+/* 4. PHÁT NHẠC MỐI DUYÊN VÀNG (CHỈ BẤM MỚI BẬT) */
 function initAudioPlayer(musicConfig) {
   const btn = document.getElementById("music-toggle-btn");
   const audio = document.getElementById("bg-audio");
@@ -181,7 +158,7 @@ function initAudioPlayer(musicConfig) {
   });
 }
 
-/* 6. FORM RSVP */
+/* 5. FORM RSVP */
 function initRSVPForm(sheetConfig) {
   const form = document.getElementById("rsvp-form");
   if (!form) return;
@@ -211,14 +188,14 @@ function initRSVPForm(sheetConfig) {
 
     showThankYouModal(
       "XÁC NHẬN THAM DỰ THÀNH CÔNG!",
-      `Cảm ơn bạn <strong>${name}</strong> (${side}) đã gửi xác nhận <em>${status}</em>.<br><br>Sự hiện diện và tình cảm của bạn là niềm vinh hạnh lớn nhất của Lâm Tuấn & Như Huế!`
+      `Cảm ơn bạn <strong>${name}</strong> (${side}) đã gửi xác nhận <em>${status}</em>.<br><br>Sự hiện diện của bạn là niềm vinh hạnh lớn nhất của Lâm Tuấn & Như Huế!`
     );
 
     form.reset();
   });
 }
 
-/* 7. SỔ LƯU BÚT - JSONP SCRIPT TAG (TẢI MƯỢT 100% CẢ LOCAL VÀ GITHUB) */
+/* 6. SỔ LƯU BÚT - JSONP SCRIPT INJECTION (TẢI MƯỢT 100%) */
 function initGuestbook(sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
@@ -229,14 +206,13 @@ function initGuestbook(sheetConfig) {
 
     if (!wishesArray || wishesArray.length === 0) {
       wishesListEl.innerHTML = `
-        <div style="background: #fff; border-radius: var(--radius-md); padding: 25px; text-align: center; color: var(--text-muted); border: 1px dashed var(--gold-primary);">
+        <div style="background: #fff; border-radius: var(--radius-card); padding: 22px; text-align: center; color: var(--color-text-muted); border: 1px dashed var(--color-gold);">
           🌸 Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc mừng đến Lâm Tuấn & Như Huế nhé! ❤️
         </div>
       `;
       return;
     }
 
-    // Hiển thị tối đa 3 lời chúc mới nhất từ Sheet
     const recentWishes = wishesArray.slice(-3).reverse();
 
     recentWishes.forEach((w) => {
@@ -253,7 +229,6 @@ function initGuestbook(sheetConfig) {
     });
   }
 
-  // Callback JSONP Toàn Cục
   window.handleGoogleSheetWishes = function(data) {
     try {
       if (data && data.table && data.table.rows) {
@@ -284,7 +259,6 @@ function initGuestbook(sheetConfig) {
     }
   };
 
-  // Hàm load JSONP không bị CORS
   function loadWishesFromSheet() {
     if (!sheetConfig || !sheetConfig.sheetId) return;
 
@@ -334,7 +308,7 @@ function initGuestbook(sheetConfig) {
   }
 }
 
-/* 8. MODAL THÔNG BÁO CẢM ƠN */
+/* 7. MODAL THÔNG BÁO CẢM ƠN */
 function initThankYouModal() {
   const modal = document.getElementById("thankyou-modal");
   const closeBtn = document.getElementById("thankyou-close-btn");
@@ -362,7 +336,7 @@ function showThankYouModal(titleText, htmlMessage) {
   }
 }
 
-/* 9. MODAL HỘP MỪNG CƯỚI */
+/* 8. MODAL HỘP MỪNG CƯỚI */
 function initBankModal(bankConfig) {
   const triggerBtn = document.getElementById("open-gift-modal-btn");
   const modal = document.getElementById("gift-modal");
@@ -391,7 +365,7 @@ function initBankModal(bankConfig) {
     }
     if (bankConfig.bride) {
       setText("bank-bride-name", bankConfig.bride.owner);
-      setText("bank-bride-bank", bankConfig.bride.bankName);
+      setText("bank-bride-bank", bankConfig.bride.bankNameFull || bankConfig.bride.bankName);
       setText("bank-bride-account", bankConfig.bride.accountNumber);
       setImg("bank-bride-qr", bankConfig.bride.qrCodeUrl);
     }
@@ -411,7 +385,7 @@ function initBankModal(bankConfig) {
   });
 }
 
-/* 10. CANVAS CÁNH HOA & TRÁI TIM VÀNG KIM BÔNG BỀNH */
+/* 9. CANVAS CÁNH HOA & TRÁI TIM */
 function initHeartCanvas() {
   const canvas = document.getElementById("petal-canvas");
   if (!canvas) return;
@@ -426,7 +400,7 @@ function initHeartCanvas() {
   });
 
   const particles = [];
-  const particleCount = width < 600 ? 14 : 22;
+  const particleCount = width < 600 ? 12 : 18;
 
   class HeartParticle {
     constructor() {
@@ -435,15 +409,15 @@ function initHeartCanvas() {
     reset() {
       this.x = Math.random() * width;
       this.y = Math.random() * -height;
-      this.size = Math.random() * 8 + 5;
-      this.speedY = Math.random() * 0.9 + 0.4;
-      this.speedX = Math.random() * 0.6 - 0.3;
-      this.opacity = Math.random() * 0.45 + 0.25;
+      this.size = Math.random() * 7 + 4;
+      this.speedY = Math.random() * 0.8 + 0.3;
+      this.speedX = Math.random() * 0.5 - 0.25;
+      this.opacity = Math.random() * 0.4 + 0.2;
       this.isHeart = Math.random() > 0.5;
     }
     update() {
       this.y += this.speedY;
-      this.x += Math.sin(this.y * 0.015) * 0.5 + this.speedX;
+      this.x += Math.sin(this.y * 0.015) * 0.4 + this.speedX;
       if (this.y > height) {
         this.reset();
       }
@@ -454,7 +428,7 @@ function initHeartCanvas() {
       ctx.globalAlpha = this.opacity;
 
       if (this.isHeart) {
-        ctx.fillStyle = "#D4AF37"; // Champagne Gold
+        ctx.fillStyle = "#C8A968";
         ctx.beginPath();
         const topCurveHeight = this.size * 0.3;
         ctx.moveTo(0, topCurveHeight);
@@ -464,7 +438,7 @@ function initHeartCanvas() {
         ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
         ctx.fill();
       } else {
-        ctx.fillStyle = "#F4DCDD"; // Soft Rose
+        ctx.fillStyle = "#EBE0E1";
         ctx.beginPath();
         ctx.ellipse(0, 0, this.size * 0.6, this.size, Math.PI / 4, 0, 2 * Math.PI);
         ctx.fill();
@@ -490,7 +464,7 @@ function initHeartCanvas() {
   loop();
 }
 
-/* 11. SCROLL ANIMATIONS */
+/* 10. SCROLL ANIMATIONS */
 function initScrollAnimations() {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -504,15 +478,15 @@ function initScrollAnimations() {
     { threshold: 0.1 }
   );
 
-  document.querySelectorAll(".couple-card, .event-card, .timeline-content, .gallery-item").forEach((el) => {
+  document.querySelectorAll(".couple-card, .event-card, .gallery-item").forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateY(22px)";
-    el.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+    el.style.transform = "translateY(20px)";
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     observer.observe(el);
   });
 }
 
-/* 12. TOAST UTILITY */
+/* 11. TOAST UTILITY */
 function showToast(message) {
   let toast = document.getElementById("toast-msg");
   if (!toast) {
