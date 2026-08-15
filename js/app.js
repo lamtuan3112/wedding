@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Tự động ghi Lời chúc & RSVP tham dự vào Google Sheet & LocalStorage
+ * Tự động ghi Lời chúc & RSVP tham dự vào Google Sheet & Hiển thị Thông Báo Cảm Ơn
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRSVPForm(config.googleSheet);
   initGuestbook(config.defaultWishes, config.googleSheet);
   initBankModal(config.bankAccounts);
+  initThankYouModal();
   initScrollAnimations();
 });
 
@@ -193,7 +194,7 @@ function initAudioPlayer(musicConfig) {
   });
 }
 
-/* 6. FORM RSVP - GỬI VÀO GOOGLE SHEET & LOCALSTORAGE */
+/* 6. FORM RSVP - GỬI GOOGLE SHEET + MỞ POPUP CẢM ƠN */
 function initRSVPForm(sheetConfig) {
   const form = document.getElementById("rsvp-form");
   if (!form) return;
@@ -217,24 +218,29 @@ function initRSVPForm(sheetConfig) {
       time: new Date().toLocaleString("vi-VN")
     };
 
-    // Save LocalStorage
+    // Save to LocalStorage
     const existing = JSON.parse(localStorage.getItem("wedding_rsvp") || "[]");
     existing.push(rsvpData);
     localStorage.setItem("wedding_rsvp", JSON.stringify(existing));
 
-    // Send to Google Sheets Script if configured
+    // Send to Google Sheets Apps Script
     if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
       const formData = new FormData();
       Object.keys(rsvpData).forEach(key => formData.append(key, rsvpData[key]));
       fetch(sheetConfig.scriptUrl, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {});
     }
 
-    showToast("❤️ Cảm ơn " + name + " đã gửi xác nhận tham dự!");
+    // Open Thank You Modal
+    showThankYouModal(
+      "XÁC NHẬN THAM DỰ THÀNH CÔNG!",
+      `Cảm ơn bạn <strong>${name}</strong> (${guests} người - Khách ${side}) đã gửi xác nhận <em>${status}</em>.<br><br>Sự hiện diện và tình cảm của bạn là niềm vinh hạnh lớn nhất của Lâm Tuấn & Như Huế!`
+    );
+
     form.reset();
   });
 }
 
-/* 7. SỔ LƯU BÚT - GỬI VÀO GOOGLE SHEET & LOCALSTORAGE */
+/* 7. SỔ LƯU BÚT - GỬI GOOGLE SHEET + MỞ POPUP CẢM ƠN */
 function initGuestbook(defaultWishes, sheetConfig) {
   const form = document.getElementById("guestbook-form");
   const wishesListEl = document.getElementById("wishes-list");
@@ -272,13 +278,13 @@ function initGuestbook(defaultWishes, sheetConfig) {
         name: nameInput.value.trim(),
         relation: relationInput.value.trim(),
         message: msgInput.value.trim(),
-        time: new Date().toLocaleTimeString("vi-VN", { hour: '2-digit', minute: '2-digit' }) + " Hôm nay"
+        time: "Vừa xong"
       };
 
       wishes.push(newWish);
       localStorage.setItem("wedding_wishes", JSON.stringify(wishes));
 
-      // Send to Google Sheets Script if configured
+      // Send to Google Sheets Apps Script
       if (sheetConfig && sheetConfig.scriptUrl && !sheetConfig.scriptUrl.includes("placeholder")) {
         const formData = new FormData();
         Object.keys(newWish).forEach(key => formData.append(key, newWish[key]));
@@ -286,13 +292,47 @@ function initGuestbook(defaultWishes, sheetConfig) {
       }
 
       renderWishes();
-      showToast("🌸 Cảm ơn " + newWish.name + " đã gửi lời chúc mừng!");
+
+      // Open Thank You Modal
+      showThankYouModal(
+        "GỬI LỜI CHÚC THÀNH CÔNG!",
+        `Cảm ơn <strong>${newWish.name}</strong> đã gửi lời chúc mừng vô cùng ngọt ngào và ý nghĩa dành cho Lâm Tuấn & Như Huế! 💖`
+      );
+
       form.reset();
     });
   }
 }
 
-/* 8. MODAL HỘP MỪNG CƯỚI */
+/* 8. MODAL THÔNG BÁO CẢM ƠN SANG TRỌNG */
+function initThankYouModal() {
+  const modal = document.getElementById("thankyou-modal");
+  const closeBtn = document.getElementById("thankyou-close-btn");
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+  }
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.remove("active");
+    });
+  }
+}
+
+function showThankYouModal(titleText, htmlMessage) {
+  const modal = document.getElementById("thankyou-modal");
+  const titleEl = document.getElementById("thankyou-title");
+  const msgEl = document.getElementById("thankyou-message");
+
+  if (titleEl) titleEl.textContent = titleText;
+  if (msgEl) msgEl.innerHTML = htmlMessage;
+
+  if (modal) {
+    modal.classList.add("active");
+  }
+}
+
+/* 9. MODAL HỘP MỪNG CƯỚI */
 function initBankModal(bankConfig) {
   const triggerBtn = document.getElementById("open-gift-modal-btn");
   const modal = document.getElementById("gift-modal");
@@ -341,7 +381,7 @@ function initBankModal(bankConfig) {
   });
 }
 
-/* 9. CANVAS TRÁI TIM */
+/* 10. CANVAS TRÁI TIM */
 function initHeartCanvas() {
   const canvas = document.getElementById("petal-canvas");
   if (!canvas) return;
@@ -420,7 +460,7 @@ function initHeartCanvas() {
   loop();
 }
 
-/* 10. SCROLL ANIMATIONS */
+/* 11. SCROLL ANIMATIONS */
 function initScrollAnimations() {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -442,7 +482,7 @@ function initScrollAnimations() {
   });
 }
 
-/* 11. TOAST UTILITY */
+/* 12. TOAST UTILITY */
 function showToast(message) {
   let toast = document.getElementById("toast-msg");
   if (!toast) {

@@ -132,7 +132,7 @@
     </div>
   </section>
 
-  <!-- 5. WEDDING EVENTS SECTION (RÕ RÀNG, DỄ NHÌN) -->
+  <!-- 5. WEDDING EVENTS SECTION -->
   <section class="events-section" id="events">
     <div class="container">
       <div class="section-header">
@@ -146,7 +146,7 @@
     </div>
   </section>
 
-  <!-- 6. PHOTO GALLERY SECTION (10 ẢNH ĐẸP NHẤT) -->
+  <!-- 6. PHOTO GALLERY SECTION -->
   <section class="gallery-section" id="gallery">
     <div class="container">
       <div class="section-header">
@@ -170,6 +170,26 @@
 
       <div class="rsvp-card">
         <form id="rsvp-form">
+          <div class="form-group">
+            <label class="form-label" for="rsvp-name">Họ và tên của bạn *</label>
+            <input type="text" id="rsvp-name" class="form-control" placeholder="Nhập họ và tên..." required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="rsvp-phone">Số điện thoại *</label>
+            <input type="tel" id="rsvp-phone" class="form-control" placeholder="Nhập số điện thoại..." required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="rsvp-guests">Số người tham dự</label>
+            <select id="rsvp-guests" class="form-control">
+              <option value="1">1 người</option>
+              <option value="2">2 người (Đi cùng người thương)</option>
+              <option value="3">3 người (Đi cùng gia đình)</option>
+              <option value="4+">4 người trở lên</option>
+            </select>
+          </div>
+
           <div class="form-group">
             <label class="form-label" for="rsvp-side">Bạn là khách mời của ai?</label>
             <select id="rsvp-side" class="form-control">
@@ -230,11 +250,15 @@
           <h3 style="font-family: var(--font-heading); margin-bottom: 18px; color: var(--red-dark); font-size: 1.15rem;">Gửi lời chúc tốt đẹp nhất</h3>
           <form id="guestbook-form">
             <div class="form-group">
-              <label class="form-label" for="wish-name" style="color: var(--text-dark);">Tên của bạn</label>
+              <label class="form-label" for="wish-name" style="color: var(--text-dark);">Họ và tên của bạn *</label>
               <input type="text" id="wish-name" class="form-control" style="background: #FAFAFA; color: #333;" placeholder="Tên của bạn..." required>
             </div>
             <div class="form-group">
-              <label class="form-label" for="wish-message" style="color: var(--text-dark);">Lời chúc mừng</label>
+              <label class="form-label" for="wish-relation" style="color: var(--text-dark);">Mối quan hệ</label>
+              <input type="text" id="wish-relation" class="form-control" style="background: #FAFAFA; color: #333;" placeholder="Ví dụ: Bạn lớp 1, Đồng nghiệp HTI / Bệnh viện E...">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="wish-message" style="color: var(--text-dark);">Lời chúc mừng *</label>
               <textarea id="wish-message" rows="3" class="form-control" style="background: #FAFAFA; color: #333;" placeholder="Nhập lời chúc ngọt ngào dành cho Lâm Tuấn & Như Huế..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
@@ -243,7 +267,7 @@
           </form>
         </div>
 
-        <!-- Wishes Display Feed (Only showing recent wishes, no public Sheet link) -->
+        <!-- Wishes Display Feed -->
         <div>
           <h3 style="font-family: var(--font-heading); margin-bottom: 18px; color: var(--red-dark); font-size: 1.15rem;">
             Lời chúc gần nhất từ bạn bè & người thân
@@ -311,6 +335,20 @@
       <div class="lightbox-caption-text" id="lightbox-caption"></div>
     </div>
     <button class="lightbox-nav-btn lightbox-next" id="lightbox-next">&#10095;</button>
+  </div>
+
+  <!-- MODAL 3: POPUP THÔNG BÁO CẢM ƠN XÁC NHẬN SANG TRỌNG -->
+  <div class="modal-backdrop" id="thankyou-modal">
+    <div class="modal-content text-center" style="max-width: 480px; padding: 35px 25px;">
+      <div style="font-size: 3.5rem; margin-bottom: 10px; animation: heartPulse 1.2s infinite;">💖</div>
+      <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--red-dark); margin-bottom: 12px;" id="thankyou-title">CẢM ƠN BẠN RẤT NHIỀU!</h3>
+      <p style="color: var(--text-dark); font-size: 0.98rem; line-height: 1.6; margin-bottom: 25px;" id="thankyou-message">
+        Sự hiện diện của bạn là niềm vinh hạnh và món quà ý nghĩa nhất dành cho Lâm Tuấn & Như Huế trong ngày trọng đại!
+      </p>
+      <button class="btn btn-primary" id="thankyou-close-btn" style="padding: 12px 35px; font-size: 0.95rem; border-radius: 30px;">
+        Đóng Thông Báo ❤️
+      </button>
+    </div>
   </div>
 
   <!-- JavaScript Modules -->
