@@ -1,6 +1,6 @@
 /**
  * APP.JS - Logic Thiệp Cưới LÂM TUẤN & NHƯ HUẾ
- * Mẫu Cinelove 46 Tối Giản (Gộp Tiệc Mừng Thứ 7 Rõ Ràng)
+ * Mẫu Cinelove 46 Tối Giản (Gia đình gộp song song theo ảnh mẫu)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,18 +24,12 @@ function renderConfigData(config) {
   const bride = config.couple.bride;
 
   setText("groom-name", groom.name);
-  setText("groom-role", groom.role);
-  setText("groom-job", groom.job);
   setText("groom-father", groom.father);
   setText("groom-mother", groom.mother);
-  setImg("groom-avatar", groom.avatar);
 
   setText("bride-name", bride.name);
-  setText("bride-role", bride.role);
-  setText("bride-job", bride.job);
   setText("bride-father", bride.father);
   setText("bride-mother", bride.mother);
-  setImg("bride-avatar", bride.avatar);
 
   setText("hero-groom", groom.shortName);
   setText("hero-bride", bride.shortName);
@@ -426,7 +420,7 @@ function initScrollAnimations() {
     { threshold: 0.1 }
   );
 
-  document.querySelectorAll(".couple-card, .event-card").forEach((el) => {
+  document.querySelectorAll(".family-card-container, .event-card").forEach((el) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(20px)";
     el.style.transition = "opacity 0.6s ease, transform 0.6s ease";

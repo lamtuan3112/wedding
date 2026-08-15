@@ -42,28 +42,66 @@
       <p class="hero-subtitle">LỄ THÀNH HÔN • 20.09.2026</p>
       <div class="hero-date" id="hero-date">Chủ Nhật, 20.09.2026</div>
       <div>
-        <a href="#quote" class="scroll-down-btn" aria-label="Cuộn xuống">↓</a>
+        <a href="#family-info" class="scroll-down-btn" aria-label="Cuộn xuống">↓</a>
       </div>
     </div>
   </header>
 
-  <!-- 2. CINELOVE 46 QUOTE SECTION ("LỜI MUỐN NÓI") -->
-  <section class="quote-section" id="quote">
-    <div class="container text-center" style="max-width: 650px;">
-      <div class="quote-card">
-        <div class="section-subtitle">WITH YOU</div>
-        <p class="quote-text">
-          "Khoảnh khắc gặp được em, anh đã quyết định cùng em đi hết cuộc đời.<br><br>
-          Hôn nhân là chuyện cả đời — Yêu người vừa ý, cưới người mình thương."
-        </p>
-        <div style="font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 2px; color: var(--color-crimson-light); margin-top: 15px; font-weight: 600; text-transform: uppercase;">
-          — LÂM TUẤN &amp; NHƯ HUẾ —
+  <!-- 2. THÔNG TIN GIA ĐÌNH HAI BÊN (GỘP BỐ CỤC SONG SONG THEO MẪU MỚI) -->
+  <section class="family-section" id="family-info">
+    <div class="container text-center">
+      <div class="wedding-header-title">WEDDING</div>
+      
+      <div class="family-card-container">
+        <div class="family-grid">
+          <!-- NHÀ TRAI -->
+          <div class="family-col">
+            <h3 class="family-side-title">Nhà Trai</h3>
+            <div class="parents-detail">
+              <p>Ông : <span id="groom-father">Nguyễn Văn Trường</span></p>
+              <p>Bà : <span id="groom-mother">Nguyễn Thị Nụ</span></p>
+              <p class="family-address">Thôn Thượng Thôn - Ô Diên - TP.Hà Nội</p>
+            </div>
+            <div class="couple-script-name" id="groom-name">Lâm Tuấn</div>
+          </div>
+
+          <!-- MIDDLE DIVIDER -->
+          <div class="family-divider">
+            <span class="family-divider-line"></span>
+            <span class="family-divider-icon">🥂</span>
+            <span class="family-divider-line"></span>
+          </div>
+
+          <!-- NHÀ GÁI -->
+          <div class="family-col">
+            <h3 class="family-side-title">Nhà Gái</h3>
+            <div class="parents-detail">
+              <p>Ông : <span id="bride-father">Nguyễn Bá Thiết</span></p>
+              <p>Bà : <span id="bride-mother">Nguyễn Thị Ất</span></p>
+              <p class="family-address">Thôn Thượng Thôn - Ô Diên - TP.Hà Nội</p>
+            </div>
+            <div class="couple-script-name" id="bride-name">Như Huế</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. COUNTDOWN TIMER -->
+  <!-- 3. THƯ MỜI CHÂN THÀNH -->
+  <section class="quote-section" id="quote">
+    <div class="container text-center" style="max-width: 650px;">
+      <div class="quote-card">
+        <div class="section-subtitle">THƯ MỜI CHÂN THÀNH</div>
+        <h2 class="section-title" style="margin-bottom: 14px;">THAM DỰ LỄ THÀNH HÔN CỦA CHÚNG MÌNH</h2>
+        <p class="quote-text">
+          "Khoảnh khắc gặp được em, anh đã quyết định cùng em đi hết cuộc đời.<br><br>
+          Hôn nhân là chuyện cả đời — Yêu người vừa ý, cưới người mình thương."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. COUNTDOWN TIMER -->
   <section class="countdown-section" id="countdown">
     <div class="container text-center">
       <div class="section-subtitle">CÙNG ĐẾM NGƯỢC THỜI GIAN</div>
@@ -89,47 +127,7 @@
     </div>
   </section>
 
-  <!-- 4. GROOM & BRIDE PROFILE CARDS -->
-  <section class="couple-section" id="couple">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-subtitle">THÔNG TIN GIA ĐÌNH</div>
-        <h2 class="section-title">CHÚ RỂ &amp; CÔ DÂU</h2>
-      </div>
-
-      <div class="couple-grid">
-        <!-- Groom Card -->
-        <div class="couple-card">
-          <div class="couple-img-wrapper">
-            <img src="" alt="Chú Rể Lâm Tuấn" class="couple-img" id="groom-avatar">
-          </div>
-          <div class="couple-role" id="groom-role">CHÚ RỂ</div>
-          <h3 class="couple-name" id="groom-name">Lâm Tuấn</h3>
-          <div class="couple-badge-job" id="groom-job">Kỹ sư CNTT tại HTI Group</div>
-          <div class="parents-info">
-            Con ông: <strong id="groom-father">Nguyễn Văn Trường</strong><br>
-            Con bà: <strong id="groom-mother">Nguyễn Thị Nụ</strong>
-          </div>
-        </div>
-
-        <!-- Bride Card -->
-        <div class="couple-card">
-          <div class="couple-img-wrapper">
-            <img src="" alt="Cô Dâu Như Huế" class="couple-img" id="bride-avatar">
-          </div>
-          <div class="couple-role" id="bride-role">CÔ DÂU</div>
-          <h3 class="couple-name" id="bride-name">Như Huế</h3>
-          <div class="couple-badge-job" id="bride-job">Điều dưỡng tại Bệnh viện E</div>
-          <div class="parents-info">
-            Con ông: <strong id="bride-father">Nguyễn Bá Thiết</strong><br>
-            Con bà: <strong id="bride-mother">Nguyễn Thị Ất</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. WEDDING EVENTS (CHIA RÕ TIỆC NHÀ TRAI / NHÀ GÁI / LỄ THÀNH HÔN) -->
+  <!-- 5. WEDDING EVENTS (GỘP TIỆC MỪNG THỨ 7 RÕ RÀNG) -->
   <section class="events-section" id="events">
     <div class="container">
       <div class="section-header">
@@ -209,7 +207,7 @@
     </div>
   </section>
 
-  <!-- 8. SỔ LƯU BÚT ONLINE (FORM GỬI LỜI CHÚC) -->
+  <!-- 8. SỔ LƯU BÚT ONLINE -->
   <section class="guestbook-section" id="guestbook">
     <div class="container">
       <div class="section-header">
