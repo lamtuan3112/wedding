@@ -1,9 +1,9 @@
 /**
- * CONFIG.JS - Dữ liệu thiệp cưới LÂM TUẤN & NHƯ HUẾ (Tối ưu súc tích, 10 ảnh)
+ * CONFIG.JS - Dữ liệu thiệp cưới LÂM TUẤN & NHƯ HUẾ
  */
 
 const WEDDING_CONFIG = {
-  // Thông tin Chú Rể & Cô Dâu (Ngắn gọn, rõ ràng)
+  // Thông tin Chú Rể & Cô Dâu
   couple: {
     groom: {
       name: "Lâm Tuấn",
@@ -12,7 +12,7 @@ const WEDDING_CONFIG = {
       job: "Kỹ sư CNTT tại HTI Group",
       father: "Nguyễn Văn Trường",
       mother: "Nguyễn Thị Nụ",
-      avatar: "asset/images/AnhThiep/NVT09645.jpg",
+      avatar: "asset/images/AnhThiep/NVT09543.jpg",
       phone: "0988 123 456"
     },
     bride: {
@@ -22,7 +22,7 @@ const WEDDING_CONFIG = {
       job: "Điều dưỡng tại Bệnh viện E",
       father: "Nguyễn Bá Thiết",
       mother: "Nguyễn Thị Ất",
-      avatar: "asset/images/AnhThiep/NVT09560.jpg",
+      avatar: "asset/images/AnhThiep/NVT09581.jpg",
       phone: "0977 654 321"
     }
   },
@@ -45,17 +45,19 @@ const WEDDING_CONFIG = {
     autoPlay: false
   },
 
-  // Cấu hình Google Sheet (Chỉ dùng để đồng bộ nội bộ)
+  // Cấu hình Google Spreadsheet & Apps Script nhận lời chúc + RSVP
   googleSheet: {
     sheetId: "1ex8B6XNs8N_So2C7hqlMlRy-O_rjX70j7BW41Erk79g",
-    viewUrl: "https://docs.google.com/spreadsheets/d/1ex8B6XNs8N_So2C7hqlMlRy-O_rjX70j7BW41Erk79g/gviz/tq?tqx=out:json"
+    viewUrl: "https://docs.google.com/spreadsheets/d/1ex8B6XNs8N_So2C7hqlMlRy-O_rjX70j7BW41Erk79g/gviz/tq?tqx=out:json",
+    // ⬇️ DÁN LINK APPS SCRIPT WEB APP CỦA BẠN (https://script.google.com/macros/s/.../exec) VÀO DƯỚI ĐÂY:
+    scriptUrl: "DÁN_LINK_WEB_APP_CỦA_BẠN_VÀO_ĐÂY"
   },
 
-  // 3 Sự kiện tổ chức rõ ràng, dễ nhìn
+  // 3 Sự kiện tổ chức
   events: [
     {
       id: "tiec1",
-      title: "TIỆC MỪNG NHÀ TRAI (SÁNG THỨ 7)",
+      title: "TIỆC MỪNG (SÁNG THỨ 7)",
       time: "09:00 - Thứ 7, 19/09/2026",
       lunarTime: "(Ngày 09/08 âm lịch)",
       location: "Sau Trường THCS Liên Hà",
@@ -65,7 +67,7 @@ const WEDDING_CONFIG = {
     },
     {
       id: "tiec2",
-      title: "TIỆC MỪNG NHÀ GÁI (CHIỀU THỨ 7)",
+      title: "TIỆC MỪNG (CHIỀU THỨ 7)",
       time: "15:00 - Thứ 7, 19/09/2026",
       lunarTime: "(Ngày 09/08 âm lịch)",
       location: "Hồ Sinh Thái Thượng Thôn",
@@ -85,55 +87,59 @@ const WEDDING_CONFIG = {
     }
   ],
 
-  // Dòng thời gian tình yêu súc tích
+  // Dòng thời gian tình yêu
   story: [
     {
       date: "Năm 2005",
       title: "Cùng Bàn Lớp 1",
-      description: "Cô giáo xếp hai đứa nhỏ 6 tuổi ngồi chung bàn học. Kỷ niệm tuổi thơ bắt đầu từ đây.",
+      description: "Cô giáo xếp hai đứa nhỏ 6 tuổi ngồi chung bàn học tại Thượng Thôn. Kỷ niệm tuổi thơ bắt đầu từ đây.",
       image: "asset/images/AnhThiep/NVT09702.jpg"
     },
     {
-      date: "Những Năm Tiểu Học",
+      date: "Những Năm Học Phổ Thông",
       title: "Thanh Xuân Gắn Bó",
-      description: "Cùng lớn lên dưới mái trường tiêu học, từ tình bạn nhỏ dần hóa thành mối tình sâu đậm.",
-      image: "asset/images/AnhThiep/DSC00190.jpg"
+      description: "Cùng lớn lên dưới mái trường Ô Diên, từ tình bạn nhỏ dần hóa thành mối tình sâu đậm.",
+      image: "asset/images/AnhThiep/DSC00060.jpg"
     },
     {
       date: "15/07/2026",
       title: "Lời Cầu Hôn",
-      description: "Sau bao năm, Lâm Tuấn trao nhẫn đính hôn và Như Huế mỉm cười đồng ý.",
-      image: "asset/images/AnhThiep/NVT09781.jpg"
+      description: "Sau bao năm gắn bó, Lâm Tuấn trao nhẫn đính hôn và Như Huế mỉm cười đồng ý.",
+      image: "asset/images/AnhThiep/NVT09928.jpg"
     },
     {
       date: "20/09/2026",
       title: "Ngày Chung Đôi",
       description: "Hai bạn chính thức trao nhau lời thề nguyện trăm năm hạnh phúc!",
-      image: "asset/images/AnhThiep/DSC00150.jpg"
+      image: "asset/images/AnhThiep/AnhCong/NVT09675.jpg"
     }
   ],
 
-  // ĐÚNG 10 ẢNH CƯỚI ĐẸP NHẤT
+  // 10 ảnh cưới chọn lọc
   gallery: [
-    { src: "asset/images/AnhThiep/AnhCong/NVT09675.jpg", caption: "Rạng Rỡ Ngày Trọng Đại" },
-    { src: "asset/images/AnhThiep/AnhCong/NVT09903.jpg", caption: "Nụ Cười Hạnh Phúc" },
+    { src: "asset/images/AnhThiep/AnhCong/NVT09675.jpg", caption: "Ảnh Cổng - Rạng Rỡ Ngày Trọng Đại" },
+    { src: "asset/images/AnhThiep/AnhCong/NVT09903.jpg", caption: "Ảnh Cổng - Nụ Cười Hạnh Phúc" },
     { src: "asset/images/AnhThiep/NVT09543.jpg", caption: "Lâm Tuấn & Như Huế" },
+    { src: "asset/images/AnhThiep/NVT09581.jpg", caption: "Khoảnh Khắc Ngọt Ngào" },
     { src: "asset/images/AnhThiep/NVT09499.jpg", caption: "Váy Cưới Tinh Khôi" },
+    { src: "asset/images/AnhThiep/DSC00007.jpg", caption: "Nụ Cười Tình Yêu" },
     { src: "asset/images/AnhThiep/DSC00060.jpg", caption: "Hành Trình Thanh Xuân" },
     { src: "asset/images/AnhThiep/DSC00065.jpg", caption: "Gắn Kết Trăm Năm" },
+    { src: "asset/images/AnhThiep/NVT09702.jpg", caption: "Hạnh Phúc Trọn Vẹn" },
+    { src: "asset/images/AnhThiep/NVT09928.jpg", caption: "Khóa Chặt Trái Tim" }
   ],
 
   // Ngân hàng mừng cưới
   bankAccounts: {
     groom: {
-      owner: "NGUYEN VAN TUAN",
-      bankName: "BIĐV (Ngân Hàng Quân Đội)",
+      owner: "NGUYEN LAM TUAN",
+      bankName: "MBBank (Ngân Hàng Quân Đội)",
       accountNumber: "0988123456",
       branch: "Hà Nội",
       qrCodeUrl: "https://img.vietqr.io/image/MB-0988123456-compact2.png?amount=0&addInfo=Mung%20Cuoi%20Lam%20Tuan&accountName=NGUYEN%20LAM%20TUAN"
     },
     bride: {
-      owner: "NGUYEN THI NHU HUE",
+      owner: "NHU HUE",
       bankName: "Vietcombank (VCB)",
       accountNumber: "0977654321",
       branch: "Hà Nội",
@@ -144,15 +150,15 @@ const WEDDING_CONFIG = {
   // Lời chúc mẫu gần nhất
   defaultWishes: [
     {
-      name: "Đội bóng FC Lúa Mạch",
-      relation: "Lịch uống bia",
-      message: "Chú rể Lâm Tuấn uống bia có bao giờ say đâu :))",
-      time: "30 phút trước"
+      name: "Tập thể Bạn Cùng Lớp 1",
+      relation: "Bạn thơ ấu",
+      message: "Chúc mừng hai bạn! Từ cặp bạn ngồi cùng bàn lớp 1 nay đã chính thức về chung một nhà!",
+      time: "Vừa xong"
     },
     {
-      name: "HTI Group & Bệnh viện E",
+      name: "Team HTI Group & Bệnh viện E",
       relation: "Đồng nghiệp",
-      message: "Chúc Lâm Tuấn & Như Huế luôn tràn ngập niềm vui, mãi mãi hạnh phúc nha!",
+      message: "Chúc Lâm Tuấn & Như Huế luôn tràn ngập niềm vui, viên mãn và mãi mãi hạnh phúc!",
       time: "1 giờ trước"
     }
   ]
